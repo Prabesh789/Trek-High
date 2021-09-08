@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "246058830641",
+    "project_id": "trek-high-8b927",
+    "storage_bucket": "trek-high-8b927.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:246058830641:android:2ef3a9319e4bc36b86be10",
+        "android_client_info": {
+          "package_name": "com.trek_high.trek_high"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "246058830641-d1plrk861ce5gvpaescdpvo3m0cba338.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyB2m4XwImzY2bnhtz62JQt4x6PAYOmWh80"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "246058830641-d1plrk861ce5gvpaescdpvo3m0cba338.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
