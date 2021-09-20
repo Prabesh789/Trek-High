@@ -1,0 +1,20 @@
+include: package:very_good_analysis/analysis_options.yaml
+
+analyzer:
+  exclude:
+    - "**/*.g.dart"
+    - "**/*.freezed.dart"
+    - "**/*.chopper.dart"
+    - "**/*.config.dart"
+    - "**/*.gr.dart"
+  strong-mode:
+    implicit-casts: false
+    implicit-dynamic: true
+  errors:
+    missing_required_param: error
+    missing_return: error
+    public_member_api_docs: ignore
+    lines_longer_than_80_chars: ignore
+    constant_identifier_names: ignore
+    sort_pub_dependencies: ignore
+    leading_newlines_in_multiline_strings: ignore
