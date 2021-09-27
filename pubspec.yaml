@@ -41,6 +41,8 @@ dependencies:
   dartz: ^0.10.0-nullsafety.1 
   shared_preferences: ^2.0.6
   ionicons: ^0.1.2
+  another_flushbar: ^1.10.24
+  timeago: ^3.1.0
 
 dev_dependencies:
   flutter_test:
@@ -80,17 +82,21 @@ flutter:
   # "family" key with the font family name, and a "fonts" key with a
   # list giving the asset and other descriptors for the font. For
   # example:
-  # fonts:
-  #   - family: Schyler
-  #     fonts:
-  #       - asset: fonts/Schyler-Regular.ttf
-  #       - asset: fonts/Schyler-Italic.ttf
-  #         style: italic
-  #   - family: Trajan Pro
-  #     fonts:
-  #       - asset: fonts/TrajanPro.ttf
-  #       - asset: fonts/TrajanPro_Bold.ttf
-  #         weight: 700
+  fonts:
+    - family: Avenir Next
+      fonts:
+        - asset: assets/fonts/AvenirNext-Bold.ttf
+        - asset: assets/fonts/AvenirNext-BoldItalic.ttf
+        - asset: assets/fonts/AvenirNext-DemiBold.ttf
+        - asset: assets/fonts/AvenirNext-DemiBoldItalic.ttf
+        - asset: assets/fonts/AvenirNext-Heavy.ttf
+        - asset: assets/fonts/AvenirNext-HeavyItalic.ttf
+        - asset: assets/fonts/AvenirNext-Italic.ttf
+        - asset: assets/fonts/AvenirNext-Medium.ttf
+        - asset: assets/fonts/AvenirNext-MediumItalic.ttf
+        - asset: assets/fonts/AvenirNext-Regular.ttf
+        - asset: assets/fonts/AvenirNext-UltraLight.ttf
+        - asset: assets/fonts/AvenirNext-UltraLightItalic.ttf
   #
   # For details regarding fonts from package dependencies,
   # see https://flutter.dev/custom-fonts/#from-packages

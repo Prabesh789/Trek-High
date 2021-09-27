@@ -1,3 +1,4 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 class AppThemes {
@@ -37,7 +38,9 @@ class AppThemes {
     },
   );
 
+  /*Getter to get Palatte for light theme*/
   static final lightTheme = ThemeData(
+    fontFamily: 'Avenir Next',
     primarySwatch: primarySwatch,
     brightness: Brightness.light,
     scaffoldBackgroundColor: textSwatch.shade100,
@@ -49,46 +52,61 @@ class AppThemes {
       headline1: TextStyle(
         color: textSwatch.shade700,
         fontWeight: FontWeight.w300,
+        fontSize: 35,
       ),
       headline2: TextStyle(
         color: textSwatch.shade600,
+        fontSize: 30,
       ),
       headline3: TextStyle(
         color: textSwatch.shade700,
+        fontSize: 25,
       ),
       headline4: TextStyle(
         color: textSwatch.shade700,
+        fontSize: 20,
       ),
       headline5: TextStyle(
         color: textSwatch.shade600,
+        fontSize: 18,
       ),
       headline6: TextStyle(
         color: textSwatch.shade700,
+        fontSize: 16,
       ),
       subtitle1: TextStyle(
         color: textSwatch.shade700,
+        fontSize: 15,
       ),
       subtitle2: TextStyle(
         color: textSwatch.shade600,
+        fontSize: 10,
       ),
       bodyText1: TextStyle(
         color: textSwatch.shade700,
+        fontSize: 11,
       ),
       bodyText2: TextStyle(
         color: textSwatch.shade500,
+        fontSize: 12,
       ),
       button: TextStyle(
         color: textSwatch.shade500,
+        fontSize: 16,
+        fontWeight: FontWeight.w700,
       ),
       caption: TextStyle(
         color: textSwatch.shade500,
+        fontSize: 13,
       ),
       overline: TextStyle(
         color: textSwatch.shade500,
+        fontSize: 8,
       ),
     ),
   );
 
+  /*Getter to get Palatte for light theme*/
   static final darkTheme = lightTheme.copyWith(
     brightness: Brightness.dark,
     scaffoldBackgroundColor: const Color(0xFF24242a),
@@ -100,42 +118,55 @@ class AppThemes {
       headline1: TextStyle(
         color: textSwatch.shade200,
         fontWeight: FontWeight.w300,
+        fontSize: 35,
       ),
       headline2: TextStyle(
         color: textSwatch.shade300,
+        fontSize: 30,
       ),
       headline3: TextStyle(
         color: textSwatch.shade200,
+        fontSize: 25,
       ),
       headline4: TextStyle(
         color: textSwatch.shade200,
+        fontSize: 20,
       ),
       headline5: TextStyle(
         color: textSwatch.shade300,
+        fontSize: 18,
       ),
       headline6: TextStyle(
         color: textSwatch.shade200,
+        fontSize: 16,
       ),
       subtitle1: TextStyle(
         color: textSwatch.shade200,
+        fontSize: 15,
       ),
       subtitle2: TextStyle(
         color: textSwatch.shade300,
+        fontSize: 10,
       ),
       bodyText1: TextStyle(
         color: textSwatch.shade300,
+        fontSize: 11,
       ),
       bodyText2: TextStyle(
         color: textSwatch.shade200,
+        fontSize: 12,
       ),
       button: TextStyle(
         color: textSwatch.shade400,
+        fontSize: 16,
       ),
       caption: TextStyle(
         color: textSwatch.shade400,
+        fontSize: 13,
       ),
       overline: TextStyle(
         color: textSwatch.shade400,
+        fontSize: 8,
       ),
     ),
   );
