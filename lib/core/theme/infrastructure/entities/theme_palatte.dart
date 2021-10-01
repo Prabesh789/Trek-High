@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/rendering.dart';
 
 class AppThemes {
   /// Colors from Tailwind CSS
@@ -69,10 +70,12 @@ class AppThemes {
       headline5: TextStyle(
         color: textSwatch.shade600,
         fontSize: 18,
+        fontWeight: FontWeight.w600,
       ),
       headline6: TextStyle(
         color: textSwatch.shade700,
         fontSize: 16,
+        fontWeight: FontWeight.w400,
       ),
       subtitle1: TextStyle(
         color: textSwatch.shade700,

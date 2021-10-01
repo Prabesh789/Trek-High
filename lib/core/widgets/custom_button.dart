@@ -6,10 +6,12 @@ class CustomButton extends StatefulWidget {
     this.buttonHeigh,
     this.buttonWidget,
     required this.onPressed,
+    required this.buttonText,
   }) : super(key: key);
   final double? buttonHeigh;
   final double? buttonWidget;
   final VoidCallback onPressed;
+  final String buttonText;
 
   @override
   _CustomButtonState createState() => _CustomButtonState();
@@ -30,7 +32,7 @@ class _CustomButtonState extends State<CustomButton> {
         ),
         child: Center(
           child: Text(
-            'Login',
+            widget.buttonText,
             style: Theme.of(context).textTheme.button?.copyWith(
                   color: Colors.black,
                 ),
