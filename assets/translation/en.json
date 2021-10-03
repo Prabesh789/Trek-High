@@ -1,6 +1,8 @@
 {
-    "introduction": "Hi, I am Prabesh Rai",
-    "title": "First page",
+    "well_come": "Wellcome All Travellers",
+    "login": "Login",
+    "user_name": "User Name",
+    "password": "Password",
     "language_switch_title": "Change language",
-    "description": "I am learning Flutter"
+    "dark_mode": "Dark mode"
 }

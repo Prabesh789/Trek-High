@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/painting.dart';
 import 'package:flutter/rendering.dart';
 
 class AppThemes {
@@ -65,6 +66,7 @@ class AppThemes {
       ),
       headline4: TextStyle(
         color: textSwatch.shade700,
+        fontWeight: FontWeight.bold,
         fontSize: 20,
       ),
       headline5: TextStyle(
@@ -91,12 +93,12 @@ class AppThemes {
       ),
       bodyText2: TextStyle(
         color: textSwatch.shade500,
-        fontSize: 12,
+        fontSize: 14,
       ),
       button: TextStyle(
         color: textSwatch.shade500,
         fontSize: 16,
-        fontWeight: FontWeight.w700,
+        fontWeight: FontWeight.w600,
       ),
       caption: TextStyle(
         color: textSwatch.shade500,

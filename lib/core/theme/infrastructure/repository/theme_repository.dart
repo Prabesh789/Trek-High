@@ -1,8 +1,8 @@
+import 'package:dartz/dartz.dart';
 import 'package:flutter/material.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:trek_high/app/entities/failure.dart';
-import 'package:dartz/dartz.dart';
 import 'package:trek_high/core/theme/infrastructure/entities/theme_palatte.dart';
 
 final themeRepository = Provider<ThemeRepositoryImpl>((ref) {

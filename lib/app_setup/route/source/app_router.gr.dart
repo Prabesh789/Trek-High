@@ -10,7 +10,7 @@ import 'package:flutter/material.dart' as _i2;
 import '../../../features/auth/login_screen/login_screen.dart' as _i5;
 import '../../../features/landing_screen/presentation/landing_screen.dart'
     as _i3;
-import '../../../features/main_dashboard/presentation/main_dashboard_Screen/main_dashboard_screen.dart'
+import '../../../features/main_dashboard/presentation/main_dashboard_screen.dart'
     as _i4;
 
 class AppRouter extends _i1.RootStackRouter {

@@ -41,14 +41,6 @@ class _LandingScreenState extends State<LandingScreen> {
           Column(
             children: [
               const SizedBox(height: 80),
-              // Text(
-              //   'Welcome To Trek-High App',
-              //   textAlign: TextAlign.center,
-              //   style: Theme.of(context).textTheme.headline3?.copyWith(
-              //         fontWeight: FontWeight.bold,
-              //         color: Colors.black,
-              //       ),
-              // ),
               SizedBox(
                 height: size.height / 1.5,
                 child: PageView.builder(
@@ -92,8 +84,8 @@ class _LandingScreenState extends State<LandingScreen> {
                 effect: WormEffect(
                   dotColor: Colors.indigoAccent[100]!,
                   activeDotColor: Colors.lightBlue[900]!,
-                  dotHeight: 8,
-                  dotWidth: 8,
+                  dotHeight: 7,
+                  dotWidth: 7,
                 ),
               ),
               const SizedBox(height: 40),
