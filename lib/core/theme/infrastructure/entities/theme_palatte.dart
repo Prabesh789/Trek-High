@@ -42,7 +42,7 @@ class AppThemes {
 
   /*Getter to get Palatte for light theme*/
   static final lightTheme = ThemeData(
-    fontFamily: 'Avenir Next',
+    fontFamily: 'PTSerif',
     primarySwatch: primarySwatch,
     brightness: Brightness.light,
     scaffoldBackgroundColor: textSwatch.shade100,
@@ -71,6 +71,7 @@ class AppThemes {
       ),
       headline5: TextStyle(
         color: textSwatch.shade600,
+        fontStyle: FontStyle.normal,
         fontSize: 18,
         fontWeight: FontWeight.w600,
       ),

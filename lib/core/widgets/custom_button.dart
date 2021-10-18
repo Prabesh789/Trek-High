@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 class CustomButton extends StatefulWidget {
   const CustomButton({
@@ -33,9 +34,14 @@ class _CustomButtonState extends State<CustomButton> {
         child: Center(
           child: Text(
             widget.buttonText,
-            style: Theme.of(context).textTheme.button?.copyWith(
-                  color: Colors.black,
-                ),
+            style: GoogleFonts.ptSerif(
+              textStyle: const TextStyle(
+                fontSize: 16,
+                fontWeight: FontWeight.bold,
+                overflow: TextOverflow.ellipsis,
+                color: Colors.black,
+              ),
+            ),
           ),
         ),
       ),

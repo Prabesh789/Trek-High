@@ -43,6 +43,7 @@ dependencies:
   ionicons: ^0.1.2
   another_flushbar: ^1.10.24
   timeago: ^3.1.0
+  google_fonts: ^2.1.0
 
 dev_dependencies:
   flutter_test:
@@ -83,20 +84,12 @@ flutter:
   # list giving the asset and other descriptors for the font. For
   # example:
   fonts:
-    - family: Avenir Next
+    - family: PT Serif
       fonts:
-        - asset: assets/fonts/AvenirNext-Bold.ttf
-        - asset: assets/fonts/AvenirNext-BoldItalic.ttf
-        - asset: assets/fonts/AvenirNext-DemiBold.ttf
-        - asset: assets/fonts/AvenirNext-DemiBoldItalic.ttf
-        - asset: assets/fonts/AvenirNext-Heavy.ttf
-        - asset: assets/fonts/AvenirNext-HeavyItalic.ttf
-        - asset: assets/fonts/AvenirNext-Italic.ttf
-        - asset: assets/fonts/AvenirNext-Medium.ttf
-        - asset: assets/fonts/AvenirNext-MediumItalic.ttf
-        - asset: assets/fonts/AvenirNext-Regular.ttf
-        - asset: assets/fonts/AvenirNext-UltraLight.ttf
-        - asset: assets/fonts/AvenirNext-UltraLightItalic.ttf
+        - asset: assets/fonts/PTSerif-Regular.ttf
+        - asset: assets/fonts/PTSerif-Bold.ttf
+        - asset: assets/fonts/PTSerif-Italic.ttf
+        - asset: assets/fonts/PTSerif-BoldItalic.ttf
   #
   # For details regarding fonts from package dependencies,
   # see https://flutter.dev/custom-fonts/#from-packages

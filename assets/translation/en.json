@@ -4,5 +4,7 @@
     "user_name": "User Name",
     "password": "Password",
     "language_switch_title": "Change language",
-    "dark_mode": "Dark mode"
+    "dark_mode": "Dark mode",
+    "new_sign_up": "New sign up",
+    "skip": "skip"
 }

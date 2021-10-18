@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 class CustomTextfield extends StatelessWidget {
   const CustomTextfield({
@@ -9,6 +10,8 @@ class CustomTextfield extends StatelessWidget {
     this.sufixIcon,
     this.hintText,
     this.labelText,
+    this.onEditingComplete,
+    this.validator,
   }) : super(key: key);
   final TextEditingController textEditingController;
   final FocusNode focusNode;
@@ -16,19 +19,38 @@ class CustomTextfield extends StatelessWidget {
   final Widget? sufixIcon;
   final String? hintText;
   final String? labelText;
+  final Function()? onEditingComplete;
+  final String? Function(String?)? validator;
 
   @override
   Widget build(BuildContext context) {
     return TextFormField(
+      validator: validator,
+      onEditingComplete: onEditingComplete,
+      cursorColor: Colors.black,
       controller: textEditingController,
       focusNode: focusNode,
       decoration: InputDecoration(
         prefixIcon: prefixIcon,
         suffixIcon: sufixIcon,
         hintText: hintText,
-        hintStyle: Theme.of(context).textTheme.bodyText2,
+        hintStyle: GoogleFonts.ptSerif(
+          textStyle: const TextStyle(
+            fontSize: 14,
+            fontWeight: FontWeight.bold,
+            overflow: TextOverflow.ellipsis,
+            color: Colors.grey,
+          ),
+        ),
         labelText: labelText,
-        labelStyle: Theme.of(context).textTheme.bodyText2,
+        labelStyle: GoogleFonts.ptSerif(
+          textStyle: const TextStyle(
+            fontSize: 14,
+            fontWeight: FontWeight.bold,
+            overflow: TextOverflow.ellipsis,
+            color: Colors.grey,
+          ),
+        ),
         enabledBorder: OutlineInputBorder(
           borderRadius: BorderRadius.circular(10),
           borderSide: BorderSide(
