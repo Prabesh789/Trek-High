@@ -44,6 +44,7 @@ dependencies:
   another_flushbar: ^1.10.24
   timeago: ^3.1.0
   google_fonts: ^2.1.0
+  shimmer: ^2.0.0
 
 dev_dependencies:
   flutter_test:

@@ -23,16 +23,16 @@ class AppThemes {
     900: Color(0xFF3538E7),
   });
 
-  static const int _textColor = 0xFF6B7280;
+  static const int _lightTextColor = 0xFF6B7280;
   static const MaterialColor textSwatch = MaterialColor(
-    _textColor,
+    _lightTextColor,
     <int, Color>{
       50: Color(0xFFF9FAFB),
       100: Color(0xFFF3F4F6),
       200: Color(0xFFE5E7EB),
       300: Color(0xFFD1D5DB),
       400: Color(0xFF9CA3AF),
-      500: Color(_textColor),
+      500: Color(_lightTextColor),
       600: Color(0xFF4B5563),
       700: Color(0xFF374151),
       800: Color(0xFF1F2937),
@@ -42,11 +42,12 @@ class AppThemes {
 
   /*Getter to get Palatte for light theme*/
   static final lightTheme = ThemeData(
-    fontFamily: 'PTSerif',
+    fontFamily: 'PT Serif',
     primarySwatch: primarySwatch,
     brightness: Brightness.light,
-    scaffoldBackgroundColor: textSwatch.shade100,
-    backgroundColor: textSwatch.shade100,
+    focusColor: Colors.black.withOpacity(0.3),
+    scaffoldBackgroundColor: const Color(0xFFFFFFFF),
+    backgroundColor: const Color(0xFFFFFFFF),
     cardColor: Colors.white,
     bottomAppBarColor: Colors.white,
     dividerColor: const Color(0x1C000000),
@@ -66,19 +67,18 @@ class AppThemes {
       ),
       headline4: TextStyle(
         color: textSwatch.shade700,
-        fontWeight: FontWeight.bold,
+        fontWeight: FontWeight.w600,
         fontSize: 20,
       ),
       headline5: TextStyle(
         color: textSwatch.shade600,
-        fontStyle: FontStyle.normal,
-        fontSize: 18,
         fontWeight: FontWeight.w600,
+        fontSize: 18,
       ),
       headline6: TextStyle(
         color: textSwatch.shade700,
         fontSize: 16,
-        fontWeight: FontWeight.w400,
+        fontWeight: FontWeight.bold,
       ),
       subtitle1: TextStyle(
         color: textSwatch.shade700,
@@ -113,10 +113,12 @@ class AppThemes {
   );
 
   /*Getter to get Palatte for light theme*/
-  static final darkTheme = lightTheme.copyWith(
+  static final darkTheme = ThemeData(
+    fontFamily: 'PT Serif',
     brightness: Brightness.dark,
-    scaffoldBackgroundColor: const Color(0xFF24242a),
-    backgroundColor: const Color(0xFF24242a),
+    focusColor: Colors.white.withOpacity(0.3),
+    scaffoldBackgroundColor: const Color(0x8A000000),
+    backgroundColor: const Color(0xFF0A1A1E),
     cardColor: const Color(0xFF2f2f34),
     bottomAppBarColor: Colors.green,
     dividerColor: const Color(0x1CFFFFFF),
@@ -136,15 +138,18 @@ class AppThemes {
       ),
       headline4: TextStyle(
         color: textSwatch.shade200,
+        fontWeight: FontWeight.w600,
         fontSize: 20,
       ),
       headline5: TextStyle(
         color: textSwatch.shade300,
         fontSize: 18,
+        fontWeight: FontWeight.w600,
       ),
       headline6: TextStyle(
         color: textSwatch.shade200,
         fontSize: 16,
+        fontWeight: FontWeight.bold,
       ),
       subtitle1: TextStyle(
         color: textSwatch.shade200,

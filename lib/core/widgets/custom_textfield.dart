@@ -54,25 +54,25 @@ class CustomTextfield extends StatelessWidget {
         enabledBorder: OutlineInputBorder(
           borderRadius: BorderRadius.circular(10),
           borderSide: BorderSide(
-            color: Colors.black.withOpacity(0.3),
+            color: Theme.of(context).focusColor,
           ),
         ),
         focusedBorder: OutlineInputBorder(
           borderRadius: BorderRadius.circular(10),
           borderSide: BorderSide(
-            color: Colors.black.withOpacity(0.3),
+            color: Theme.of(context).focusColor,
           ),
         ),
         focusedErrorBorder: OutlineInputBorder(
           borderRadius: BorderRadius.circular(10),
           borderSide: BorderSide(
-            color: Colors.black.withOpacity(0.3),
+            color: Theme.of(context).focusColor,
           ),
         ),
         border: OutlineInputBorder(
           borderRadius: BorderRadius.circular(10),
           borderSide: BorderSide(
-            color: Colors.black.withOpacity(0.3),
+            color: Theme.of(context).focusColor,
           ),
         ),
       ),

@@ -1,11 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import 'package:google_fonts/google_fonts.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
-import 'package:trek_high/core/widgets/custom_button.dart';
-import 'package:trek_high/features/landing_screen/presentation/widgets/wolk_through_data.dart';
 import 'package:trek_high/app_setup/route/app_router.dart';
+import 'package:trek_high/core/widgets/custom_button.dart';
+import 'package:trek_high/features/landing_screen/widgets/wolk_through_data.dart';
 
 class LandingScreen extends StatefulWidget {
   const LandingScreen({Key? key}) : super(key: key);
@@ -64,28 +63,17 @@ class _LandingScreenState extends State<LandingScreen> {
                         ),
                         Text(
                           walkThroughItem['title'] ?? '',
-                          style: GoogleFonts.ptSerif(
-                            textStyle: const TextStyle(
-                              fontSize: 18,
-                              fontWeight: FontWeight.bold,
-                              overflow: TextOverflow.ellipsis,
-                              color: Colors.black,
-                            ),
-                          ),
+                          style:
+                              Theme.of(context).textTheme.headline5?.copyWith(
+                                    fontWeight: FontWeight.bold,
+                                  ),
                         ),
                         const SizedBox(height: 10),
                         Padding(
                           padding: const EdgeInsets.symmetric(horizontal: 25),
                           child: Text(
                             walkThroughItem['description'] ?? '',
-                            style: GoogleFonts.ptSerif(
-                              textStyle: const TextStyle(
-                                fontSize: 16,
-                                fontWeight: FontWeight.bold,
-                                overflow: TextOverflow.ellipsis,
-                                color: Colors.black,
-                              ),
-                            ),
+                            style: Theme.of(context).textTheme.headline6,
                             maxLines: 3,
                             textAlign: TextAlign.center,
                           ),

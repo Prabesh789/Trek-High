@@ -8,6 +8,7 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:ionicons/ionicons.dart';
 import 'package:trek_high/app_setup/route/app_router.dart';
 import 'package:trek_high/core/theme/application/theme_controller.dart';
+import 'package:trek_high/core/theme/infrastructure/entities/theme_palatte.dart';
 import 'package:trek_high/core/widgets/custom_back_button.dart';
 import 'package:trek_high/core/widgets/custom_body_widget.dart';
 import 'package:trek_high/core/widgets/custom_button.dart';
@@ -29,33 +30,26 @@ class _LoginScreenState extends State<LoginScreen> {
     final _passwordFocusNode = useFocusNode();
     final size = MediaQuery.of(context).size;
     return Scaffold(
+      backgroundColor: Theme.of(context).scaffoldBackgroundColor,
+      appBar: AppBar(
+        leading: CustomBackButton(onTap: () {
+          Navigator.of(context).pop();
+        }),
+        leadingWidth: 80,
+        elevation: 0,
+        centerTitle: true,
+        backgroundColor: Theme.of(context).backgroundColor,
+        title: Text(
+          'Trek High',
+          style: Theme.of(context).textTheme.headline4,
+        ),
+      ),
       body: CustomBodyWidget(
         child: SingleChildScrollView(
           child: Column(
             children: [
               const SizedBox(
                 height: kToolbarHeight - 20,
-              ),
-              Row(
-                children: [
-                  CustomBackButton(onTap: () {
-                    Navigator.of(context).pop();
-                  }),
-                  const Spacer(),
-                  Text(
-                    'Trek High',
-                    style: GoogleFonts.ptSerif(
-                      textStyle: const TextStyle(
-                        fontSize: 20,
-                        fontWeight: FontWeight.bold,
-                        overflow: TextOverflow.ellipsis,
-                        color: Colors.black,
-                      ),
-                    ),
-                  ),
-                  const Spacer(),
-                  const SizedBox(width: 60),
-                ],
               ),
               Padding(
                 padding: const EdgeInsets.symmetric(horizontal: 25),
@@ -65,14 +59,7 @@ class _LoginScreenState extends State<LoginScreen> {
                     const SizedBox(height: 100),
                     Text(
                       tr('well_come'),
-                      style: GoogleFonts.ptSerif(
-                        textStyle: const TextStyle(
-                          fontSize: 20,
-                          fontWeight: FontWeight.bold,
-                          overflow: TextOverflow.ellipsis,
-                          color: Colors.black,
-                        ),
-                      ),
+                      style: Theme.of(context).textTheme.headline5,
                     ),
                     const SizedBox(height: 40),
                     CustomTextfield(
@@ -125,15 +112,13 @@ class _LoginScreenState extends State<LoginScreen> {
                     Row(
                       children: [
                         const Spacer(),
-                        Text(
-                          tr('new_sign_up'),
-                          style: GoogleFonts.ptSerif(
-                            textStyle: const TextStyle(
-                              fontSize: 16,
-                              fontWeight: FontWeight.bold,
-                              overflow: TextOverflow.ellipsis,
-                              color: Colors.black,
-                            ),
+                        InkWell(
+                          onTap: () {
+                            context.router.push(const SignupRoute());
+                          },
+                          child: Text(
+                            tr('new_sign_up'),
+                            style: Theme.of(context).textTheme.headline6,
                           ),
                         ),
                       ],
