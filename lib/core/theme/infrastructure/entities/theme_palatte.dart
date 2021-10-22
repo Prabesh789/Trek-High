@@ -42,6 +42,10 @@ class AppThemes {
 
   /*Getter to get Palatte for light theme*/
   static final lightTheme = ThemeData(
+    bottomSheetTheme: const BottomSheetThemeData(backgroundColor: Colors.white),
+    iconTheme: IconThemeData(
+      color: Colors.black.withOpacity(0.3),
+    ),
     fontFamily: 'PT Serif',
     primarySwatch: primarySwatch,
     brightness: Brightness.light,
@@ -114,6 +118,11 @@ class AppThemes {
 
   /*Getter to get Palatte for light theme*/
   static final darkTheme = ThemeData(
+    bottomSheetTheme:
+        BottomSheetThemeData(backgroundColor: Colors.black.withOpacity(0.3)),
+    iconTheme: IconThemeData(
+      color: Colors.white.withOpacity(0.3),
+    ),
     fontFamily: 'PT Serif',
     brightness: Brightness.dark,
     focusColor: Colors.white.withOpacity(0.3),

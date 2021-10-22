@@ -1,14 +1,10 @@
-import 'package:auto_route/src/router/auto_router_x.dart';
 import 'package:easy_localization/easy_localization.dart';
-import 'package:easy_localization/src/public_ext.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:flutter_riverpod/src/provider.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:ionicons/ionicons.dart';
 import 'package:trek_high/app_setup/route/app_router.dart';
 import 'package:trek_high/core/theme/application/theme_controller.dart';
-import 'package:trek_high/core/theme/infrastructure/entities/theme_palatte.dart';
 import 'package:trek_high/core/widgets/custom_back_button.dart';
 import 'package:trek_high/core/widgets/custom_body_widget.dart';
 import 'package:trek_high/core/widgets/custom_button.dart';
@@ -68,7 +64,7 @@ class _LoginScreenState extends State<LoginScreen> {
                       labelText: tr('user_name'),
                       prefixIcon: Icon(
                         Icons.people,
-                        color: Colors.black.withOpacity(0.3),
+                        color: Theme.of(context).iconTheme.color,
                       ),
                       onEditingComplete: () {
                         FocusScope.of(context).requestFocus(_passwordFocusNode);
@@ -88,7 +84,7 @@ class _LoginScreenState extends State<LoginScreen> {
                       labelText: tr('password'),
                       prefixIcon: Icon(
                         Icons.lock,
-                        color: Colors.black.withOpacity(0.3),
+                        color: Theme.of(context).iconTheme.color,
                       ),
                       onEditingComplete: () {
                         FocusScope.of(context).requestFocus(FocusNode());
