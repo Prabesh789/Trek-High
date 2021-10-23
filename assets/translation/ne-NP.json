@@ -9,5 +9,12 @@
     "language_switch_title": "भाषा परिबर्तन गर्नुहोस।",
     "dark_mode": "अँध्यारो मोड",
     "new_sign_up": "नयाँ साइन अप",
-    "skip": "छोड्नुहोस्"
+    "skip": "छोड्नुहोस्",
+    "register": "रजिस्टर",
+    "full_name": "पुरा नाम ",
+    "email": "इमेल",
+    "phone_number": "फोन नम्बर",
+    "address": "ठेगाना",
+    "confirm_password": "पस्स्वोर्ड पुष्टि गर्नुहोस्",
+    "sign_up": "साइन अप"
 }

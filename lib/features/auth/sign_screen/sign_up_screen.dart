@@ -5,8 +5,10 @@ import 'package:flutter/material.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:image_picker/image_picker.dart';
+import 'package:trek_high/app_setup/route/app_router.dart';
 import 'package:trek_high/core/widgets/custom_back_button.dart';
 import 'package:trek_high/core/widgets/custom_body_widget.dart';
+import 'package:trek_high/core/widgets/custom_button.dart';
 import 'package:trek_high/core/widgets/custom_textfield.dart';
 import 'package:trek_high/features/auth/sign_screen/widgets/picture_selection_bottom_sheet.dart';
 
@@ -35,6 +37,7 @@ class _SignupScreenState extends State<SignupScreen> {
     final _passwordFocusNode = useFocusNode();
     final _confirmPasswordFocusNode = useFocusNode();
     final size = MediaQuery.of(context).size;
+
     return Scaffold(
       backgroundColor: Theme.of(context).scaffoldBackgroundColor,
       appBar: AppBar(
@@ -46,15 +49,8 @@ class _SignupScreenState extends State<SignupScreen> {
         centerTitle: true,
         backgroundColor: Theme.of(context).backgroundColor,
         title: Text(
-          'Register',
-          style: GoogleFonts.ptSerif(
-            textStyle: const TextStyle(
-              fontSize: 20,
-              fontWeight: FontWeight.bold,
-              overflow: TextOverflow.ellipsis,
-              color: Colors.black,
-            ),
-          ),
+          tr('register'),
+          style: Theme.of(context).textTheme.headline4,
         ),
       ),
       body: Padding(
@@ -63,7 +59,6 @@ class _SignupScreenState extends State<SignupScreen> {
           child: SingleChildScrollView(
             child: Column(
               children: [
-                const SizedBox(height: 40),
                 Stack(
                   children: [
                     Container(
@@ -84,6 +79,9 @@ class _SignupScreenState extends State<SignupScreen> {
                       ),
                       height: size.height / 6,
                       width: size.width / 2.3,
+                      child: CircleAvatar(
+                          // backgroundImage: FileImage(File(_imageFile.path)),
+                          ),
                     ),
                     Positioned(
                       bottom: 0,
@@ -125,7 +123,7 @@ class _SignupScreenState extends State<SignupScreen> {
                 CustomTextfield(
                   textEditingController: _fullNameController,
                   focusNode: _fullNameFocusNode,
-                  labelText: tr('Full Name'),
+                  labelText: tr('full_name'),
                   prefixIcon: Icon(
                     Icons.people,
                     color: Theme.of(context).iconTheme.color,
@@ -135,7 +133,7 @@ class _SignupScreenState extends State<SignupScreen> {
                   },
                   validator: (value) {
                     if (value!.isEmpty) {
-                      return 'User full-name can not be empty!';
+                      return tr('required');
                     } else {
                       return null;
                     }
@@ -145,7 +143,7 @@ class _SignupScreenState extends State<SignupScreen> {
                 CustomTextfield(
                   textEditingController: _emailController,
                   focusNode: _emailFocusNode,
-                  labelText: tr('Email'),
+                  labelText: tr('email'),
                   prefixIcon: Icon(
                     Icons.email,
                     color: Theme.of(context).iconTheme.color,
@@ -155,7 +153,7 @@ class _SignupScreenState extends State<SignupScreen> {
                   },
                   validator: (value) {
                     if (value!.isEmpty) {
-                      return 'User email can not be empty!';
+                      return tr('required');
                     } else {
                       return null;
                     }
@@ -165,7 +163,7 @@ class _SignupScreenState extends State<SignupScreen> {
                 CustomTextfield(
                   textEditingController: _phoneNumberController,
                   focusNode: _phoneNumberFocusNode,
-                  labelText: tr('Phone number'),
+                  labelText: tr('phone_number'),
                   prefixIcon: Icon(
                     Icons.people,
                     color: Theme.of(context).iconTheme.color,
@@ -175,7 +173,7 @@ class _SignupScreenState extends State<SignupScreen> {
                   },
                   validator: (value) {
                     if (value!.isEmpty) {
-                      return 'User phone number can not be empty!';
+                      return tr('required');
                     } else {
                       return null;
                     }
@@ -185,7 +183,7 @@ class _SignupScreenState extends State<SignupScreen> {
                 CustomTextfield(
                   textEditingController: _addressController,
                   focusNode: _addressFocusNode,
-                  labelText: tr('Address'),
+                  labelText: tr('address'),
                   prefixIcon: Icon(
                     Icons.people,
                     color: Theme.of(context).iconTheme.color,
@@ -195,7 +193,7 @@ class _SignupScreenState extends State<SignupScreen> {
                   },
                   validator: (value) {
                     if (value!.isEmpty) {
-                      return 'User address can not be empty!';
+                      return 'required';
                     } else {
                       return null;
                     }
@@ -205,7 +203,7 @@ class _SignupScreenState extends State<SignupScreen> {
                 CustomTextfield(
                   textEditingController: _passwordController,
                   focusNode: _passwordFocusNode,
-                  labelText: tr('Password'),
+                  labelText: tr('password'),
                   prefixIcon: Icon(
                     Icons.people,
                     color: Theme.of(context).iconTheme.color,
@@ -216,7 +214,7 @@ class _SignupScreenState extends State<SignupScreen> {
                   },
                   validator: (value) {
                     if (value!.isEmpty) {
-                      return 'Password can not be empty';
+                      return 'required';
                     } else {
                       return null;
                     }
@@ -226,7 +224,7 @@ class _SignupScreenState extends State<SignupScreen> {
                 CustomTextfield(
                   textEditingController: _confirmPasswordController,
                   focusNode: _confirmPasswordFocusNode,
-                  labelText: tr('Confirm password'),
+                  labelText: tr('confirm_password'),
                   prefixIcon: Icon(
                     Icons.people,
                     color: Theme.of(context).iconTheme.color,
@@ -242,6 +240,14 @@ class _SignupScreenState extends State<SignupScreen> {
                     }
                   },
                 ),
+                SizedBox(height: size.width / 10),
+                CustomButton(
+                  buttonText: tr('sign_up'),
+                  onPressed: () {
+                    context.router.push<void>(const LoginRoute());
+                  },
+                ),
+                const SizedBox(height: 30),
               ],
             ),
           ),
