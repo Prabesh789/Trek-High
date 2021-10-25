@@ -1,9 +1,9 @@
 import 'dart:io';
 
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
-import 'package:google_fonts/google_fonts.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:trek_high/app_setup/route/app_router.dart';
 import 'package:trek_high/core/widgets/custom_back_button.dart';
@@ -20,7 +20,7 @@ class SignupScreen extends StatefulHookWidget {
 }
 
 class _SignupScreenState extends State<SignupScreen> {
-  late File _imageFile;
+  File? _imageFile;
   final ImagePicker _picker = ImagePicker();
   @override
   Widget build(BuildContext context) {
@@ -79,9 +79,13 @@ class _SignupScreenState extends State<SignupScreen> {
                       ),
                       height: size.height / 6,
                       width: size.width / 2.3,
-                      child: CircleAvatar(
-                          // backgroundImage: FileImage(File(_imageFile.path)),
-                          ),
+                      child: _imageFile != null
+                          ? CircleAvatar(
+                              backgroundImage: FileImage(
+                                _imageFile!,
+                              ),
+                            )
+                          : const SizedBox(),
                     ),
                     Positioned(
                       bottom: 0,
@@ -278,12 +282,6 @@ class _SignupScreenState extends State<SignupScreen> {
                 onTap: () {
                   takePhoto(ImageSource.camera);
                 },
-                child: Text('Camera'),
-              ),
-              InkWell(
-                onTap: () {
-                  takePhoto(ImageSource.camera);
-                },
                 child: Text(
                   'Camera',
                   style: Theme.of(context).textTheme.subtitle2,
@@ -311,9 +309,13 @@ class _SignupScreenState extends State<SignupScreen> {
     final pickedFile = await _picker.pickImage(
       source: source,
     );
+
     setState(() {
-      _imageFile = File(pickedFile!.path);
+      if (pickedFile != null) {
+        _imageFile = File(pickedFile.path);
+      }
     });
+    // ignore: use_build_context_synchronously
     Navigator.of(context).pop();
   }
 }
