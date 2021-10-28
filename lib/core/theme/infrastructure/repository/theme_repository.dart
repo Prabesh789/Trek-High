@@ -29,7 +29,11 @@ class ThemeRepository implements ThemeRepositoryImpl {
             : AppThemes.lightTheme,
       );
     } catch (e) {
-      return Right(Failure.fromException(e));
+      return const Right(
+        Failure(
+          errorMessage: 'couldn\'t update theme',
+        ),
+      );
     }
   }
 
@@ -44,7 +48,11 @@ class ThemeRepository implements ThemeRepositoryImpl {
         isDarkTheme ? AppThemes.darkTheme : AppThemes.lightTheme,
       );
     } catch (e) {
-      return Right(Failure.fromException(e));
+      return const Right(
+        Failure(
+          errorMessage: 'couldn\'t update theme',
+        ),
+      );
     }
   }
 }
