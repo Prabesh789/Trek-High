@@ -19,3 +19,5 @@ analyzer:
     sort_pub_dependencies: ignore
     leading_newlines_in_multiline_strings: ignore
     avoid_escaping_inner_quotes: ignore
+    avoid_void_async: ignore
+    implementation_imports: ignore
