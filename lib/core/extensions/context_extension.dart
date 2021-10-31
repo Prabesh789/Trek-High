@@ -1,8 +1,5 @@
 import 'package:another_flushbar/flushbar.dart';
 import 'package:flutter/material.dart';
-import 'package:hooks_riverpod/hooks_riverpod.dart';
-import 'package:trek_high/core/theme/application/theme_controller.dart';
-import 'package:trek_high/core/theme/infrastructure/entities/theme_palatte.dart';
 
 extension ContextExtension on BuildContext {
   /* get theme palate */

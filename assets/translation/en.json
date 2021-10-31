@@ -9,10 +9,12 @@
     "skip": "skip",
     "register": "Register",
     "full_name": "Full Name",
-    "required": "required!",
+    "required": "required",
     "email": "Email",
     "phone_number": "Phone number",
     "address": "Address",
     "confirm_password": "Confirm Password",
-    "sign_up": "Sign up"
+    "sign_up": "Sign up",
+    "email_validation": "Email pattern doesn't match !",
+    "confirm_password_validation": "Password doesn't match !"
 }

@@ -12,9 +12,12 @@
     "skip": "छोड्नुहोस्",
     "register": "रजिस्टर",
     "full_name": "पुरा नाम ",
+    "required": "आवश्यक छ",
     "email": "इमेल",
     "phone_number": "फोन नम्बर",
     "address": "ठेगाना",
     "confirm_password": "पस्स्वोर्ड पुष्टि गर्नुहोस्",
-    "sign_up": "साइन अप"
+    "sign_up": "साइन अप",
+    "email_validation": "इमेलको ढाँचा मीलेन !",
+    "confirm_password_validation": "पस्स्वोर्ड मीलेन !"
 }

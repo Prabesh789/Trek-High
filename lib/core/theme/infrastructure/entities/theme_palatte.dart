@@ -46,6 +46,7 @@ class AppThemes {
     iconTheme: IconThemeData(
       color: Colors.black.withOpacity(0.3),
     ),
+    dialogTheme: DialogTheme(backgroundColor: Colors.blue[200]),
     fontFamily: 'PT Serif',
     primarySwatch: primarySwatch,
     brightness: Brightness.light,

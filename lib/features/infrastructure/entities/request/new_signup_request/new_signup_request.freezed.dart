@@ -26,12 +26,7 @@ class _$NewSignupRequestTearOff {
       required bool emailVerified,
       required String contact,
       required String address,
-      required String fcmToken,
-      required int platform,
       required String deviceId,
-      String? image,
-      String? dob,
-      String? gender,
       double? latitude,
       double? longitude}) {
     return _NewSignupRequest(
@@ -40,12 +35,7 @@ class _$NewSignupRequestTearOff {
       emailVerified: emailVerified,
       contact: contact,
       address: address,
-      fcmToken: fcmToken,
-      platform: platform,
       deviceId: deviceId,
-      image: image,
-      dob: dob,
-      gender: gender,
       latitude: latitude,
       longitude: longitude,
     );
@@ -66,12 +56,7 @@ mixin _$NewSignupRequest {
   bool get emailVerified => throw _privateConstructorUsedError;
   String get contact => throw _privateConstructorUsedError;
   String get address => throw _privateConstructorUsedError;
-  String get fcmToken => throw _privateConstructorUsedError;
-  int get platform => throw _privateConstructorUsedError;
-  String get deviceId => throw _privateConstructorUsedError;
-  String? get image => throw _privateConstructorUsedError;
-  String? get dob => throw _privateConstructorUsedError;
-  String? get gender => throw _privateConstructorUsedError;
+  String get deviceId => throw _privateConstructorUsedError; // File? image,
   double? get latitude => throw _privateConstructorUsedError;
   double? get longitude => throw _privateConstructorUsedError;
 
@@ -92,12 +77,7 @@ abstract class $NewSignupRequestCopyWith<$Res> {
       bool emailVerified,
       String contact,
       String address,
-      String fcmToken,
-      int platform,
       String deviceId,
-      String? image,
-      String? dob,
-      String? gender,
       double? latitude,
       double? longitude});
 }
@@ -118,12 +98,7 @@ class _$NewSignupRequestCopyWithImpl<$Res>
     Object? emailVerified = freezed,
     Object? contact = freezed,
     Object? address = freezed,
-    Object? fcmToken = freezed,
-    Object? platform = freezed,
     Object? deviceId = freezed,
-    Object? image = freezed,
-    Object? dob = freezed,
-    Object? gender = freezed,
     Object? latitude = freezed,
     Object? longitude = freezed,
   }) {
@@ -148,30 +123,10 @@ class _$NewSignupRequestCopyWithImpl<$Res>
           ? _value.address
           : address // ignore: cast_nullable_to_non_nullable
               as String,
-      fcmToken: fcmToken == freezed
-          ? _value.fcmToken
-          : fcmToken // ignore: cast_nullable_to_non_nullable
-              as String,
-      platform: platform == freezed
-          ? _value.platform
-          : platform // ignore: cast_nullable_to_non_nullable
-              as int,
       deviceId: deviceId == freezed
           ? _value.deviceId
           : deviceId // ignore: cast_nullable_to_non_nullable
               as String,
-      image: image == freezed
-          ? _value.image
-          : image // ignore: cast_nullable_to_non_nullable
-              as String?,
-      dob: dob == freezed
-          ? _value.dob
-          : dob // ignore: cast_nullable_to_non_nullable
-              as String?,
-      gender: gender == freezed
-          ? _value.gender
-          : gender // ignore: cast_nullable_to_non_nullable
-              as String?,
       latitude: latitude == freezed
           ? _value.latitude
           : latitude // ignore: cast_nullable_to_non_nullable
@@ -197,12 +152,7 @@ abstract class _$NewSignupRequestCopyWith<$Res>
       bool emailVerified,
       String contact,
       String address,
-      String fcmToken,
-      int platform,
       String deviceId,
-      String? image,
-      String? dob,
-      String? gender,
       double? latitude,
       double? longitude});
 }
@@ -225,12 +175,7 @@ class __$NewSignupRequestCopyWithImpl<$Res>
     Object? emailVerified = freezed,
     Object? contact = freezed,
     Object? address = freezed,
-    Object? fcmToken = freezed,
-    Object? platform = freezed,
     Object? deviceId = freezed,
-    Object? image = freezed,
-    Object? dob = freezed,
-    Object? gender = freezed,
     Object? latitude = freezed,
     Object? longitude = freezed,
   }) {
@@ -255,30 +200,10 @@ class __$NewSignupRequestCopyWithImpl<$Res>
           ? _value.address
           : address // ignore: cast_nullable_to_non_nullable
               as String,
-      fcmToken: fcmToken == freezed
-          ? _value.fcmToken
-          : fcmToken // ignore: cast_nullable_to_non_nullable
-              as String,
-      platform: platform == freezed
-          ? _value.platform
-          : platform // ignore: cast_nullable_to_non_nullable
-              as int,
       deviceId: deviceId == freezed
           ? _value.deviceId
           : deviceId // ignore: cast_nullable_to_non_nullable
               as String,
-      image: image == freezed
-          ? _value.image
-          : image // ignore: cast_nullable_to_non_nullable
-              as String?,
-      dob: dob == freezed
-          ? _value.dob
-          : dob // ignore: cast_nullable_to_non_nullable
-              as String?,
-      gender: gender == freezed
-          ? _value.gender
-          : gender // ignore: cast_nullable_to_non_nullable
-              as String?,
       latitude: latitude == freezed
           ? _value.latitude
           : latitude // ignore: cast_nullable_to_non_nullable
@@ -300,12 +225,7 @@ class _$_NewSignupRequest implements _NewSignupRequest {
       required this.emailVerified,
       required this.contact,
       required this.address,
-      required this.fcmToken,
-      required this.platform,
       required this.deviceId,
-      this.image,
-      this.dob,
-      this.gender,
       this.latitude,
       this.longitude});
 
@@ -323,25 +243,15 @@ class _$_NewSignupRequest implements _NewSignupRequest {
   @override
   final String address;
   @override
-  final String fcmToken;
-  @override
-  final int platform;
-  @override
   final String deviceId;
-  @override
-  final String? image;
-  @override
-  final String? dob;
-  @override
-  final String? gender;
-  @override
+  @override // File? image,
   final double? latitude;
   @override
   final double? longitude;
 
   @override
   String toString() {
-    return 'NewSignupRequest(fullName: $fullName, email: $email, emailVerified: $emailVerified, contact: $contact, address: $address, fcmToken: $fcmToken, platform: $platform, deviceId: $deviceId, image: $image, dob: $dob, gender: $gender, latitude: $latitude, longitude: $longitude)';
+    return 'NewSignupRequest(fullName: $fullName, email: $email, emailVerified: $emailVerified, contact: $contact, address: $address, deviceId: $deviceId, latitude: $latitude, longitude: $longitude)';
   }
 
   @override
@@ -362,21 +272,9 @@ class _$_NewSignupRequest implements _NewSignupRequest {
             (identical(other.address, address) ||
                 const DeepCollectionEquality()
                     .equals(other.address, address)) &&
-            (identical(other.fcmToken, fcmToken) ||
-                const DeepCollectionEquality()
-                    .equals(other.fcmToken, fcmToken)) &&
-            (identical(other.platform, platform) ||
-                const DeepCollectionEquality()
-                    .equals(other.platform, platform)) &&
             (identical(other.deviceId, deviceId) ||
                 const DeepCollectionEquality()
                     .equals(other.deviceId, deviceId)) &&
-            (identical(other.image, image) ||
-                const DeepCollectionEquality().equals(other.image, image)) &&
-            (identical(other.dob, dob) ||
-                const DeepCollectionEquality().equals(other.dob, dob)) &&
-            (identical(other.gender, gender) ||
-                const DeepCollectionEquality().equals(other.gender, gender)) &&
             (identical(other.latitude, latitude) ||
                 const DeepCollectionEquality()
                     .equals(other.latitude, latitude)) &&
@@ -393,12 +291,7 @@ class _$_NewSignupRequest implements _NewSignupRequest {
       const DeepCollectionEquality().hash(emailVerified) ^
       const DeepCollectionEquality().hash(contact) ^
       const DeepCollectionEquality().hash(address) ^
-      const DeepCollectionEquality().hash(fcmToken) ^
-      const DeepCollectionEquality().hash(platform) ^
       const DeepCollectionEquality().hash(deviceId) ^
-      const DeepCollectionEquality().hash(image) ^
-      const DeepCollectionEquality().hash(dob) ^
-      const DeepCollectionEquality().hash(gender) ^
       const DeepCollectionEquality().hash(latitude) ^
       const DeepCollectionEquality().hash(longitude);
 
@@ -420,12 +313,7 @@ abstract class _NewSignupRequest implements NewSignupRequest {
       required bool emailVerified,
       required String contact,
       required String address,
-      required String fcmToken,
-      required int platform,
       required String deviceId,
-      String? image,
-      String? dob,
-      String? gender,
       double? latitude,
       double? longitude}) = _$_NewSignupRequest;
 
@@ -443,18 +331,8 @@ abstract class _NewSignupRequest implements NewSignupRequest {
   @override
   String get address => throw _privateConstructorUsedError;
   @override
-  String get fcmToken => throw _privateConstructorUsedError;
-  @override
-  int get platform => throw _privateConstructorUsedError;
-  @override
   String get deviceId => throw _privateConstructorUsedError;
-  @override
-  String? get image => throw _privateConstructorUsedError;
-  @override
-  String? get dob => throw _privateConstructorUsedError;
-  @override
-  String? get gender => throw _privateConstructorUsedError;
-  @override
+  @override // File? image,
   double? get latitude => throw _privateConstructorUsedError;
   @override
   double? get longitude => throw _privateConstructorUsedError;

@@ -7,6 +7,9 @@ import 'package:trek_high/app/entities/failure.dart';
 import 'package:trek_high/features/infrastructure/entities/request/new_signup_request/new_signup_request.dart';
 import 'package:trek_high/features/infrastructure/entities/response/new_signup_response/new_signup_response.dart';
 
+final authRepository =
+    Provider<IAuthRepository>((ref) => AuthRepository(ref.read));
+
 abstract class IAuthRepository {
   /* logout user */
   Future<Either<Unit, Failure>> logout();
@@ -24,7 +27,7 @@ class AuthRepository implements IAuthRepository {
 
   final Reader _read;
   final _dio = Dio();
-  // Dio get _dio => _read(dioProvider);
+
   final FirebaseAuth _auth = FirebaseAuth.instance;
   final FirebaseFirestore _firestore = FirebaseFirestore.instance;
 

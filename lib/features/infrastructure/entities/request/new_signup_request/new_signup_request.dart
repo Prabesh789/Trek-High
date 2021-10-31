@@ -1,3 +1,5 @@
+import 'dart:html';
+
 import 'package:freezed_annotation/freezed_annotation.dart';
 part 'new_signup_request.freezed.dart';
 part 'new_signup_request.g.dart';
@@ -10,12 +12,8 @@ class NewSignupRequest with _$NewSignupRequest {
     required bool emailVerified,
     required String contact,
     required String address,
-    required String fcmToken,
-    required int platform,
     required String deviceId,
-    String? image,
-    String? dob,
-    String? gender,
+    // File? image,
     double? latitude,
     double? longitude,
   }) = _NewSignupRequest;
