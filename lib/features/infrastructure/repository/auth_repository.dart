@@ -6,6 +6,8 @@ import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:trek_high/app/entities/failure.dart';
 import 'package:trek_high/features/infrastructure/entities/request/new_signup_request/new_signup_request.dart';
 import 'package:trek_high/features/infrastructure/entities/response/new_signup_response/new_signup_response.dart';
+import 'package:firebase_storage/firebase_storage.dart' as firebase_storage;
+import 'package:path/path.dart' as path;
 
 final authRepository =
     Provider<IAuthRepository>((ref) => AuthRepository(ref.read));
@@ -25,8 +27,10 @@ abstract class IAuthRepository {
 class AuthRepository implements IAuthRepository {
   AuthRepository(Reader read) : _read = read;
 
+  // ignore: unused_field
   final Reader _read;
-  final _dio = Dio();
+  // ignore: unused_field
+  final _dio = Dio(); //This is for googlr login
 
   final FirebaseAuth _auth = FirebaseAuth.instance;
   final FirebaseFirestore _firestore = FirebaseFirestore.instance;
@@ -51,13 +55,50 @@ class AuthRepository implements IAuthRepository {
         password: password,
       );
       final user = _auth.currentUser;
-      newSignupRequest.toJson().removeWhere((key, value) => key == 'password');
-      await _firestore.collection('users').doc(user?.uid).set(
-            newSignupRequest.toJson(),
-          );
-      if (user != null && !user.emailVerified) {
-        await user.sendEmailVerification();
+      if (user?.uid != null) {
+        // if (newSignupRequest.image != null) {
+        final fileName = path.basename(newSignupRequest.image?.path ?? '');
+        final reference = firebase_storage.FirebaseStorage.instance
+            .ref()
+            .child('user_profile')
+            .child(fileName);
+
+        final uploadTask = reference.putFile(newSignupRequest.image!);
+        firebase_storage.TaskSnapshot storageTaskSnapshot;
+        await uploadTask.then(
+          (value) {
+            storageTaskSnapshot = value;
+            storageTaskSnapshot.ref.getDownloadURL().then(
+              (downloadUrl) async {
+                await FirebaseFirestore.instance
+                    .collection('users')
+                    .doc(user?.uid)
+                    .set(
+                  {
+                    'image': downloadUrl,
+                    'fullName': newSignupRequest.fullName,
+                    'contact': newSignupRequest.contact,
+                    'email': newSignupRequest.email,
+                    'address': newSignupRequest.address,
+                    'password': newSignupRequest.password,
+                    'admin': false,
+                  },
+                );
+                //after register it will directly login so we haveto signout
+                await _auth.signOut();
+              },
+            );
+          },
+        );
+        // }
       }
+      // newSignupRequest.toJson().removeWhere((key, value) => key == 'password');
+      // await _firestore.collection('users').doc(user?.uid).set(
+      //       newSignupRequest.toJson(),
+      //     );
+      // if (user != null && !user.emailVerified) {
+      //   await user.sendEmailVerification();
+      // }
       return Left(
         SignupResponse(
           email: newSignupRequest.email,

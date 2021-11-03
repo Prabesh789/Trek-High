@@ -6,6 +6,7 @@ class CustomButton extends StatefulWidget {
     Key? key,
     this.buttonHeigh,
     this.buttonWidget,
+    this.isLoading = false,
     required this.onPressed,
     required this.buttonText,
   }) : super(key: key);
@@ -13,6 +14,7 @@ class CustomButton extends StatefulWidget {
   final double? buttonWidget;
   final VoidCallback onPressed;
   final String buttonText;
+  final bool isLoading;
 
   @override
   _CustomButtonState createState() => _CustomButtonState();
@@ -23,27 +25,40 @@ class _CustomButtonState extends State<CustomButton> {
   Widget build(BuildContext context) {
     final size = MediaQuery.of(context).size;
     return InkWell(
-      onTap: widget.onPressed,
+      onTap: widget.isLoading ? null : widget.onPressed,
       child: Container(
         height: widget.buttonHeigh ?? 52,
         width: widget.buttonWidget ?? size.width,
         decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(10),
-          color: Colors.indigoAccent[100],
+          color: widget.isLoading
+              ? Colors.blueGrey[100]
+              : Colors.indigoAccent[100],
         ),
-        child: Center(
-          child: Text(
-            widget.buttonText,
-            style: GoogleFonts.ptSerif(
-              textStyle: const TextStyle(
-                fontSize: 16,
-                fontWeight: FontWeight.bold,
-                overflow: TextOverflow.ellipsis,
-                color: Colors.black,
+        child: widget.isLoading
+            ? SizedBox(
+                height: 25,
+                width: 25,
+                child: CircularProgressIndicator(
+                  valueColor: AlwaysStoppedAnimation<Color>(
+                    Theme.of(context).scaffoldBackgroundColor,
+                  ),
+                  strokeWidth: 2,
+                ),
+              )
+            : Center(
+                child: Text(
+                  widget.buttonText,
+                  style: GoogleFonts.ptSerif(
+                    textStyle: const TextStyle(
+                      fontSize: 16,
+                      fontWeight: FontWeight.bold,
+                      overflow: TextOverflow.ellipsis,
+                      color: Colors.black,
+                    ),
+                  ),
+                ),
               ),
-            ),
-          ),
-        ),
       ),
     );
   }

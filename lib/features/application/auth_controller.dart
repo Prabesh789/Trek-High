@@ -22,7 +22,7 @@ class AuthController<T> extends StateNotifier<BaseState> {
   ) : super(const BaseState<void>.initial());
 
   final Reader _read;
-  var uuid = const Uuid();
+  Uuid uuid = const Uuid();
   IAuthRepository get _repo => _read(authRepository);
 
   Future<void> signupUser({
@@ -31,7 +31,7 @@ class AuthController<T> extends StateNotifier<BaseState> {
     required String password,
     required String contact,
     required String address,
-    String? image,
+    File? image,
   }) async {
     state = const BaseState<void>.loading();
 
@@ -42,6 +42,8 @@ class AuthController<T> extends StateNotifier<BaseState> {
       email: email,
       deviceId: uuid.v1(),
       emailVerified: false,
+      password: password,
+      image: image,
     );
     final response = await _repo.signupNewUser(
       newSignupRequest: requestData,

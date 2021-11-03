@@ -12,6 +12,7 @@ class CustomTextfield extends StatelessWidget {
     this.labelText,
     this.onEditingComplete,
     this.validator,
+    this.obscureText = false,
   }) : super(key: key);
   final TextEditingController textEditingController;
   final FocusNode focusNode;
@@ -21,10 +22,12 @@ class CustomTextfield extends StatelessWidget {
   final String? labelText;
   final Function()? onEditingComplete;
   final String? Function(String?)? validator;
+  final bool obscureText;
 
   @override
   Widget build(BuildContext context) {
     return TextFormField(
+      obscureText: obscureText,
       validator: validator,
       onEditingComplete: onEditingComplete,
       cursorColor: Colors.black,

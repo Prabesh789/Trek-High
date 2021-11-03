@@ -6,6 +6,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:flutter_native_image/flutter_native_image.dart';
 import 'package:fluttertoast/fluttertoast.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:ionicons/ionicons.dart';
@@ -35,6 +36,20 @@ class _SignupScreenState extends State<SignupScreen> {
   File? _imageFile;
   final ImagePicker _picker = ImagePicker();
   final _formKey = GlobalKey<FormState>();
+  bool obscureText = true;
+  bool obscureConfirmText = true;
+  void _togglevisibility() {
+    setState(() {
+      obscureText = !obscureText;
+    });
+  }
+
+  void _confirmVogglevisibility() {
+    setState(() {
+      obscureConfirmText = !obscureConfirmText;
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     final _fullNameController = useTextEditingController();
@@ -227,6 +242,7 @@ class _SignupScreenState extends State<SignupScreen> {
                     ),
                     const SizedBox(height: 15),
                     CustomTextfield(
+                      obscureText: obscureText,
                       textEditingController: _passwordController,
                       focusNode: _passwordFocusNode,
                       labelText: tr('password'),
@@ -245,9 +261,27 @@ class _SignupScreenState extends State<SignupScreen> {
                           return null;
                         }
                       },
+                      sufixIcon: Padding(
+                        padding: const EdgeInsets.only(top: 10, right: 15),
+                        child: InkWell(
+                          onTap: _togglevisibility,
+                          child: Text(
+                            obscureText ? 'show' : 'hide',
+                            style: GoogleFonts.ptSerif(
+                              textStyle: const TextStyle(
+                                fontSize: 14,
+                                fontWeight: FontWeight.bold,
+                                overflow: TextOverflow.ellipsis,
+                                color: Colors.grey,
+                              ),
+                            ),
+                          ),
+                        ),
+                      ),
                     ),
                     const SizedBox(height: 15),
                     CustomTextfield(
+                      obscureText: obscureConfirmText,
                       textEditingController: _confirmPasswordController,
                       focusNode: _confirmPasswordFocusNode,
                       labelText: tr('confirm_password'),
@@ -263,11 +297,28 @@ class _SignupScreenState extends State<SignupScreen> {
                           return tr('confirm_password_validation');
                         } else if (_passwordController.text.trim() !=
                             _confirmPasswordController.text.trim()) {
-                          return tr('confirm_Password_validation2');
+                          return tr('confirm_Password_validation');
                         } else {
                           return null;
                         }
                       },
+                      sufixIcon: Padding(
+                        padding: const EdgeInsets.only(top: 10, right: 15),
+                        child: InkWell(
+                          onTap: _confirmVogglevisibility,
+                          child: Text(
+                            obscureConfirmText ? 'show' : 'hide',
+                            style: GoogleFonts.ptSerif(
+                              textStyle: const TextStyle(
+                                fontSize: 14,
+                                fontWeight: FontWeight.bold,
+                                overflow: TextOverflow.ellipsis,
+                                color: Colors.grey,
+                              ),
+                            ),
+                          ),
+                        ),
+                      ),
                     ),
                     SizedBox(height: size.width / 10),
                     ProviderListener(
@@ -281,6 +332,7 @@ class _SignupScreenState extends State<SignupScreen> {
                                 Theme.of(context).dialogTheme.backgroundColor,
                           );
                         }
+                        if (signupState is BaseLoading) {}
 
                         if (signupState is BaseSuccess) {
                           _fullNameController.clear();
@@ -305,6 +357,7 @@ class _SignupScreenState extends State<SignupScreen> {
                         }
                       },
                       child: CustomButton(
+                        isLoading: signupState is BaseLoading,
                         buttonText: tr('sign_up'),
                         onPressed: () {
                           if (_formKey.currentState!.validate()) {
@@ -314,7 +367,7 @@ class _SignupScreenState extends State<SignupScreen> {
                                   contact: _phoneNumberController.text.trim(),
                                   address: _addressController.text.trim(),
                                   email: _emailController.text.trim(),
-                                  // image: _imageFile,
+                                  image: _imageFile,
                                 );
                           }
                         },
@@ -383,9 +436,7 @@ class _SignupScreenState extends State<SignupScreen> {
 
     setState(() {
       if (pickedFile != null) {
-        final compressedImage =
-            FlutterNativeImage.compressImage(pickedFile.path);
-        _imageFile = compressedImage as File?;
+        _imageFile = File(pickedFile.path);
       }
     });
 
