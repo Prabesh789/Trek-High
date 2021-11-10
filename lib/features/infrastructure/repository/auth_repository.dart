@@ -84,6 +84,9 @@ class AuthRepository implements IAuthRepository {
                     'admin': false,
                   },
                 );
+                if (user != null && !user.emailVerified) {
+                  await user.sendEmailVerification();
+                }
                 //after register it will directly login so we haveto signout
                 await _auth.signOut();
               },
@@ -92,13 +95,6 @@ class AuthRepository implements IAuthRepository {
         );
         // }
       }
-      // newSignupRequest.toJson().removeWhere((key, value) => key == 'password');
-      // await _firestore.collection('users').doc(user?.uid).set(
-      //       newSignupRequest.toJson(),
-      //     );
-      // if (user != null && !user.emailVerified) {
-      //   await user.sendEmailVerification();
-      // }
       return Left(
         SignupResponse(
           email: newSignupRequest.email,
@@ -125,4 +121,6 @@ class AuthRepository implements IAuthRepository {
       );
     }
   }
+
+  // Future<Either<UserResponse, Failure>> loginUser()
 }

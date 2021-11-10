@@ -12,7 +12,7 @@ class _MainDashboardScreenState extends State<MainDashboardScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Trek-High'),
+        title: const Text('Trek-High'),
       ),
     );
   }

@@ -1,10 +1,8 @@
 import 'dart:io';
 
-import 'package:cached_network_image/cached_network_image.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
-import 'package:flutter_native_image/flutter_native_image.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
@@ -439,7 +437,6 @@ class _SignupScreenState extends State<SignupScreen> {
         _imageFile = File(pickedFile.path);
       }
     });
-
     // ignore: use_build_context_synchronously
     await context.popRoute();
   }

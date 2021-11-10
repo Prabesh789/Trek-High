@@ -1,0 +1,20 @@
+import 'package:freezed_annotation/freezed_annotation.dart';
+part 'user_response.freezed.dart';
+part 'user_response.g.dart';
+
+@freezed
+class UserResponse with _$UserResponse {
+  const factory UserResponse({
+    required String userId,
+    required String fullName,
+    required String contact,
+    required String address,
+    required String email,
+    required bool emailVerified,
+    required String fcmToken,
+    required int platform,
+    required String deviceId,
+  }) = _UserResponse;
+  factory UserResponse.fromJson(Map<String, dynamic> json) =>
+      _$UserResponseFromJson(json);
+}

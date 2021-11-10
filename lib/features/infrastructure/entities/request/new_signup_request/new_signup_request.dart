@@ -1,38 +1,19 @@
-// import 'package:freezed_annotation/freezed_annotation.dart';
-// part 'new_signup_request.freezed.dart';
-// part 'new_signup_request.g.dart';
-
-// @freezed
-// class NewSignupRequest with _$NewSignupRequest {
-//   const factory NewSignupRequest({
-//     required String fullName,
-//     required String email,
-//     required bool emailVerified,
-//     required String contact,
-//     required String address,
-//     required String deviceId,
-//     dynamic image,
-//     double? latitude,
-//     double? longitude,
-//   }) = _NewSignupRequest;
-//   factory NewSignupRequest.fromJson(Map<String, dynamic> json) =>
-//       _$NewSignupRequestFromJson(json);
-// }
-
 import 'dart:io';
 
 class NewSignupRequest {
-  NewSignupRequest(
-      {this.image,
-      required this.fullName,
-      required this.email,
-      required this.contact,
-      required this.address,
-      required this.emailVerified,
-      required this.deviceId,
-      this.latitude,
-      this.longitude,
-      required this.password});
+  NewSignupRequest({
+    this.image,
+    required this.fullName,
+    required this.email,
+    required this.contact,
+    required this.address,
+    required this.emailVerified,
+    required this.deviceId,
+    this.latitude,
+    this.longitude,
+    required this.password,
+    required this.platform,
+  });
   final File? image;
   final String fullName;
   final String email;
@@ -43,4 +24,5 @@ class NewSignupRequest {
   final double? latitude;
   final double? longitude;
   final String password;
+  final int platform;
 }

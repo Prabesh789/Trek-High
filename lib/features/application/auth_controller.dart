@@ -44,6 +44,7 @@ class AuthController<T> extends StateNotifier<BaseState> {
       emailVerified: false,
       password: password,
       image: image,
+      platform: Platform.isAndroid ? 1 : 2,
     );
     final response = await _repo.signupNewUser(
       newSignupRequest: requestData,
