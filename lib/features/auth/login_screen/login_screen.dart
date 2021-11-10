@@ -9,6 +9,7 @@ import 'package:trek_high/core/widgets/custom_back_button.dart';
 import 'package:trek_high/core/widgets/custom_body_widget.dart';
 import 'package:trek_high/core/widgets/custom_button.dart';
 import 'package:trek_high/core/widgets/custom_textfield.dart';
+import 'package:trek_high/features/main_dashboard/presentation/bottom_navigation.dart';
 
 class LoginScreen extends StatefulHookWidget {
   const LoginScreen({Key? key}) : super(key: key);
@@ -130,7 +131,11 @@ class _LoginScreenState extends State<LoginScreen> {
                       CustomButton(
                         buttonText: tr('login'),
                         onPressed: () {
-                          context.router.push<void>(const MainDashboardRoute());
+                          Navigator.of(context).push(
+                            MaterialPageRoute(
+                              builder: (context) => const BottomNavigation(),
+                            ),
+                          );
                         },
                       ),
                       const SizedBox(height: 15),
