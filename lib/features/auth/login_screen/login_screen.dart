@@ -46,7 +46,7 @@ class _LoginScreenState extends State<LoginScreen> {
         backgroundColor: Theme.of(context).backgroundColor,
         title: Text(
           'Trek High',
-          style: Theme.of(context).textTheme.headline4,
+          style: Theme.of(context).textTheme.headline5,
         ),
       ),
       body: Form(
@@ -76,6 +76,7 @@ class _LoginScreenState extends State<LoginScreen> {
                         prefixIcon: Icon(
                           Icons.people,
                           color: Theme.of(context).iconTheme.color,
+                          size: 18,
                         ),
                         onEditingComplete: () {
                           FocusScope.of(context)
@@ -98,6 +99,7 @@ class _LoginScreenState extends State<LoginScreen> {
                         prefixIcon: Icon(
                           Icons.lock,
                           color: Theme.of(context).iconTheme.color,
+                          size: 18,
                         ),
                         onEditingComplete: () {
                           FocusScope.of(context).requestFocus(FocusNode());
@@ -110,14 +112,14 @@ class _LoginScreenState extends State<LoginScreen> {
                           }
                         },
                         sufixIcon: Padding(
-                          padding: const EdgeInsets.only(top: 10, right: 15),
+                          padding: const EdgeInsets.only(top: 18, right: 15),
                           child: InkWell(
                             onTap: _togglevisibility,
                             child: Text(
                               obscureText ? 'show' : 'hide',
                               style: GoogleFonts.ptSerif(
                                 textStyle: const TextStyle(
-                                  fontSize: 14,
+                                  fontSize: 12,
                                   fontWeight: FontWeight.bold,
                                   overflow: TextOverflow.ellipsis,
                                   color: Colors.grey,
@@ -148,7 +150,10 @@ class _LoginScreenState extends State<LoginScreen> {
                             },
                             child: Text(
                               tr('new_sign_up'),
-                              style: Theme.of(context).textTheme.headline6,
+                              style: Theme.of(context)
+                                  .textTheme
+                                  .headline6
+                                  ?.copyWith(fontSize: 14),
                             ),
                           ),
                         ],
@@ -158,7 +163,8 @@ class _LoginScreenState extends State<LoginScreen> {
                         tr('skip'),
                         style: Theme.of(context)
                             .textTheme
-                            .subtitle1!
+                            .subtitle1
+                            ?.copyWith(fontSize: 13)
                             .apply(fontWeightDelta: 2),
                       ),
                       const SizedBox(height: 50),

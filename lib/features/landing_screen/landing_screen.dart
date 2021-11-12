@@ -66,6 +66,7 @@ class _LandingScreenState extends State<LandingScreen> {
                           style:
                               Theme.of(context).textTheme.headline5?.copyWith(
                                     fontWeight: FontWeight.bold,
+                                    fontSize: 16,
                                   ),
                         ),
                         const SizedBox(height: 10),
@@ -73,7 +74,10 @@ class _LandingScreenState extends State<LandingScreen> {
                           padding: const EdgeInsets.symmetric(horizontal: 25),
                           child: Text(
                             walkThroughItem['description'] ?? '',
-                            style: Theme.of(context).textTheme.headline6,
+                            style: Theme.of(context)
+                                .textTheme
+                                .headline6
+                                ?.copyWith(fontSize: 13),
                             maxLines: 3,
                             textAlign: TextAlign.center,
                           ),
@@ -89,8 +93,8 @@ class _LandingScreenState extends State<LandingScreen> {
                 effect: WormEffect(
                   dotColor: Colors.indigoAccent[100]!,
                   activeDotColor: Colors.lightBlue[900]!,
-                  dotHeight: 7,
-                  dotWidth: 7,
+                  dotHeight: 6.5,
+                  dotWidth: 6.5,
                 ),
               ),
               const SizedBox(height: 40),

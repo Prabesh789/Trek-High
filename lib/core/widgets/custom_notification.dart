@@ -8,7 +8,7 @@ class CustomNotification extends StatelessWidget {
     return Center(
       child: Padding(
         padding: const EdgeInsets.only(
-          right: 17,
+          right: 10,
         ),
         child: Stack(
           children: <Widget>[
@@ -22,7 +22,7 @@ class CustomNotification extends StatelessWidget {
             ),
             Positioned(
               right: 12,
-              top: 10,
+              top: 6,
               child: Container(
                 padding: const EdgeInsets.all(4),
                 decoration: const BoxDecoration(

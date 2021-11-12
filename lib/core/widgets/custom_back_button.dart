@@ -21,8 +21,8 @@ class CustomBackButton extends StatelessWidget {
           splashColor: Colors.indigoAccent[100],
           onTap: onTap,
           child: Container(
-            height: 42,
-            width: 42,
+            height: 36,
+            width: 36,
             decoration: BoxDecoration(
               color: Colors.indigoAccent[100],
               borderRadius: BorderRadius.circular(8),
@@ -30,7 +30,7 @@ class CustomBackButton extends StatelessWidget {
             child: const Icon(
               Icons.chevron_left,
               color: Colors.white,
-              size: 33,
+              size: 30,
             ),
           ),
         ),

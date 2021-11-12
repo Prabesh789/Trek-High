@@ -16,5 +16,6 @@
     "confirm_password": "Confirm Password",
     "sign_up": "Sign up",
     "email_validation": "Email pattern doesn't match !",
-    "confirm_password_validation": "Password doesn't match !"
+    "confirm_password_validation": "Password doesn't match !",
+    "home_screen": "Home Screen"
 }

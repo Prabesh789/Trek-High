@@ -19,5 +19,6 @@
     "confirm_password": "पस्स्वोर्ड पुष्टि गर्नुहोस्",
     "sign_up": "साइन अप",
     "email_validation": "इमेलको ढाँचा मीलेन !",
-    "confirm_password_validation": "पस्स्वोर्ड मीलेन !"
+    "confirm_password_validation": "पस्स्वोर्ड मीलेन !",
+    "home_screen": "गृहपृष्ठ"
 }

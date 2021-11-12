@@ -27,7 +27,7 @@ class _CustomButtonState extends State<CustomButton> {
     return InkWell(
       onTap: widget.isLoading ? null : widget.onPressed,
       child: Container(
-        height: widget.buttonHeigh ?? 52,
+        height: widget.buttonHeigh ?? 48,
         width: widget.buttonWidget ?? size.width,
         decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(10),

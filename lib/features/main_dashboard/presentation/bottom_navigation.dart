@@ -31,12 +31,19 @@ class _BottomNavigationState extends State<BottomNavigation> {
   Widget build(BuildContext context) {
     final index = useProvider(indexNotifierProvider);
     return Scaffold(
-      backgroundColor: Theme.of(context).scaffoldBackgroundColor,
+      // backgroundColor: Theme.of(context).scaffoldBackgroundColor,
       body: _screens.elementAt(index),
       bottomNavigationBar: Container(
         margin: const EdgeInsets.symmetric(horizontal: 3),
-        decoration: const BoxDecoration(
-          borderRadius: BorderRadius.only(
+        decoration: BoxDecoration(
+          boxShadow: [
+            BoxShadow(
+              offset: const Offset(0, 10),
+              blurRadius: 50,
+              color: Colors.grey.withOpacity(0.04),
+            ),
+          ],
+          borderRadius: const BorderRadius.only(
             topLeft: Radius.circular(15),
             topRight: Radius.circular(15),
           ),
@@ -47,13 +54,21 @@ class _BottomNavigationState extends State<BottomNavigation> {
             topRight: Radius.circular(15),
           ),
           child: BottomNavigationBar(
+            backgroundColor: Colors.indigo[50],
             currentIndex: index, //New
             onTap: _onItemTapped,
             elevation: 10,
             type: BottomNavigationBarType.fixed,
-            iconSize: 27,
-            showSelectedLabels: true,
-            showUnselectedLabels: true,
+            iconSize: 26,
+            showSelectedLabels: false,
+            showUnselectedLabels: false,
+            unselectedLabelStyle:
+                Theme.of(context).textTheme.bodyText1?.copyWith(
+                      fontSize: 1,
+                    ),
+            selectedLabelStyle: Theme.of(context).textTheme.bodyText1?.copyWith(
+                  fontSize: 1,
+                ),
             items: <BottomNavigationBarItem>[
               BottomNavigationBarItem(
                 activeIcon: const Padding(
@@ -63,12 +78,14 @@ class _BottomNavigationState extends State<BottomNavigation> {
                   ),
                   child: Icon(
                     Icons.home,
+                    size: 25,
                   ),
                 ),
                 icon: const Icon(
                   Icons.home,
+                  size: 25,
                 ),
-                label: tr('Home'),
+                label: tr(''),
               ),
               BottomNavigationBarItem(
                 activeIcon: const Padding(
@@ -77,13 +94,15 @@ class _BottomNavigationState extends State<BottomNavigation> {
                     bottom: 6,
                   ),
                   child: Icon(
-                    Icons.home,
+                    Icons.image,
+                    size: 25,
                   ),
                 ),
                 icon: const Icon(
-                  Icons.home,
+                  Icons.image,
+                  size: 25,
                 ),
-                label: tr('Home'),
+                label: tr(''),
               ),
               BottomNavigationBarItem(
                 activeIcon: const Padding(
@@ -92,13 +111,15 @@ class _BottomNavigationState extends State<BottomNavigation> {
                     bottom: 6,
                   ),
                   child: Icon(
-                    Icons.home,
+                    Icons.hiking,
+                    size: 25,
                   ),
                 ),
                 icon: const Icon(
-                  Icons.home,
+                  Icons.hiking,
+                  size: 25,
                 ),
-                label: tr('Home'),
+                label: tr(''),
               ),
               BottomNavigationBarItem(
                 activeIcon: const Padding(
@@ -107,13 +128,15 @@ class _BottomNavigationState extends State<BottomNavigation> {
                     bottom: 6,
                   ),
                   child: Icon(
-                    Icons.home,
+                    Icons.account_circle,
+                    size: 25,
                   ),
                 ),
                 icon: const Icon(
-                  Icons.home,
+                  Icons.account_circle,
+                  size: 25,
                 ),
-                label: tr('Home'),
+                label: tr(''),
               ),
             ],
           ),
