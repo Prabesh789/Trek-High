@@ -4,10 +4,11 @@ import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:trek_high/core/widgets/custom_notification.dart';
 import 'package:trek_high/features/find_friends/find_friends.dart';
+import 'package:trek_high/features/find_me_screen/find_me_screen.dart';
 import 'package:trek_high/features/home_screen/home_screen.dart';
 import 'package:trek_high/features/main_dashboard/presentation/widgets/index_notifier.dart';
+import 'package:trek_high/features/profile_screen/profile_screen.dart';
 import 'package:trek_high/features/share_story/share_story.dart';
-import 'package:trek_high/features/top_gallery/top_gallery_screen.dart';
 
 class BottomNavigation extends StatefulHookWidget {
   const BottomNavigation({Key? key}) : super(key: key);
@@ -20,8 +21,9 @@ class _BottomNavigationState extends State<BottomNavigation> {
   static const List<Widget> _screens = <Widget>[
     HomeScreen(),
     ShareStoryScreen(),
+    FindMeScreen(),
     FindFriends(),
-    TopGalleryScreen(),
+    ProfileScreen(),
   ];
   void _onItemTapped(int index) {
     context.read(indexNotifierProvider.notifier).changeIndex(index);
@@ -100,6 +102,23 @@ class _BottomNavigationState extends State<BottomNavigation> {
                 ),
                 icon: const Icon(
                   Icons.image,
+                  size: 25,
+                ),
+                label: tr(''),
+              ),
+              BottomNavigationBarItem(
+                activeIcon: const Padding(
+                  padding: EdgeInsets.only(
+                    top: 3,
+                    bottom: 6,
+                  ),
+                  child: Icon(
+                    Icons.person_pin_circle,
+                    size: 25,
+                  ),
+                ),
+                icon: const Icon(
+                  Icons.person_pin_circle,
                   size: 25,
                 ),
                 label: tr(''),

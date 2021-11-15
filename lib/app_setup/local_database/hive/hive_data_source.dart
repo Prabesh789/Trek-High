@@ -2,7 +2,7 @@ import 'dart:developer';
 import 'package:trek_high/app_setup/local_database/hive/hive_const.dart';
 import 'package:trek_high/app_setup/local_database/hive/hive_setup.dart';
 import 'package:trek_high/app_setup/local_database/local_data_source.dart';
-import 'package:trek_high/features/infrastructure/entities/response/auth_token/auth_token.dart';
+import 'package:trek_high/features/auth/infrastructure/entities/response/auth_token/auth_token.dart';
 
 class HiveDataSource implements LocalDataSource {
   @override

@@ -7,8 +7,10 @@
 import 'package:auto_route/auto_route.dart' as _i1;
 import 'package:flutter/material.dart' as _i2;
 
-import '../../../features/auth/login_screen/login_screen.dart' as _i4;
-import '../../../features/auth/sign_screen/sign_up_screen.dart' as _i5;
+import '../../../features/auth/presentation/login_screen/login_screen.dart'
+    as _i4;
+import '../../../features/auth/presentation/sign_screen/sign_up_screen.dart'
+    as _i5;
 import '../../../features/landing_screen/landing_screen.dart' as _i3;
 
 class AppRouter extends _i1.RootStackRouter {

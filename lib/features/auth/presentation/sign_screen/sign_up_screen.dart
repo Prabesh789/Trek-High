@@ -15,9 +15,9 @@ import 'package:trek_high/core/widgets/custom_back_button.dart';
 import 'package:trek_high/core/widgets/custom_body_widget.dart';
 import 'package:trek_high/core/widgets/custom_button.dart';
 import 'package:trek_high/core/widgets/custom_textfield.dart';
-import 'package:trek_high/features/application/auth_controller.dart';
-import 'package:trek_high/features/auth/sign_screen/widgets/picture_selection_bottom_sheet.dart';
-import 'package:trek_high/features/infrastructure/entities/response/new_signup_response/new_signup_response.dart';
+import 'package:trek_high/features/auth/application/auth_controller.dart';
+import 'package:trek_high/features/auth/infrastructure/entities/response/new_signup_response/new_signup_response.dart';
+import 'package:trek_high/features/auth/presentation/sign_screen/widgets/picture_selection_bottom_sheet.dart';
 
 final signupController =
     StateNotifierProvider.autoDispose<AuthController, BaseState>(

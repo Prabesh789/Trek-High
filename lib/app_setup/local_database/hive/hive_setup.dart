@@ -2,7 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:hive/hive.dart';
 import 'package:path_provider/path_provider.dart' as path_provider;
 import 'package:trek_high/app_setup/local_database/hive/hive_const.dart';
-import 'package:trek_high/features/infrastructure/entities/response/auth_token/auth_token.dart';
+import 'package:trek_high/features/auth/infrastructure/entities/response/auth_token/auth_token.dart';
 
 class HiveSetup {
   HiveSetup._();

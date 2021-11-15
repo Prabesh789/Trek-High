@@ -2,12 +2,12 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:dartz/dartz.dart';
 import 'package:dio/dio.dart';
 import 'package:firebase_auth/firebase_auth.dart';
-import 'package:hooks_riverpod/hooks_riverpod.dart';
-import 'package:trek_high/app/entities/failure.dart';
-import 'package:trek_high/features/infrastructure/entities/request/new_signup_request/new_signup_request.dart';
-import 'package:trek_high/features/infrastructure/entities/response/new_signup_response/new_signup_response.dart';
 import 'package:firebase_storage/firebase_storage.dart' as firebase_storage;
+import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:path/path.dart' as path;
+import 'package:trek_high/app/entities/failure.dart';
+import 'package:trek_high/features/auth/infrastructure/entities/request/new_signup_request/new_signup_request.dart';
+import 'package:trek_high/features/auth/infrastructure/entities/response/new_signup_response/new_signup_response.dart';
 
 final authRepository =
     Provider<IAuthRepository>((ref) => AuthRepository(ref.read));
