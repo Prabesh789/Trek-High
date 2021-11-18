@@ -2,14 +2,14 @@ import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:trek_high/features/home_screen/widgets/drawer_nav_bar.dart';
 
-class ProfileScreen extends StatefulWidget {
-  const ProfileScreen({Key? key}) : super(key: key);
+class FindMeScreen extends StatefulWidget {
+  const FindMeScreen({Key? key}) : super(key: key);
 
   @override
-  _ProfileScreenState createState() => _ProfileScreenState();
+  _FindMeScreenState createState() => _FindMeScreenState();
 }
 
-class _ProfileScreenState extends State<ProfileScreen> {
+class _FindMeScreenState extends State<FindMeScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -20,7 +20,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
         elevation: 0,
         centerTitle: true,
         title: Text(
-          tr('profile'),
+          tr('current_location'),
         ),
       ),
     );

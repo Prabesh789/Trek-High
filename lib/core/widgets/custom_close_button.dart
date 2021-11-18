@@ -23,7 +23,7 @@ class CustomCloseButton extends StatelessWidget {
           ),
           child: Center(
             child: Padding(
-              padding: const EdgeInsets.all(8.0),
+              padding: const EdgeInsets.all(8),
               child: Icon(
                 Icons.close,
                 size: 16,

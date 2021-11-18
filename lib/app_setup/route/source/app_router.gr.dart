@@ -12,6 +12,8 @@ import '../../../features/auth/presentation/login_screen/login_screen.dart'
 import '../../../features/auth/presentation/sign_screen/sign_up_screen.dart'
     as _i5;
 import '../../../features/landing_screen/landing_screen.dart' as _i3;
+import '../../../features/notification/presentation/notification_screen.dart'
+    as _i6;
 
 class AppRouter extends _i1.RootStackRouter {
   AppRouter([_i2.GlobalKey<_i2.NavigatorState>? navigatorKey])
@@ -33,6 +35,11 @@ class AppRouter extends _i1.RootStackRouter {
         routeData: routeData,
         builder: (_) {
           return const _i5.SignupScreen();
+        }),
+    NotificationRoute.name: (routeData) => _i1.MaterialPageX<void>(
+        routeData: routeData,
+        builder: (_) {
+          return const _i6.NotificationScreen();
         })
   };
 
@@ -40,7 +47,8 @@ class AppRouter extends _i1.RootStackRouter {
   List<_i1.RouteConfig> get routes => [
         _i1.RouteConfig(LandingRoute.name, path: '/'),
         _i1.RouteConfig(LoginRoute.name, path: '/login-screen'),
-        _i1.RouteConfig(SignupRoute.name, path: '/signup-screen')
+        _i1.RouteConfig(SignupRoute.name, path: '/signup-screen'),
+        _i1.RouteConfig(NotificationRoute.name, path: '/notification-screen')
       ];
 }
 
@@ -60,4 +68,10 @@ class SignupRoute extends _i1.PageRouteInfo {
   const SignupRoute() : super(name, path: '/signup-screen');
 
   static const String name = 'SignupRoute';
+}
+
+class NotificationRoute extends _i1.PageRouteInfo {
+  const NotificationRoute() : super(name, path: '/notification-screen');
+
+  static const String name = 'NotificationRoute';
 }

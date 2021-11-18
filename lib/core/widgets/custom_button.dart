@@ -36,15 +36,23 @@ class _CustomButtonState extends State<CustomButton> {
               : Colors.indigoAccent[100],
         ),
         child: widget.isLoading
-            ? SizedBox(
-                height: 25,
-                width: 25,
-                child: CircularProgressIndicator(
-                  valueColor: AlwaysStoppedAnimation<Color>(
-                    Theme.of(context).scaffoldBackgroundColor,
+            ? Row(
+                children: [
+                  const SizedBox(),
+                  const Spacer(),
+                  SizedBox(
+                    width: 25,
+                    height: 25,
+                    child: CircularProgressIndicator(
+                      valueColor: AlwaysStoppedAnimation<Color>(
+                        Theme.of(context).scaffoldBackgroundColor,
+                      ),
+                      strokeWidth: 2,
+                    ),
                   ),
-                  strokeWidth: 2,
-                ),
+                  const Spacer(),
+                  const SizedBox(),
+                ],
               )
             : Center(
                 child: Text(

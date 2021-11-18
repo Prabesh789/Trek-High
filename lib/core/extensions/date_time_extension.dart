@@ -7,8 +7,8 @@ extension DateTimeExtension on DateTime {
   }
 
   String miliSecondToDateTime() {
-    var format = DateFormat('MMMM, dd yyyy HH:mm');
-    var dateString = format.format(this);
+    final format = DateFormat('MMMM, dd yyyy HH:mm');
+    final dateString = format.format(this);
     return dateString;
   }
 
@@ -22,13 +22,13 @@ extension DateTimeExtension on DateTime {
   }
 
   String valitTill() {
-    var format = DateFormat('dd MMM, yyyy');
-    var formattedDate = format.format(this);
+    final format = DateFormat('dd MMM, yyyy');
+    final formattedDate = format.format(this);
     return formattedDate;
   }
 
   String dobParse() {
-    var date = DateFormat('yyyy-MM-dd').format(this);
+    final date = DateFormat('yyyy-MM-dd').format(this);
     return date;
   }
 }

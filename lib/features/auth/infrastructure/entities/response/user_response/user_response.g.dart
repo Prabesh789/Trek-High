@@ -13,10 +13,8 @@ _$_UserResponse _$_$_UserResponseFromJson(Map<String, dynamic> json) {
     contact: json['contact'] as String,
     address: json['address'] as String,
     email: json['email'] as String,
-    emailVerified: json['emailVerified'] as bool,
-    fcmToken: json['fcmToken'] as String,
-    platform: json['platform'] as int,
-    deviceId: json['deviceId'] as String,
+    platform: json['platform'] as int?,
+    deviceId: json['deviceId'] as String?,
   );
 }
 
@@ -27,8 +25,6 @@ Map<String, dynamic> _$_$_UserResponseToJson(_$_UserResponse instance) =>
       'contact': instance.contact,
       'address': instance.address,
       'email': instance.email,
-      'emailVerified': instance.emailVerified,
-      'fcmToken': instance.fcmToken,
       'platform': instance.platform,
       'deviceId': instance.deviceId,
     };

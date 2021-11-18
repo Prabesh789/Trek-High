@@ -23,13 +23,13 @@ class _$LoginRequestTearOff {
   _LoginRequest call(
       {required String email,
       required String password,
-      required String deviceId,
+      int? platform,
       double? latitude,
       double? longitude}) {
     return _LoginRequest(
       email: email,
       password: password,
-      deviceId: deviceId,
+      platform: platform,
       latitude: latitude,
       longitude: longitude,
     );
@@ -46,9 +46,8 @@ const $LoginRequest = _$LoginRequestTearOff();
 /// @nodoc
 mixin _$LoginRequest {
   String get email => throw _privateConstructorUsedError;
-  String get password =>
-      throw _privateConstructorUsedError; // required int platform,
-  String get deviceId => throw _privateConstructorUsedError;
+  String get password => throw _privateConstructorUsedError;
+  int? get platform => throw _privateConstructorUsedError;
   double? get latitude => throw _privateConstructorUsedError;
   double? get longitude => throw _privateConstructorUsedError;
 
@@ -66,7 +65,7 @@ abstract class $LoginRequestCopyWith<$Res> {
   $Res call(
       {String email,
       String password,
-      String deviceId,
+      int? platform,
       double? latitude,
       double? longitude});
 }
@@ -83,7 +82,7 @@ class _$LoginRequestCopyWithImpl<$Res> implements $LoginRequestCopyWith<$Res> {
   $Res call({
     Object? email = freezed,
     Object? password = freezed,
-    Object? deviceId = freezed,
+    Object? platform = freezed,
     Object? latitude = freezed,
     Object? longitude = freezed,
   }) {
@@ -96,10 +95,10 @@ class _$LoginRequestCopyWithImpl<$Res> implements $LoginRequestCopyWith<$Res> {
           ? _value.password
           : password // ignore: cast_nullable_to_non_nullable
               as String,
-      deviceId: deviceId == freezed
-          ? _value.deviceId
-          : deviceId // ignore: cast_nullable_to_non_nullable
-              as String,
+      platform: platform == freezed
+          ? _value.platform
+          : platform // ignore: cast_nullable_to_non_nullable
+              as int?,
       latitude: latitude == freezed
           ? _value.latitude
           : latitude // ignore: cast_nullable_to_non_nullable
@@ -122,7 +121,7 @@ abstract class _$LoginRequestCopyWith<$Res>
   $Res call(
       {String email,
       String password,
-      String deviceId,
+      int? platform,
       double? latitude,
       double? longitude});
 }
@@ -141,7 +140,7 @@ class __$LoginRequestCopyWithImpl<$Res> extends _$LoginRequestCopyWithImpl<$Res>
   $Res call({
     Object? email = freezed,
     Object? password = freezed,
-    Object? deviceId = freezed,
+    Object? platform = freezed,
     Object? latitude = freezed,
     Object? longitude = freezed,
   }) {
@@ -154,10 +153,10 @@ class __$LoginRequestCopyWithImpl<$Res> extends _$LoginRequestCopyWithImpl<$Res>
           ? _value.password
           : password // ignore: cast_nullable_to_non_nullable
               as String,
-      deviceId: deviceId == freezed
-          ? _value.deviceId
-          : deviceId // ignore: cast_nullable_to_non_nullable
-              as String,
+      platform: platform == freezed
+          ? _value.platform
+          : platform // ignore: cast_nullable_to_non_nullable
+              as int?,
       latitude: latitude == freezed
           ? _value.latitude
           : latitude // ignore: cast_nullable_to_non_nullable
@@ -176,7 +175,7 @@ class _$_LoginRequest implements _LoginRequest {
   const _$_LoginRequest(
       {required this.email,
       required this.password,
-      required this.deviceId,
+      this.platform,
       this.latitude,
       this.longitude});
 
@@ -187,8 +186,8 @@ class _$_LoginRequest implements _LoginRequest {
   final String email;
   @override
   final String password;
-  @override // required int platform,
-  final String deviceId;
+  @override
+  final int? platform;
   @override
   final double? latitude;
   @override
@@ -196,7 +195,7 @@ class _$_LoginRequest implements _LoginRequest {
 
   @override
   String toString() {
-    return 'LoginRequest(email: $email, password: $password, deviceId: $deviceId, latitude: $latitude, longitude: $longitude)';
+    return 'LoginRequest(email: $email, password: $password, platform: $platform, latitude: $latitude, longitude: $longitude)';
   }
 
   @override
@@ -208,9 +207,9 @@ class _$_LoginRequest implements _LoginRequest {
             (identical(other.password, password) ||
                 const DeepCollectionEquality()
                     .equals(other.password, password)) &&
-            (identical(other.deviceId, deviceId) ||
+            (identical(other.platform, platform) ||
                 const DeepCollectionEquality()
-                    .equals(other.deviceId, deviceId)) &&
+                    .equals(other.platform, platform)) &&
             (identical(other.latitude, latitude) ||
                 const DeepCollectionEquality()
                     .equals(other.latitude, latitude)) &&
@@ -224,7 +223,7 @@ class _$_LoginRequest implements _LoginRequest {
       runtimeType.hashCode ^
       const DeepCollectionEquality().hash(email) ^
       const DeepCollectionEquality().hash(password) ^
-      const DeepCollectionEquality().hash(deviceId) ^
+      const DeepCollectionEquality().hash(platform) ^
       const DeepCollectionEquality().hash(latitude) ^
       const DeepCollectionEquality().hash(longitude);
 
@@ -243,7 +242,7 @@ abstract class _LoginRequest implements LoginRequest {
   const factory _LoginRequest(
       {required String email,
       required String password,
-      required String deviceId,
+      int? platform,
       double? latitude,
       double? longitude}) = _$_LoginRequest;
 
@@ -254,8 +253,8 @@ abstract class _LoginRequest implements LoginRequest {
   String get email => throw _privateConstructorUsedError;
   @override
   String get password => throw _privateConstructorUsedError;
-  @override // required int platform,
-  String get deviceId => throw _privateConstructorUsedError;
+  @override
+  int? get platform => throw _privateConstructorUsedError;
   @override
   double? get latitude => throw _privateConstructorUsedError;
   @override

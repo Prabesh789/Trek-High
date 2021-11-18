@@ -34,7 +34,7 @@ class HiveDataSource implements LocalDataSource {
   Future<void> deleteToken() async {
     try {
       final response = await getToken();
-      var authToken = AuthToken(authToken: null, fcmToken: response?.fcmToken);
+      final authToken = AuthToken(fcmToken: response?.fcmToken);
       await cacheToken(authToken);
     } catch (e) {
       log(e.toString());

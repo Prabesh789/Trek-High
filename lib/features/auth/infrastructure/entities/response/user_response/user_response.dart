@@ -10,10 +10,8 @@ class UserResponse with _$UserResponse {
     required String contact,
     required String address,
     required String email,
-    required bool emailVerified,
-    required String fcmToken,
-    required int platform,
-    required String deviceId,
+    int? platform,
+    String? deviceId,
   }) = _UserResponse;
   factory UserResponse.fromJson(Map<String, dynamic> json) =>
       _$UserResponseFromJson(json);

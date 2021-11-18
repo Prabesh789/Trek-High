@@ -7,8 +7,7 @@ class LoginRequest with _$LoginRequest {
   const factory LoginRequest({
     required String email,
     required String password,
-    // required int platform,
-    required String deviceId,
+    int? platform,
     double? latitude,
     double? longitude,
   }) = _LoginRequest;

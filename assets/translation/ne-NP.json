@@ -1,10 +1,10 @@
 {
     "introduction": "नमस्ते म प्रबेश राई हो।",
     "title": "पहिलो पृष्ट ",
-    "description": "म Flutter सिक्दै छ। ",
+    "description": "म Flutter सिक्दै छ ",
     "well_come": "सम्पुर्ण यात्रीहरुलाई स्वागत छ",
     "login": "लगिन गर्नुहोस ",
-    "user_name": "प्रयाग कर्ताको नाम ",
+    "user_email": "प्रयाग कर्ताको इमेल ",
     "password": "पस्स्वोर्ड",
     "language_switch_title": "भाषा परिबर्तन गर्नुहोस।",
     "dark_mode": "अँध्यारो मोड",
@@ -20,5 +20,10 @@
     "sign_up": "साइन अप",
     "email_validation": "इमेलको ढाँचा मीलेन !",
     "confirm_password_validation": "पस्स्वोर्ड मीलेन !",
-    "home_screen": "गृहपृष्ठ"
+    "home_screen": "गृहपृष्ठ",
+    "notification": "सूचना",
+    "stories": "कथाहरु",
+    "current_location": "वर्तमान स्थान",
+    "travellers": "यात्रीहरु",
+    "profile": "प्रोफाइल"
 }

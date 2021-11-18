@@ -6,8 +6,10 @@ import 'package:firebase_storage/firebase_storage.dart' as firebase_storage;
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:path/path.dart' as path;
 import 'package:trek_high/app/entities/failure.dart';
+import 'package:trek_high/features/auth/infrastructure/entities/request/login_request/login_request.dart';
 import 'package:trek_high/features/auth/infrastructure/entities/request/new_signup_request/new_signup_request.dart';
 import 'package:trek_high/features/auth/infrastructure/entities/response/new_signup_response/new_signup_response.dart';
+import 'package:trek_high/features/auth/infrastructure/entities/response/user_response/user_response.dart';
 
 final authRepository =
     Provider<IAuthRepository>((ref) => AuthRepository(ref.read));
@@ -22,6 +24,11 @@ abstract class IAuthRepository {
   /* Signup new user */
   Future<Either<SignupResponse, Failure>> signupNewUser(
       {required NewSignupRequest newSignupRequest, required String password});
+
+  /* Signup new user */
+  Future<Either<UserResponse, Failure>> loginUser({
+    required LoginRequest loginRequest,
+  });
 }
 
 class AuthRepository implements IAuthRepository {
@@ -84,9 +91,9 @@ class AuthRepository implements IAuthRepository {
                     'admin': false,
                   },
                 );
-                if (user != null && !user.emailVerified) {
-                  await user.sendEmailVerification();
-                }
+                // if (user != null && !user.emailVerified) {
+                //   await user.sendEmailVerification();
+                // }
                 //after register it will directly login so we haveto signout
                 await _auth.signOut();
               },
@@ -122,5 +129,36 @@ class AuthRepository implements IAuthRepository {
     }
   }
 
-  // Future<Either<UserResponse, Failure>> loginUser()
+  @override
+  Future<Either<UserResponse, Failure>> loginUser(
+      {required LoginRequest loginRequest}) async {
+    try {
+      final response = await _auth.signInWithEmailAndPassword(
+        email: loginRequest.email,
+        password: loginRequest.password,
+      );
+
+      final user =
+          await _firestore.collection('users').doc(response.user?.uid).get();
+      final data = user.data();
+      data?.putIfAbsent('userId', () => user.id);
+
+      // ignore: cast_nullable_to_non_nullable
+      final result = UserResponse.fromJson(data as Map<String, dynamic>);
+      return Left(result);
+    } on FirebaseAuthException catch (e) {
+      return Right(
+        Failure(
+          errorMessage:
+              e.message ?? 'Something went wrong, try in few moments !',
+        ),
+      );
+    } catch (e) {
+      return Right(
+        Failure(
+          errorMessage: e.toString(),
+        ),
+      );
+    }
+  }
 }

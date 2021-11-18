@@ -7,6 +7,7 @@ final indexNotifierProvider =
 
 class IndexNotifier extends StateNotifier<int> {
   IndexNotifier() : super(0);
+  // ignore: use_setters_to_change_properties
   void changeIndex(int value) {
     state = value;
   }

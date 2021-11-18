@@ -2,13 +2,12 @@ import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
-import 'package:trek_high/core/widgets/custom_notification.dart';
-import 'package:trek_high/features/find_friends/find_friends.dart';
-import 'package:trek_high/features/find_me_screen/find_me_screen.dart';
+import 'package:trek_high/features/find_friends/presentation/find_friends.dart';
+import 'package:trek_high/features/find_me_screen/presentation/find_me_screen.dart';
 import 'package:trek_high/features/home_screen/home_screen.dart';
 import 'package:trek_high/features/main_dashboard/presentation/widgets/index_notifier.dart';
 import 'package:trek_high/features/profile_screen/profile_screen.dart';
-import 'package:trek_high/features/share_story/share_story.dart';
+import 'package:trek_high/features/share_story/presentation/share_story.dart';
 
 class BottomNavigation extends StatefulHookWidget {
   const BottomNavigation({Key? key}) : super(key: key);

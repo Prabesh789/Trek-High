@@ -26,18 +26,14 @@ class _$UserResponseTearOff {
       required String contact,
       required String address,
       required String email,
-      required bool emailVerified,
-      required String fcmToken,
-      required int platform,
-      required String deviceId}) {
+      int? platform,
+      String? deviceId}) {
     return _UserResponse(
       userId: userId,
       fullName: fullName,
       contact: contact,
       address: address,
       email: email,
-      emailVerified: emailVerified,
-      fcmToken: fcmToken,
       platform: platform,
       deviceId: deviceId,
     );
@@ -58,10 +54,8 @@ mixin _$UserResponse {
   String get contact => throw _privateConstructorUsedError;
   String get address => throw _privateConstructorUsedError;
   String get email => throw _privateConstructorUsedError;
-  bool get emailVerified => throw _privateConstructorUsedError;
-  String get fcmToken => throw _privateConstructorUsedError;
-  int get platform => throw _privateConstructorUsedError;
-  String get deviceId => throw _privateConstructorUsedError;
+  int? get platform => throw _privateConstructorUsedError;
+  String? get deviceId => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -80,10 +74,8 @@ abstract class $UserResponseCopyWith<$Res> {
       String contact,
       String address,
       String email,
-      bool emailVerified,
-      String fcmToken,
-      int platform,
-      String deviceId});
+      int? platform,
+      String? deviceId});
 }
 
 /// @nodoc
@@ -101,8 +93,6 @@ class _$UserResponseCopyWithImpl<$Res> implements $UserResponseCopyWith<$Res> {
     Object? contact = freezed,
     Object? address = freezed,
     Object? email = freezed,
-    Object? emailVerified = freezed,
-    Object? fcmToken = freezed,
     Object? platform = freezed,
     Object? deviceId = freezed,
   }) {
@@ -127,22 +117,14 @@ class _$UserResponseCopyWithImpl<$Res> implements $UserResponseCopyWith<$Res> {
           ? _value.email
           : email // ignore: cast_nullable_to_non_nullable
               as String,
-      emailVerified: emailVerified == freezed
-          ? _value.emailVerified
-          : emailVerified // ignore: cast_nullable_to_non_nullable
-              as bool,
-      fcmToken: fcmToken == freezed
-          ? _value.fcmToken
-          : fcmToken // ignore: cast_nullable_to_non_nullable
-              as String,
       platform: platform == freezed
           ? _value.platform
           : platform // ignore: cast_nullable_to_non_nullable
-              as int,
+              as int?,
       deviceId: deviceId == freezed
           ? _value.deviceId
           : deviceId // ignore: cast_nullable_to_non_nullable
-              as String,
+              as String?,
     ));
   }
 }
@@ -160,10 +142,8 @@ abstract class _$UserResponseCopyWith<$Res>
       String contact,
       String address,
       String email,
-      bool emailVerified,
-      String fcmToken,
-      int platform,
-      String deviceId});
+      int? platform,
+      String? deviceId});
 }
 
 /// @nodoc
@@ -183,8 +163,6 @@ class __$UserResponseCopyWithImpl<$Res> extends _$UserResponseCopyWithImpl<$Res>
     Object? contact = freezed,
     Object? address = freezed,
     Object? email = freezed,
-    Object? emailVerified = freezed,
-    Object? fcmToken = freezed,
     Object? platform = freezed,
     Object? deviceId = freezed,
   }) {
@@ -209,22 +187,14 @@ class __$UserResponseCopyWithImpl<$Res> extends _$UserResponseCopyWithImpl<$Res>
           ? _value.email
           : email // ignore: cast_nullable_to_non_nullable
               as String,
-      emailVerified: emailVerified == freezed
-          ? _value.emailVerified
-          : emailVerified // ignore: cast_nullable_to_non_nullable
-              as bool,
-      fcmToken: fcmToken == freezed
-          ? _value.fcmToken
-          : fcmToken // ignore: cast_nullable_to_non_nullable
-              as String,
       platform: platform == freezed
           ? _value.platform
           : platform // ignore: cast_nullable_to_non_nullable
-              as int,
+              as int?,
       deviceId: deviceId == freezed
           ? _value.deviceId
           : deviceId // ignore: cast_nullable_to_non_nullable
-              as String,
+              as String?,
     ));
   }
 }
@@ -238,10 +208,8 @@ class _$_UserResponse implements _UserResponse {
       required this.contact,
       required this.address,
       required this.email,
-      required this.emailVerified,
-      required this.fcmToken,
-      required this.platform,
-      required this.deviceId});
+      this.platform,
+      this.deviceId});
 
   factory _$_UserResponse.fromJson(Map<String, dynamic> json) =>
       _$_$_UserResponseFromJson(json);
@@ -257,17 +225,13 @@ class _$_UserResponse implements _UserResponse {
   @override
   final String email;
   @override
-  final bool emailVerified;
+  final int? platform;
   @override
-  final String fcmToken;
-  @override
-  final int platform;
-  @override
-  final String deviceId;
+  final String? deviceId;
 
   @override
   String toString() {
-    return 'UserResponse(userId: $userId, fullName: $fullName, contact: $contact, address: $address, email: $email, emailVerified: $emailVerified, fcmToken: $fcmToken, platform: $platform, deviceId: $deviceId)';
+    return 'UserResponse(userId: $userId, fullName: $fullName, contact: $contact, address: $address, email: $email, platform: $platform, deviceId: $deviceId)';
   }
 
   @override
@@ -287,12 +251,6 @@ class _$_UserResponse implements _UserResponse {
                     .equals(other.address, address)) &&
             (identical(other.email, email) ||
                 const DeepCollectionEquality().equals(other.email, email)) &&
-            (identical(other.emailVerified, emailVerified) ||
-                const DeepCollectionEquality()
-                    .equals(other.emailVerified, emailVerified)) &&
-            (identical(other.fcmToken, fcmToken) ||
-                const DeepCollectionEquality()
-                    .equals(other.fcmToken, fcmToken)) &&
             (identical(other.platform, platform) ||
                 const DeepCollectionEquality()
                     .equals(other.platform, platform)) &&
@@ -309,8 +267,6 @@ class _$_UserResponse implements _UserResponse {
       const DeepCollectionEquality().hash(contact) ^
       const DeepCollectionEquality().hash(address) ^
       const DeepCollectionEquality().hash(email) ^
-      const DeepCollectionEquality().hash(emailVerified) ^
-      const DeepCollectionEquality().hash(fcmToken) ^
       const DeepCollectionEquality().hash(platform) ^
       const DeepCollectionEquality().hash(deviceId);
 
@@ -332,10 +288,8 @@ abstract class _UserResponse implements UserResponse {
       required String contact,
       required String address,
       required String email,
-      required bool emailVerified,
-      required String fcmToken,
-      required int platform,
-      required String deviceId}) = _$_UserResponse;
+      int? platform,
+      String? deviceId}) = _$_UserResponse;
 
   factory _UserResponse.fromJson(Map<String, dynamic> json) =
       _$_UserResponse.fromJson;
@@ -351,13 +305,9 @@ abstract class _UserResponse implements UserResponse {
   @override
   String get email => throw _privateConstructorUsedError;
   @override
-  bool get emailVerified => throw _privateConstructorUsedError;
+  int? get platform => throw _privateConstructorUsedError;
   @override
-  String get fcmToken => throw _privateConstructorUsedError;
-  @override
-  int get platform => throw _privateConstructorUsedError;
-  @override
-  String get deviceId => throw _privateConstructorUsedError;
+  String? get deviceId => throw _privateConstructorUsedError;
   @override
   @JsonKey(ignore: true)
   _$UserResponseCopyWith<_UserResponse> get copyWith =>

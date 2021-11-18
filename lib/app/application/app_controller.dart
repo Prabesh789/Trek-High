@@ -11,6 +11,7 @@ class AppStateNotifier extends StateNotifier<AppState> {
   ///
   AppStateNotifier(this._read) : super(const AppState<void>.started());
 
+  // ignore: unused_field
   final Reader _read;
 
   ///
@@ -23,6 +24,7 @@ class AppStateNotifier extends StateNotifier<AppState> {
     state = const AppState<void>.unAuthenticated();
   }
 
+  // ignore: use_setters_to_change_properties
   void updateAppState(AppState<void> appState) {
     state = appState;
   }
