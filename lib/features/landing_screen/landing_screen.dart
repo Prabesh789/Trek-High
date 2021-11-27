@@ -66,7 +66,7 @@ class _LandingScreenState extends State<LandingScreen> {
                           style:
                               Theme.of(context).textTheme.headline5?.copyWith(
                                     fontWeight: FontWeight.bold,
-                                    fontSize: 16,
+                                    fontSize: 20,
                                   ),
                         ),
                         const SizedBox(height: 10),
@@ -77,7 +77,7 @@ class _LandingScreenState extends State<LandingScreen> {
                             style: Theme.of(context)
                                 .textTheme
                                 .headline6
-                                ?.copyWith(fontSize: 13),
+                                ?.copyWith(fontSize: 16),
                             maxLines: 3,
                             textAlign: TextAlign.center,
                           ),

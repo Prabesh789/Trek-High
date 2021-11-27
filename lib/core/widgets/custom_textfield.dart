@@ -34,7 +34,7 @@ class CustomTextfield extends StatelessWidget {
       controller: textEditingController,
       focusNode: focusNode,
       decoration: InputDecoration(
-        contentPadding: const EdgeInsets.all(10),
+        // contentPadding: const EdgeInsets.all(10),
         prefixIcon: prefixIcon,
         suffixIcon: sufixIcon,
         hintText: hintText,
@@ -49,7 +49,7 @@ class CustomTextfield extends StatelessWidget {
         labelText: labelText,
         labelStyle: GoogleFonts.ptSerif(
           textStyle: const TextStyle(
-            fontSize: 12,
+            fontSize: 14,
             fontWeight: FontWeight.bold,
             overflow: TextOverflow.ellipsis,
             color: Colors.grey,

@@ -4,51 +4,21 @@ import 'package:flutter/painting.dart';
 import 'package:flutter/rendering.dart';
 
 class AppThemes {
-  /// Colors from Tailwind CSS
-  ///
-  /// https://tailwindcss.com/docs/customizing-colors
-
-  static const int _primaryColor = 0xFF6366F1;
-  static const MaterialColor primarySwatch =
-      MaterialColor(_primaryColor, <int, Color>{
-    50: Color(0xFFECEDFD),
-    100: Color(0xFFD0D1FB),
-    200: Color(0xFFB1B3F8),
-    300: Color(0xFF9294F5),
-    400: Color(0xFF7A7DF3),
-    500: Color(_primaryColor),
-    600: Color(0xFF5B5EEF),
-    700: Color(0xFF5153ED),
-    800: Color(0xFF4749EB),
-    900: Color(0xFF3538E7),
-  });
-
-  static const int _lightTextColor = 0xFF6B7280;
-  static const MaterialColor textSwatch = MaterialColor(
-    _lightTextColor,
-    <int, Color>{
-      50: Color(0xFFF9FAFB),
-      100: Color(0xFFF3F4F6),
-      200: Color(0xFFE5E7EB),
-      300: Color(0xFFD1D5DB),
-      400: Color(0xFF9CA3AF),
-      500: Color(_lightTextColor),
-      600: Color(0xFF4B5563),
-      700: Color(0xFF374151),
-      800: Color(0xFF1F2937),
-      900: Color(0xFF111827),
-    },
-  );
-
   /*Getter to get Palatte for light theme*/
   static final lightTheme = ThemeData(
+    primaryColor: Colors.amber,
+    appBarTheme: AppBarTheme(
+      backgroundColor: Colors.indigoAccent.withOpacity(0.9),
+    ),
+    bottomNavigationBarTheme: BottomNavigationBarThemeData(
+      backgroundColor: Colors.indigo[50],
+    ),
     bottomSheetTheme: const BottomSheetThemeData(backgroundColor: Colors.white),
     iconTheme: IconThemeData(
-      color: Colors.black.withOpacity(0.3),
+      color: Colors.black.withOpacity(0.8),
     ),
     dialogTheme: const DialogTheme(backgroundColor: Colors.red),
     fontFamily: 'PT Serif',
-    primarySwatch: primarySwatch,
     brightness: Brightness.light,
     focusColor: Colors.black.withOpacity(0.3),
     canvasColor: Colors.grey,
@@ -57,62 +27,49 @@ class AppThemes {
     cardColor: Colors.white,
     bottomAppBarColor: Colors.white,
     dividerColor: const Color(0x1C000000),
-    textTheme: TextTheme(
+    textTheme: const TextTheme(
       headline1: TextStyle(
-        color: textSwatch.shade700,
         fontWeight: FontWeight.w300,
         fontSize: 35,
       ),
       headline2: TextStyle(
-        color: textSwatch.shade600,
         fontSize: 30,
       ),
       headline3: TextStyle(
-        color: textSwatch.shade700,
         fontSize: 25,
       ),
       headline4: TextStyle(
-        color: textSwatch.shade700,
         fontWeight: FontWeight.w600,
         fontSize: 20,
       ),
       headline5: TextStyle(
-        color: textSwatch.shade600,
         fontWeight: FontWeight.w600,
         fontSize: 18,
       ),
       headline6: TextStyle(
-        color: textSwatch.shade700,
         fontSize: 16,
         fontWeight: FontWeight.bold,
       ),
       subtitle1: TextStyle(
-        color: textSwatch.shade700,
         fontSize: 15,
       ),
       subtitle2: TextStyle(
-        color: textSwatch.shade600,
         fontSize: 10,
       ),
       bodyText1: TextStyle(
-        color: textSwatch.shade700,
         fontSize: 11,
       ),
       bodyText2: TextStyle(
-        color: textSwatch.shade500,
         fontSize: 14,
       ),
       button: TextStyle(
-        color: textSwatch.shade500,
         fontSize: 16,
         fontWeight: FontWeight.w600,
       ),
       caption: TextStyle(
-        color: textSwatch.shade500,
         fontSize: 13,
       ),
       overline: TextStyle(
-        color: textSwatch.shade500,
         fontSize: 8,
       ),
     ),
@@ -120,6 +77,9 @@ class AppThemes {
 
   /*Getter to get Palatte for light theme*/
   static final darkTheme = ThemeData(
+    appBarTheme: AppBarTheme(
+      backgroundColor: Colors.indigoAccent.withOpacity(1),
+    ),
     bottomSheetTheme:
         BottomSheetThemeData(backgroundColor: Colors.black.withOpacity(0.3)),
     iconTheme: IconThemeData(
@@ -135,61 +95,48 @@ class AppThemes {
     cardColor: const Color(0xFF2f2f34),
     bottomAppBarColor: Colors.green,
     dividerColor: const Color(0x1CFFFFFF),
-    textTheme: TextTheme(
+    textTheme: const TextTheme(
       headline1: TextStyle(
-        color: textSwatch.shade200,
         fontWeight: FontWeight.w300,
         fontSize: 35,
       ),
       headline2: TextStyle(
-        color: textSwatch.shade300,
         fontSize: 30,
       ),
       headline3: TextStyle(
-        color: textSwatch.shade200,
         fontSize: 25,
       ),
       headline4: TextStyle(
-        color: textSwatch.shade200,
         fontWeight: FontWeight.w600,
         fontSize: 20,
       ),
       headline5: TextStyle(
-        color: textSwatch.shade300,
         fontSize: 18,
         fontWeight: FontWeight.w600,
       ),
       headline6: TextStyle(
-        color: textSwatch.shade200,
         fontSize: 16,
         fontWeight: FontWeight.bold,
       ),
       subtitle1: TextStyle(
-        color: textSwatch.shade200,
         fontSize: 15,
       ),
       subtitle2: TextStyle(
-        color: textSwatch.shade300,
         fontSize: 10,
       ),
       bodyText1: TextStyle(
-        color: textSwatch.shade300,
         fontSize: 11,
       ),
       bodyText2: TextStyle(
-        color: textSwatch.shade200,
         fontSize: 12,
       ),
       button: TextStyle(
-        color: textSwatch.shade400,
         fontSize: 16,
       ),
       caption: TextStyle(
-        color: textSwatch.shade400,
         fontSize: 13,
       ),
       overline: TextStyle(
-        color: textSwatch.shade400,
         fontSize: 8,
       ),
     ),

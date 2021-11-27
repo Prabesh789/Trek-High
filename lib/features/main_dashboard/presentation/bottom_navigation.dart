@@ -55,7 +55,8 @@ class _BottomNavigationState extends State<BottomNavigation> {
             topRight: Radius.circular(15),
           ),
           child: BottomNavigationBar(
-            backgroundColor: Colors.indigo[50],
+            backgroundColor:
+                Theme.of(context).bottomNavigationBarTheme.backgroundColor,
             currentIndex: index, //New
             onTap: _onItemTapped,
             elevation: 10,
@@ -70,6 +71,12 @@ class _BottomNavigationState extends State<BottomNavigation> {
             selectedLabelStyle: Theme.of(context).textTheme.bodyText1?.copyWith(
                   fontSize: 1,
                 ),
+            selectedIconTheme: IconThemeData(
+              color: Colors.black.withOpacity(0.8),
+            ),
+            unselectedIconTheme: IconThemeData(
+              color: Colors.black.withOpacity(0.5),
+            ),
             items: <BottomNavigationBarItem>[
               BottomNavigationBarItem(
                 activeIcon: const Padding(
@@ -79,12 +86,12 @@ class _BottomNavigationState extends State<BottomNavigation> {
                   ),
                   child: Icon(
                     Icons.home,
-                    size: 25,
+                    size: 29,
                   ),
                 ),
                 icon: const Icon(
                   Icons.home,
-                  size: 25,
+                  size: 29,
                 ),
                 label: tr(''),
               ),
@@ -96,12 +103,12 @@ class _BottomNavigationState extends State<BottomNavigation> {
                   ),
                   child: Icon(
                     Icons.image,
-                    size: 25,
+                    size: 28,
                   ),
                 ),
                 icon: const Icon(
                   Icons.image,
-                  size: 25,
+                  size: 28,
                 ),
                 label: tr(''),
               ),
@@ -113,12 +120,12 @@ class _BottomNavigationState extends State<BottomNavigation> {
                   ),
                   child: Icon(
                     Icons.person_pin_circle,
-                    size: 25,
+                    size: 28,
                   ),
                 ),
                 icon: const Icon(
                   Icons.person_pin_circle,
-                  size: 25,
+                  size: 28,
                 ),
                 label: tr(''),
               ),
@@ -130,12 +137,12 @@ class _BottomNavigationState extends State<BottomNavigation> {
                   ),
                   child: Icon(
                     Icons.hiking,
-                    size: 25,
+                    size: 28,
                   ),
                 ),
                 icon: const Icon(
                   Icons.hiking,
-                  size: 25,
+                  size: 28,
                 ),
                 label: tr(''),
               ),
@@ -147,12 +154,12 @@ class _BottomNavigationState extends State<BottomNavigation> {
                   ),
                   child: Icon(
                     Icons.account_circle,
-                    size: 25,
+                    size: 28,
                   ),
                 ),
                 icon: const Icon(
                   Icons.account_circle,
-                  size: 25,
+                  size: 28,
                 ),
                 label: tr(''),
               ),
