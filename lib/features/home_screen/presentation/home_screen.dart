@@ -6,8 +6,8 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 import 'package:trek_high/core/widgets/custom_notification.dart';
 import 'package:trek_high/core/widgets/custom_shimmer.dart';
-import 'package:trek_high/features/home_screen/widgets/drawer_nav_bar.dart';
-import 'package:trek_high/features/home_screen/widgets/fake_data.dart';
+import 'package:trek_high/features/home_screen/presentation/widgets/drawer_nav_bar.dart';
+import 'package:trek_high/features/home_screen/presentation/widgets/static_data.dart';
 
 class HomeScreen extends StatefulHookWidget {
   const HomeScreen({Key? key}) : super(key: key);
@@ -41,21 +41,30 @@ class _HomeScreenState extends State<HomeScreen> {
           CustomNotification(),
         ],
       ),
-      body: Padding(
-        padding: const EdgeInsets.symmetric(horizontal: 24),
-        child: SingleChildScrollView(
-          child: Column(
-            children: [
-              const SizedBox(height: 24),
-              SizedBox(
-                height: size.height / 4,
-                child: PageView.builder(
-                  controller: _pageController,
-                  physics: const BouncingScrollPhysics(),
-                  itemCount: fakedestinationData.length,
-                  itemBuilder: (context, item) {
-                    final data = fakedestinationData[item];
-                    return ClipRRect(
+      body: SingleChildScrollView(
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            const SizedBox(height: 24),
+            Padding(
+              padding: const EdgeInsets.only(left: 20),
+              child: Text(
+                'Lognest Trails',
+                style: Theme.of(context).textTheme.headline4,
+              ),
+            ),
+            const SizedBox(height: 15),
+            SizedBox(
+              height: size.height / 4,
+              child: PageView.builder(
+                controller: _pageController,
+                physics: const BouncingScrollPhysics(),
+                itemCount: landingPageData.length,
+                itemBuilder: (context, item) {
+                  final data = landingPageData[item];
+                  return Padding(
+                    padding: const EdgeInsets.symmetric(horizontal: 20),
+                    child: ClipRRect(
                       borderRadius: BorderRadius.circular(14),
                       child: CachedNetworkImage(
                         height: size.height / 4,
@@ -69,16 +78,18 @@ class _HomeScreenState extends State<HomeScreen> {
                           );
                         },
                       ),
-                    );
-                  },
-                ),
+                    ),
+                  );
+                },
               ),
-              const SizedBox(height: 20),
-              Padding(
+            ),
+            const SizedBox(height: 20),
+            Center(
+              child: Padding(
                 padding: const EdgeInsets.symmetric(horizontal: 25),
                 child: SmoothPageIndicator(
                   controller: _pageController, // PageController
-                  count: fakedestinationData.length,
+                  count: landingPageData.length,
                   effect: WormEffect(
                     dotColor: Colors.indigoAccent[100]!,
                     activeDotColor: Colors.lightBlue[900]!,
@@ -88,15 +99,33 @@ class _HomeScreenState extends State<HomeScreen> {
                   onDotClicked: (index) {},
                 ),
               ),
-              const SizedBox(height: 20),
-              ClipRRect(
-                borderRadius: BorderRadius.circular(14),
-                child: CachedNetworkImage(
-                    imageUrl:
-                        'https://images.unsplash.com/photo-1599751229070-854ae5c90869?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=687&q=80'),
-              )
-            ],
-          ),
+            ),
+            const SizedBox(height: 20),
+            SizedBox(
+              height: size.height,
+              child: GridView.count(
+                physics: const NeverScrollableScrollPhysics(),
+                shrinkWrap: true,
+                primary: false,
+                padding: const EdgeInsets.all(20),
+                crossAxisSpacing: 10,
+                mainAxisSpacing: 10,
+                crossAxisCount: 2,
+                children: <Widget>[
+                  Container(
+                    padding: const EdgeInsets.all(8),
+                    color: Colors.teal[100],
+                    child: const Text('First'),
+                  ),
+                  Container(
+                    padding: const EdgeInsets.all(8),
+                    color: Colors.teal[100],
+                    child: const Text('Second'),
+                  ),
+                ],
+              ),
+            )
+          ],
         ),
       ),
     );

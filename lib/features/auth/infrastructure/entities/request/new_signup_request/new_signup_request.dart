@@ -7,7 +7,6 @@ class NewSignupRequest {
     required this.email,
     required this.contact,
     required this.address,
-    // required this.emailVerified,
     required this.deviceId,
     this.latitude,
     this.longitude,
@@ -19,7 +18,6 @@ class NewSignupRequest {
   final String email;
   final String contact;
   final String address;
-  // final bool emailVerified;
   final String deviceId;
   final double? latitude;
   final double? longitude;

@@ -9,7 +9,6 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:trek_high/app_setup/route/app_router.dart';
 import 'package:trek_high/core/entities/base_state.dart';
-import 'package:trek_high/core/theme/application/theme_controller.dart';
 import 'package:trek_high/core/widgets/custom_back_button.dart';
 import 'package:trek_high/core/widgets/custom_body_widget.dart';
 import 'package:trek_high/core/widgets/custom_button.dart';
@@ -262,38 +261,6 @@ class _LoginScreenState extends State<LoginScreen> {
                             shape: const RoundedRectangleBorder(
                               borderRadius: BorderRadius.all(
                                 Radius.circular(8),
-                              ),
-                            ),
-                          ),
-                        ),
-                        Card(
-                          elevation: 0,
-                          color: Theme.of(context).cardColor,
-                          shape: const RoundedRectangleBorder(
-                            borderRadius: BorderRadius.all(
-                              Radius.circular(8),
-                            ),
-                          ),
-                          child: SwitchListTile(
-                            onChanged: (bool newValue) {
-                              context
-                                  .read(themeController.notifier)
-                                  .changeTheme(newValue);
-                            },
-                            shape: const RoundedRectangleBorder(
-                                borderRadius:
-                                    BorderRadius.all(Radius.circular(8))),
-                            value:
-                                Theme.of(context).brightness == Brightness.dark,
-                            title: Text(
-                              tr('dark_mode'),
-                              style: GoogleFonts.ptSerif(
-                                textStyle: const TextStyle(
-                                  fontSize: 14,
-                                  fontWeight: FontWeight.bold,
-                                  overflow: TextOverflow.ellipsis,
-                                  color: Colors.black,
-                                ),
                               ),
                             ),
                           ),

@@ -4,9 +4,9 @@ import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:trek_high/features/find_friends/presentation/find_friends.dart';
 import 'package:trek_high/features/find_me_screen/presentation/find_me_screen.dart';
-import 'package:trek_high/features/home_screen/home_screen.dart';
+import 'package:trek_high/features/home_screen/presentation/home_screen.dart';
 import 'package:trek_high/features/main_dashboard/presentation/widgets/index_notifier.dart';
-import 'package:trek_high/features/profile_screen/profile_screen.dart';
+import 'package:trek_high/features/profile_screen/presentation/profile_screen.dart';
 import 'package:trek_high/features/share_story/presentation/share_story.dart';
 
 class BottomNavigation extends StatefulHookWidget {

@@ -21,8 +21,8 @@ class CustomBackButton extends StatelessWidget {
           splashColor: Colors.indigoAccent[100],
           onTap: onTap,
           child: Container(
-            height: 36,
-            width: 36,
+            height: 40,
+            width: 40,
             decoration: BoxDecoration(
               color: Colors.indigoAccent[100],
               borderRadius: BorderRadius.circular(8),

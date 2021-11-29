@@ -24,7 +24,7 @@ class AppThemes {
     canvasColor: Colors.grey,
     scaffoldBackgroundColor: const Color(0xFFFFFFFF),
     backgroundColor: const Color(0xFFFFFFFF),
-    cardColor: Colors.white,
+    cardColor: Colors.indigo[50],
     bottomAppBarColor: Colors.white,
     dividerColor: const Color(0x1C000000),
     textTheme: const TextTheme(
@@ -41,17 +41,20 @@ class AppThemes {
       headline4: TextStyle(
         fontWeight: FontWeight.w600,
         fontSize: 20,
+        color: Colors.black,
       ),
       headline5: TextStyle(
         fontWeight: FontWeight.w600,
         fontSize: 18,
       ),
       headline6: TextStyle(
-        fontSize: 16,
+        fontSize: 17,
         fontWeight: FontWeight.bold,
+        color: Colors.black,
       ),
       subtitle1: TextStyle(
         fontSize: 15,
+        color: Colors.black,
       ),
       subtitle2: TextStyle(
         fontSize: 10,
@@ -109,17 +112,20 @@ class AppThemes {
       headline4: TextStyle(
         fontWeight: FontWeight.w600,
         fontSize: 20,
+        color: Colors.white,
       ),
       headline5: TextStyle(
         fontSize: 18,
         fontWeight: FontWeight.w600,
       ),
       headline6: TextStyle(
-        fontSize: 16,
+        fontSize: 17,
         fontWeight: FontWeight.bold,
+        color: Colors.white,
       ),
       subtitle1: TextStyle(
         fontSize: 15,
+        color: Colors.white,
       ),
       subtitle2: TextStyle(
         fontSize: 10,
