@@ -124,7 +124,8 @@ class _HomeScreenState extends State<HomeScreen> {
                   ),
                 ],
               ),
-            )
+            ),
+            Image.asset('assets/images/mountain.png'),
           ],
         ),
       ),

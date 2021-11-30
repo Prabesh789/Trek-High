@@ -158,7 +158,7 @@ class _LoginScreenState extends State<LoginScreen> {
                               Navigator.of(context).push(
                                 MaterialPageRoute(
                                   builder: (context) =>
-                                      const BottomNavigation(),
+                                      const BottomNavigationScreen(),
                                 ),
                               );
                               // Navigator.pushAndRemoveUntil(
@@ -212,24 +212,6 @@ class _LoginScreenState extends State<LoginScreen> {
                           ],
                         ),
                         const SizedBox(height: 25),
-                        InkWell(
-                          onTap: () {
-                            Navigator.of(context).push(
-                              MaterialPageRoute(
-                                builder: (context) => const BottomNavigation(),
-                              ),
-                            );
-                          },
-                          child: Text(
-                            tr('skip'),
-                            style: Theme.of(context)
-                                .textTheme
-                                .subtitle1
-                                ?.copyWith(fontSize: 13)
-                                .apply(fontWeightDelta: 2),
-                          ),
-                        ),
-                        const SizedBox(height: 50),
                         Card(
                           elevation: 0,
                           color: Theme.of(context).cardColor,

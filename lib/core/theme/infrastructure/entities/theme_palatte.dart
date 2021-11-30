@@ -105,6 +105,7 @@ class AppThemes {
       ),
       headline2: TextStyle(
         fontSize: 30,
+        fontWeight: FontWeight.bold,
       ),
       headline3: TextStyle(
         fontSize: 25,

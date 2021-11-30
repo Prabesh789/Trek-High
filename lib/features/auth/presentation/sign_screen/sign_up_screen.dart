@@ -31,7 +31,7 @@ class SignupScreen extends StatefulHookWidget {
 }
 
 class _SignupScreenState extends State<SignupScreen> {
-  File? _imageFile;
+  late File? _imageFile = File('');
   final ImagePicker _picker = ImagePicker();
   final _formKey = GlobalKey<FormState>();
   bool obscureText = true;

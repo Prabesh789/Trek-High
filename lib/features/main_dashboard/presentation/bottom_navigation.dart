@@ -9,14 +9,14 @@ import 'package:trek_high/features/main_dashboard/presentation/widgets/index_not
 import 'package:trek_high/features/profile_screen/presentation/profile_screen.dart';
 import 'package:trek_high/features/share_story/presentation/share_story.dart';
 
-class BottomNavigation extends StatefulHookWidget {
-  const BottomNavigation({Key? key}) : super(key: key);
+class BottomNavigationScreen extends StatefulHookWidget {
+  const BottomNavigationScreen({Key? key}) : super(key: key);
 
   @override
-  _BottomNavigationState createState() => _BottomNavigationState();
+  _BottomNavigationScreenState createState() => _BottomNavigationScreenState();
 }
 
-class _BottomNavigationState extends State<BottomNavigation> {
+class _BottomNavigationScreenState extends State<BottomNavigationScreen> {
   static const List<Widget> _screens = <Widget>[
     HomeScreen(),
     ShareStoryScreen(),
@@ -77,16 +77,18 @@ class _BottomNavigationState extends State<BottomNavigation> {
             unselectedIconTheme: IconThemeData(
               color: Colors.black.withOpacity(0.5),
             ),
+
             items: <BottomNavigationBarItem>[
               BottomNavigationBarItem(
-                activeIcon: const Padding(
-                  padding: EdgeInsets.only(
+                activeIcon: Padding(
+                  padding: const EdgeInsets.only(
                     top: 3,
                     bottom: 6,
                   ),
                   child: Icon(
                     Icons.home,
                     size: 29,
+                    color: Theme.of(context).appBarTheme.backgroundColor,
                   ),
                 ),
                 icon: const Icon(
@@ -96,14 +98,15 @@ class _BottomNavigationState extends State<BottomNavigation> {
                 label: tr(''),
               ),
               BottomNavigationBarItem(
-                activeIcon: const Padding(
-                  padding: EdgeInsets.only(
+                activeIcon: Padding(
+                  padding: const EdgeInsets.only(
                     top: 3,
                     bottom: 6,
                   ),
                   child: Icon(
                     Icons.image,
                     size: 28,
+                    color: Theme.of(context).appBarTheme.backgroundColor,
                   ),
                 ),
                 icon: const Icon(
@@ -113,14 +116,15 @@ class _BottomNavigationState extends State<BottomNavigation> {
                 label: tr(''),
               ),
               BottomNavigationBarItem(
-                activeIcon: const Padding(
-                  padding: EdgeInsets.only(
+                activeIcon: Padding(
+                  padding: const EdgeInsets.only(
                     top: 3,
                     bottom: 6,
                   ),
                   child: Icon(
                     Icons.person_pin_circle,
                     size: 28,
+                    color: Theme.of(context).appBarTheme.backgroundColor,
                   ),
                 ),
                 icon: const Icon(
@@ -130,14 +134,15 @@ class _BottomNavigationState extends State<BottomNavigation> {
                 label: tr(''),
               ),
               BottomNavigationBarItem(
-                activeIcon: const Padding(
-                  padding: EdgeInsets.only(
+                activeIcon: Padding(
+                  padding: const EdgeInsets.only(
                     top: 3,
                     bottom: 6,
                   ),
                   child: Icon(
                     Icons.hiking,
                     size: 28,
+                    color: Theme.of(context).appBarTheme.backgroundColor,
                   ),
                 ),
                 icon: const Icon(
@@ -147,14 +152,15 @@ class _BottomNavigationState extends State<BottomNavigation> {
                 label: tr(''),
               ),
               BottomNavigationBarItem(
-                activeIcon: const Padding(
-                  padding: EdgeInsets.only(
+                activeIcon: Padding(
+                  padding: const EdgeInsets.only(
                     top: 3,
                     bottom: 6,
                   ),
                   child: Icon(
                     Icons.account_circle,
                     size: 28,
+                    color: Theme.of(context).appBarTheme.backgroundColor,
                   ),
                 ),
                 icon: const Icon(

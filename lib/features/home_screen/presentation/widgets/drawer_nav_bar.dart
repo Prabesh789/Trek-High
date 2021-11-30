@@ -49,75 +49,76 @@ class _DrawerNavBarState extends State<DrawerNavBar> {
               color: Theme.of(context).appBarTheme.backgroundColor,
             ),
             child: StreamBuilder<Object>(
-                stream: FirebaseFirestore.instance
-                    .collection('users')
-                    .doc(userId)
-                    .snapshots(),
-                builder: (context, snapshot) {
-                  if (!snapshot.hasData) {
-                    return const CircleAvatar(
-                      radius: 45,
-                      child: Center(
-                        child: CustomShimmer(),
-                      ),
-                    );
-                  } else if (snapshot.data != null) {
-                    final userData = snapshot.data! as DocumentSnapshot;
-                    return Column(
-                      children: [
-                        CircleAvatar(
-                          radius: 45,
-                          child: CachedNetworkImage(
-                            imageUrl: '${userData['image']}',
-                            imageBuilder: (context, imageProvider) {
-                              return Container(
-                                decoration: BoxDecoration(
-                                  shape: BoxShape.circle,
-                                  image: DecorationImage(
-                                    fit: BoxFit.cover,
-                                    colorFilter: ColorFilter.mode(
-                                      Colors.black.withOpacity(.1),
-                                      BlendMode.darken,
-                                    ),
-                                    image: imageProvider,
+              stream: FirebaseFirestore.instance
+                  .collection('users')
+                  .doc(userId)
+                  .snapshots(),
+              builder: (context, snapshot) {
+                if (!snapshot.hasData) {
+                  return const CircleAvatar(
+                    radius: 45,
+                    child: Center(
+                      child: CustomShimmer(),
+                    ),
+                  );
+                } else if (snapshot.data != null) {
+                  final userData = snapshot.data! as DocumentSnapshot;
+                  return Column(
+                    children: [
+                      CircleAvatar(
+                        radius: 45,
+                        child: CachedNetworkImage(
+                          imageUrl: '${userData['image']}',
+                          imageBuilder: (context, imageProvider) {
+                            return Container(
+                              decoration: BoxDecoration(
+                                shape: BoxShape.circle,
+                                image: DecorationImage(
+                                  fit: BoxFit.cover,
+                                  colorFilter: ColorFilter.mode(
+                                    Colors.black.withOpacity(.1),
+                                    BlendMode.darken,
                                   ),
+                                  image: imageProvider,
                                 ),
-                              );
-                            },
-                            errorWidget: (context, error, url) {
-                              return const SizedBox();
-                            },
+                              ),
+                            );
+                          },
+                          errorWidget: (context, error, url) {
+                            return const SizedBox();
+                          },
+                        ),
+                      ),
+                      const SizedBox(height: 10),
+                      Text(
+                        '${userData['fullName']}',
+                        style: GoogleFonts.ptSerif(
+                          textStyle: const TextStyle(
+                            fontSize: 16,
+                            fontWeight: FontWeight.bold,
+                            overflow: TextOverflow.ellipsis,
+                            color: Colors.black,
                           ),
                         ),
-                        const SizedBox(height: 10),
-                        Text(
-                          '${userData['fullName']}',
-                          style: GoogleFonts.ptSerif(
-                            textStyle: const TextStyle(
-                              fontSize: 16,
-                              fontWeight: FontWeight.bold,
-                              overflow: TextOverflow.ellipsis,
-                              color: Colors.black,
-                            ),
+                      ),
+                      Text(
+                        '${userData['email']}',
+                        style: GoogleFonts.ptSerif(
+                          textStyle: const TextStyle(
+                            fontSize: 12,
+                            fontWeight: FontWeight.bold,
+                            overflow: TextOverflow.ellipsis,
+                            color: Colors.black,
                           ),
                         ),
-                        Text(
-                          '${userData['email']}',
-                          style: GoogleFonts.ptSerif(
-                            textStyle: const TextStyle(
-                              fontSize: 12,
-                              fontWeight: FontWeight.bold,
-                              overflow: TextOverflow.ellipsis,
-                              color: Colors.black,
-                            ),
-                          ),
-                        ),
-                      ],
-                    );
-                  } else {
-                    return const SizedBox();
-                  }
-                }),
+                      ),
+                    ],
+                  );
+                } else {
+                  return const SizedBox();
+                }
+              },
+            ),
           ),
           const SizedBox(height: 15),
           Padding(
