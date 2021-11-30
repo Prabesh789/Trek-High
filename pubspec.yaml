@@ -57,7 +57,10 @@ dependencies:
   uuid: ^3.0.4
   fluttertoast: ^8.0.8
   flutter_native_image: ^0.0.6+1
-  # geolocator: ^7.7.1
+  geolocator: ^8.0.0
+  google_maps_flutter: ^2.1.1
+  location: ^4.3.0
+  permission_handler: ^8.3.0
 
 dev_dependencies:
   flutter_test:
