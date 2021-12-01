@@ -6,6 +6,7 @@ import 'package:flutter/rendering.dart';
 class AppThemes {
   /*Getter to get Palatte for light theme*/
   static final lightTheme = ThemeData(
+    inputDecorationTheme: const InputDecorationTheme(fillColor: Colors.white),
     primaryColor: Colors.amber,
     appBarTheme: AppBarTheme(
       backgroundColor: Colors.indigoAccent.withOpacity(0.9),
@@ -27,52 +28,60 @@ class AppThemes {
     cardColor: Colors.indigo[50],
     bottomAppBarColor: Colors.white,
     dividerColor: const Color(0x1C000000),
-    textTheme: const TextTheme(
-      headline1: TextStyle(
+    textTheme: TextTheme(
+      headline1: const TextStyle(
         fontWeight: FontWeight.w300,
         fontSize: 35,
       ),
-      headline2: TextStyle(
+      headline2: const TextStyle(
         fontSize: 30,
       ),
-      headline3: TextStyle(
+      headline3: const TextStyle(
         fontSize: 25,
       ),
-      headline4: TextStyle(
+      headline4: const TextStyle(
         fontWeight: FontWeight.w600,
         fontSize: 20,
         color: Colors.black,
       ),
-      headline5: TextStyle(
-        fontWeight: FontWeight.w600,
+      headline5: const TextStyle(
         fontSize: 18,
-      ),
-      headline6: TextStyle(
-        fontSize: 17,
         fontWeight: FontWeight.bold,
+        overflow: TextOverflow.ellipsis,
+      ),
+      headline6: const TextStyle(
+        fontSize: 16,
+        fontWeight: FontWeight.bold,
+        overflow: TextOverflow.ellipsis,
         color: Colors.black,
       ),
-      subtitle1: TextStyle(
+      subtitle1: const TextStyle(
         fontSize: 15,
         color: Colors.black,
       ),
-      subtitle2: TextStyle(
+      subtitle2: const TextStyle(
         fontSize: 10,
       ),
       bodyText1: TextStyle(
-        fontSize: 11,
+        fontSize: 16,
+        fontWeight: FontWeight.bold,
+        overflow: TextOverflow.ellipsis,
+        color: Colors.grey.shade800,
       ),
       bodyText2: TextStyle(
-        fontSize: 14,
+        fontSize: 16,
+        fontWeight: FontWeight.bold,
+        overflow: TextOverflow.ellipsis,
+        color: Colors.grey.shade700,
       ),
-      button: TextStyle(
+      button: const TextStyle(
         fontSize: 16,
         fontWeight: FontWeight.w600,
       ),
-      caption: TextStyle(
+      caption: const TextStyle(
         fontSize: 13,
       ),
-      overline: TextStyle(
+      overline: const TextStyle(
         fontSize: 8,
       ),
     ),
@@ -80,6 +89,7 @@ class AppThemes {
 
   /*Getter to get Palatte for light theme*/
   static final darkTheme = ThemeData(
+    inputDecorationTheme: InputDecorationTheme(fillColor: Colors.grey[400]),
     appBarTheme: AppBarTheme(
       backgroundColor: Colors.indigoAccent.withOpacity(1),
     ),
@@ -93,57 +103,65 @@ class AppThemes {
     brightness: Brightness.dark,
     canvasColor: Colors.grey,
     focusColor: Colors.white.withOpacity(0.3),
-    scaffoldBackgroundColor: const Color(0x8A000000),
+    scaffoldBackgroundColor: const Color(0xFF2f2f34),
     backgroundColor: const Color(0xFF0A1A1E),
     cardColor: const Color(0xFF2f2f34),
     bottomAppBarColor: Colors.green,
     dividerColor: const Color(0x1CFFFFFF),
-    textTheme: const TextTheme(
-      headline1: TextStyle(
+    textTheme: TextTheme(
+      headline1: const TextStyle(
         fontWeight: FontWeight.w300,
         fontSize: 35,
       ),
-      headline2: TextStyle(
+      headline2: const TextStyle(
         fontSize: 30,
         fontWeight: FontWeight.bold,
       ),
-      headline3: TextStyle(
+      headline3: const TextStyle(
         fontSize: 25,
       ),
-      headline4: TextStyle(
+      headline4: const TextStyle(
         fontWeight: FontWeight.w600,
         fontSize: 20,
         color: Colors.white,
       ),
-      headline5: TextStyle(
+      headline5: const TextStyle(
         fontSize: 18,
-        fontWeight: FontWeight.w600,
-      ),
-      headline6: TextStyle(
-        fontSize: 17,
         fontWeight: FontWeight.bold,
+        overflow: TextOverflow.ellipsis,
+      ),
+      headline6: const TextStyle(
+        fontSize: 16,
+        fontWeight: FontWeight.bold,
+        overflow: TextOverflow.ellipsis,
         color: Colors.white,
       ),
-      subtitle1: TextStyle(
+      subtitle1: const TextStyle(
         fontSize: 15,
         color: Colors.white,
       ),
-      subtitle2: TextStyle(
+      subtitle2: const TextStyle(
         fontSize: 10,
       ),
       bodyText1: TextStyle(
-        fontSize: 11,
+        fontSize: 16,
+        fontWeight: FontWeight.bold,
+        overflow: TextOverflow.ellipsis,
+        color: Colors.grey.shade100,
       ),
       bodyText2: TextStyle(
-        fontSize: 12,
+        fontSize: 16,
+        fontWeight: FontWeight.bold,
+        overflow: TextOverflow.ellipsis,
+        color: Colors.grey.shade200,
       ),
-      button: TextStyle(
+      button: const TextStyle(
         fontSize: 16,
       ),
-      caption: TextStyle(
+      caption: const TextStyle(
         fontSize: 13,
       ),
-      overline: TextStyle(
+      overline: const TextStyle(
         fontSize: 8,
       ),
     ),

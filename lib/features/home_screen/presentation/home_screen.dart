@@ -22,6 +22,7 @@ class _HomeScreenState extends State<HomeScreen> {
     final size = MediaQuery.of(context).size;
     final _pageController = usePageController();
     return Scaffold(
+      backgroundColor: Theme.of(context).scaffoldBackgroundColor,
       drawer: const Drawer(
         child: DrawerNavBar(),
       ),
@@ -29,17 +30,9 @@ class _HomeScreenState extends State<HomeScreen> {
         centerTitle: true,
         title: Text(
           tr('home_screen'),
-          style: GoogleFonts.ptSerif(
-            textStyle: const TextStyle(
-              fontSize: 18,
-              fontWeight: FontWeight.bold,
-              overflow: TextOverflow.ellipsis,
-            ),
-          ),
+          style: Theme.of(context).textTheme.headline5,
         ),
-        actions: const [
-          CustomNotification(),
-        ],
+        actions: const [CustomNotification()],
       ),
       body: SingleChildScrollView(
         child: Column(

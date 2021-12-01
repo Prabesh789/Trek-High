@@ -89,6 +89,7 @@ class AuthRepository implements IAuthRepository {
                     'address': newSignupRequest.address,
                     'password': newSignupRequest.password,
                     'admin': false,
+                    'aboutYou': newSignupRequest.aboutYou,
                   },
                 );
                 // if (user != null && !user.emailVerified) {

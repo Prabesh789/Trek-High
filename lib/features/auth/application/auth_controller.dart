@@ -32,6 +32,7 @@ class AuthController<T> extends StateNotifier<BaseState> {
     required String contact,
     required String address,
     File? image,
+    String? aboutYou,
   }) async {
     state = const BaseState<void>.loading();
 
@@ -45,6 +46,7 @@ class AuthController<T> extends StateNotifier<BaseState> {
       password: password,
       image: image,
       platform: Platform.isAndroid ? 1 : 2,
+      aboutYou: aboutYou,
     );
     final response = await _repo.signupNewUser(
       newSignupRequest: requestData,

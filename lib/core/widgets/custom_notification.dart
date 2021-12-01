@@ -39,6 +39,7 @@ class CustomNotification extends StatelessWidget {
                     '2',
                     style: Theme.of(context).textTheme.bodyText1?.copyWith(
                           color: Colors.white,
+                          fontSize: 10,
                         ),
                   ),
                 ),

@@ -13,6 +13,7 @@ class CustomTextfield extends StatelessWidget {
     this.onEditingComplete,
     this.validator,
     this.obscureText = false,
+    this.maxLine,
   }) : super(key: key);
   final TextEditingController textEditingController;
   final FocusNode focusNode;
@@ -23,10 +24,12 @@ class CustomTextfield extends StatelessWidget {
   final Function()? onEditingComplete;
   final String? Function(String?)? validator;
   final bool obscureText;
+  final int? maxLine;
 
   @override
   Widget build(BuildContext context) {
     return TextFormField(
+      maxLines: maxLine ?? 1,
       obscureText: obscureText,
       validator: validator,
       onEditingComplete: onEditingComplete,

@@ -31,6 +31,7 @@ class SignupScreen extends StatefulHookWidget {
 }
 
 class _SignupScreenState extends State<SignupScreen> {
+  bool aboutYouself = false;
   late File? _imageFile = File('');
   final ImagePicker _picker = ImagePicker();
   final _formKey = GlobalKey<FormState>();
@@ -56,6 +57,7 @@ class _SignupScreenState extends State<SignupScreen> {
     final _addressController = useTextEditingController();
     final _passwordController = useTextEditingController();
     final _confirmPasswordController = useTextEditingController();
+    final _aboutYourSelfController = useTextEditingController();
     final _fullNameFocusNode = useFocusNode();
     final _emailFocusNode = useFocusNode();
     final _phoneNumberFocusNode = useFocusNode();
@@ -204,7 +206,7 @@ class _SignupScreenState extends State<SignupScreen> {
                       focusNode: _phoneNumberFocusNode,
                       labelText: tr('phone_number'),
                       prefixIcon: Icon(
-                        Icons.people,
+                        Icons.phone,
                         color: Theme.of(context).iconTheme.color,
                       ),
                       onEditingComplete: () {
@@ -224,7 +226,7 @@ class _SignupScreenState extends State<SignupScreen> {
                       focusNode: _addressFocusNode,
                       labelText: tr('address'),
                       prefixIcon: Icon(
-                        Icons.people,
+                        Icons.place,
                         color: Theme.of(context).iconTheme.color,
                       ),
                       onEditingComplete: () {
@@ -245,7 +247,7 @@ class _SignupScreenState extends State<SignupScreen> {
                       focusNode: _passwordFocusNode,
                       labelText: tr('password'),
                       prefixIcon: Icon(
-                        Icons.people,
+                        Icons.lock,
                         color: Theme.of(context).iconTheme.color,
                       ),
                       onEditingComplete: () {
@@ -284,7 +286,7 @@ class _SignupScreenState extends State<SignupScreen> {
                       focusNode: _confirmPasswordFocusNode,
                       labelText: tr('confirm_password'),
                       prefixIcon: Icon(
-                        Icons.people,
+                        Icons.lock,
                         color: Theme.of(context).iconTheme.color,
                       ),
                       onEditingComplete: () {
@@ -318,7 +320,51 @@ class _SignupScreenState extends State<SignupScreen> {
                         ),
                       ),
                     ),
-                    SizedBox(height: size.width / 10),
+                    const SizedBox(height: 15),
+                    AnimatedCrossFade(
+                      firstCurve: Curves.easeInOut,
+                      duration: const Duration(
+                        milliseconds: 200,
+                      ),
+                      crossFadeState: aboutYouself
+                          ? CrossFadeState.showSecond
+                          : CrossFadeState.showFirst,
+                      firstChild: InkWell(
+                        onTap: () {
+                          setState(() {
+                            aboutYouself = true;
+                          });
+                        },
+                        child: Text(
+                          tr('About Your-self'),
+                          style:
+                              Theme.of(context).textTheme.subtitle2?.copyWith(
+                                    fontSize: 14,
+                                    fontWeight: FontWeight.w700,
+                                    color: Colors.grey,
+                                  ),
+                          textAlign: TextAlign.start,
+                        ),
+                      ),
+                      secondChild: CustomTextfield(
+                        maxLine: 4,
+                        textEditingController: _aboutYourSelfController,
+                        focusNode: FocusNode(),
+                        hintText: tr('I am ...'),
+                        onEditingComplete: () {
+                          FocusScope.of(context)
+                              .requestFocus(_confirmPasswordFocusNode);
+                        },
+                        validator: (value) {
+                          if (value!.isEmpty) {
+                            return tr('required');
+                          } else {
+                            return null;
+                          }
+                        },
+                      ),
+                    ),
+                    SizedBox(height: size.width / 12),
                     ProviderListener(
                       provider: signupController,
                       onChange: (context, signupState) {
@@ -366,6 +412,8 @@ class _SignupScreenState extends State<SignupScreen> {
                                   address: _addressController.text.trim(),
                                   email: _emailController.text.trim(),
                                   image: _imageFile,
+                                  aboutYou:
+                                      _aboutYourSelfController.text.trim(),
                                 );
                           }
                         },

@@ -12,6 +12,7 @@ class NewSignupRequest {
     this.longitude,
     required this.password,
     required this.platform,
+    this.aboutYou,
   });
   final File? image;
   final String fullName;
@@ -23,4 +24,5 @@ class NewSignupRequest {
   final double? longitude;
   final String password;
   final int platform;
+  final String? aboutYou;
 }
