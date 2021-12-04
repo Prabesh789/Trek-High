@@ -13,6 +13,7 @@ class NewSignupRequest {
     required this.password,
     required this.platform,
     this.aboutYou,
+    required this.admin,
   });
   final File? image;
   final String fullName;
@@ -25,4 +26,5 @@ class NewSignupRequest {
   final String password;
   final int platform;
   final String? aboutYou;
+  final bool admin;
 }

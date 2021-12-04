@@ -7,6 +7,7 @@
 import 'package:auto_route/auto_route.dart' as _i1;
 import 'package:flutter/material.dart' as _i2;
 
+import '../../../admin/presentation/admin_dasbboard_screen.dart' as _i9;
 import '../../../features/auth/presentation/login_screen/login_screen.dart'
     as _i6;
 import '../../../features/auth/presentation/sign_screen/sign_up_screen.dart'
@@ -53,6 +54,11 @@ class AppRouter extends _i1.RootStackRouter {
         routeData: routeData,
         builder: (_) {
           return const _i8.NotificationScreen();
+        }),
+    AdminDashboardRoute.name: (routeData) => _i1.MaterialPageX<void>(
+        routeData: routeData,
+        builder: (_) {
+          return const _i9.AdminDashboardScreen();
         })
   };
 
@@ -64,7 +70,9 @@ class AppRouter extends _i1.RootStackRouter {
             path: '/bottom-navigation-screen'),
         _i1.RouteConfig(LoginRoute.name, path: '/login-screen'),
         _i1.RouteConfig(SignupRoute.name, path: '/signup-screen'),
-        _i1.RouteConfig(NotificationRoute.name, path: '/notification-screen')
+        _i1.RouteConfig(NotificationRoute.name, path: '/notification-screen'),
+        _i1.RouteConfig(AdminDashboardRoute.name,
+            path: '/admin-dashboard-screen')
       ];
 }
 
@@ -103,4 +111,10 @@ class NotificationRoute extends _i1.PageRouteInfo {
   const NotificationRoute() : super(name, path: '/notification-screen');
 
   static const String name = 'NotificationRoute';
+}
+
+class AdminDashboardRoute extends _i1.PageRouteInfo {
+  const AdminDashboardRoute() : super(name, path: '/admin-dashboard-screen');
+
+  static const String name = 'AdminDashboardRoute';
 }

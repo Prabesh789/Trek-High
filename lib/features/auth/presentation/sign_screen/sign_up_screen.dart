@@ -355,13 +355,6 @@ class _SignupScreenState extends State<SignupScreen> {
                           FocusScope.of(context)
                               .requestFocus(_confirmPasswordFocusNode);
                         },
-                        validator: (value) {
-                          if (value!.isEmpty) {
-                            return tr('required');
-                          } else {
-                            return null;
-                          }
-                        },
                       ),
                     ),
                     SizedBox(height: size.width / 12),
@@ -414,6 +407,7 @@ class _SignupScreenState extends State<SignupScreen> {
                                   image: _imageFile,
                                   aboutYou:
                                       _aboutYourSelfController.text.trim(),
+                                  admin: false,
                                 );
                           }
                         },

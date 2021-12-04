@@ -16,6 +16,12 @@ AuthController<T> authController<T>(ProviderReference ref) {
   );
 }
 
+final userIdProvider = StateProvider<String>(
+  (ref) {
+    return '';
+  },
+);
+
 class AuthController<T> extends StateNotifier<BaseState> {
   AuthController(
     this._read,
@@ -33,6 +39,7 @@ class AuthController<T> extends StateNotifier<BaseState> {
     required String address,
     File? image,
     String? aboutYou,
+    required bool admin,
   }) async {
     state = const BaseState<void>.loading();
 
@@ -47,6 +54,7 @@ class AuthController<T> extends StateNotifier<BaseState> {
       image: image,
       platform: Platform.isAndroid ? 1 : 2,
       aboutYou: aboutYou,
+      admin: admin,
     );
     final response = await _repo.signupNewUser(
       newSignupRequest: requestData,
@@ -70,7 +78,10 @@ class AuthController<T> extends StateNotifier<BaseState> {
     );
     final response = await _repo.loginUser(loginRequest: requestData);
     state = response.fold(
-      (success) => BaseState<UserResponse>.success(data: success),
+      (success) {
+        _read(userIdProvider).state = success.userId;
+        return BaseState<UserResponse>.success(data: success);
+      },
       (error) => BaseState<Failure>.error(error),
     );
   }
