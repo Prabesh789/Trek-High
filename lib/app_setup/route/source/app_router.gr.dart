@@ -15,6 +15,8 @@ import '../../../features/auth/presentation/login_screen/login_screen.dart'
     as _i6;
 import '../../../features/auth/presentation/sign_screen/sign_up_screen.dart'
     as _i7;
+import '../../../features/home_screen/presentation/destination_details/destinations_detail_screen.dart'
+    as _i12;
 import '../../../features/landing_screen/landing_screen.dart' as _i4;
 import '../../../features/main_dashboard/presentation/bottom_navigation.dart'
     as _i5;
@@ -72,6 +74,23 @@ class AppRouter extends _i1.RootStackRouter {
         routeData: routeData,
         builder: (_) {
           return const _i11.UserListScreen();
+        }),
+    DestinationDetailRoute.name: (routeData) => _i1.MaterialPageX<void>(
+        routeData: routeData,
+        builder: (data) {
+          final args = data.argsAs<DestinationDetailRouteArgs>();
+          return _i12.DestinationDetailScreen(
+              key: args.key,
+              destinationId: args.destinationId,
+              destinationTitle: args.destinationTitle,
+              aboutInfo: args.aboutInfo,
+              features: args.features,
+              helpingLines: args.helpingLines,
+              permitRules: args.permitRules,
+              images: args.images,
+              startedLatLng: args.startedLatLng,
+              endingLatLng: args.endingLatLng,
+              backPacking: args.backPacking);
         })
   };
 
@@ -87,7 +106,9 @@ class AppRouter extends _i1.RootStackRouter {
         _i1.RouteConfig(AdminDashboardRoute.name,
             path: '/admin-dashboard-screen'),
         _i1.RouteConfig(DestinationRoute.name, path: '/destination-screen'),
-        _i1.RouteConfig(UserListRoute.name, path: '/user-list-screen')
+        _i1.RouteConfig(UserListRoute.name, path: '/user-list-screen'),
+        _i1.RouteConfig(DestinationDetailRoute.name,
+            path: '/destination-detail-screen')
       ];
 }
 
@@ -144,4 +165,73 @@ class UserListRoute extends _i1.PageRouteInfo {
   const UserListRoute() : super(name, path: '/user-list-screen');
 
   static const String name = 'UserListRoute';
+}
+
+class DestinationDetailRoute
+    extends _i1.PageRouteInfo<DestinationDetailRouteArgs> {
+  DestinationDetailRoute(
+      {_i2.Key? key,
+      required String destinationId,
+      required String destinationTitle,
+      required String aboutInfo,
+      required String features,
+      required String helpingLines,
+      required String permitRules,
+      required String images,
+      required String startedLatLng,
+      required String endingLatLng,
+      required String backPacking})
+      : super(name,
+            path: '/destination-detail-screen',
+            args: DestinationDetailRouteArgs(
+                key: key,
+                destinationId: destinationId,
+                destinationTitle: destinationTitle,
+                aboutInfo: aboutInfo,
+                features: features,
+                helpingLines: helpingLines,
+                permitRules: permitRules,
+                images: images,
+                startedLatLng: startedLatLng,
+                endingLatLng: endingLatLng,
+                backPacking: backPacking));
+
+  static const String name = 'DestinationDetailRoute';
+}
+
+class DestinationDetailRouteArgs {
+  const DestinationDetailRouteArgs(
+      {this.key,
+      required this.destinationId,
+      required this.destinationTitle,
+      required this.aboutInfo,
+      required this.features,
+      required this.helpingLines,
+      required this.permitRules,
+      required this.images,
+      required this.startedLatLng,
+      required this.endingLatLng,
+      required this.backPacking});
+
+  final _i2.Key? key;
+
+  final String destinationId;
+
+  final String destinationTitle;
+
+  final String aboutInfo;
+
+  final String features;
+
+  final String helpingLines;
+
+  final String permitRules;
+
+  final String images;
+
+  final String startedLatLng;
+
+  final String endingLatLng;
+
+  final String backPacking;
 }
