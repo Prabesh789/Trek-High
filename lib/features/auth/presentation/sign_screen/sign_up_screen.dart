@@ -424,49 +424,6 @@ class _SignupScreenState extends State<SignupScreen> {
     );
   }
 
-  void takePicture(ImageSource camera) {
-    Container(
-      height: 100,
-      width: MediaQuery.of(context).size.width,
-      margin: const EdgeInsets.symmetric(
-        horizontal: 20,
-        vertical: 20,
-      ),
-      child: Column(
-        children: <Widget>[
-          Text(
-            'Choose profile photo',
-            style: Theme.of(context).textTheme.headline4,
-          ),
-          const SizedBox(height: 20),
-          Row(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: <Widget>[
-              InkWell(
-                onTap: () {
-                  takePhoto(ImageSource.camera);
-                },
-                child: Text(
-                  'Camera',
-                  style: Theme.of(context).textTheme.subtitle2,
-                ),
-              ),
-              InkWell(
-                onTap: () {
-                  takePhoto(ImageSource.gallery);
-                },
-                child: Text(
-                  'Gallery',
-                  style: Theme.of(context).textTheme.subtitle2,
-                ),
-              ),
-            ],
-          )
-        ],
-      ),
-    );
-  }
-
   //taking a picture from camera or gallery
 
   void takePhoto(ImageSource source) async {

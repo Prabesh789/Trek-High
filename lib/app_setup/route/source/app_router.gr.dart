@@ -8,6 +8,9 @@ import 'package:auto_route/auto_route.dart' as _i1;
 import 'package:flutter/material.dart' as _i2;
 
 import '../../../admin/presentation/admin_dasbboard_screen.dart' as _i9;
+import '../../../admin/presentation/destinations/destinations_screen.dart'
+    as _i10;
+import '../../../admin/presentation/user_list/user_list_screen.dart' as _i11;
 import '../../../features/auth/presentation/login_screen/login_screen.dart'
     as _i6;
 import '../../../features/auth/presentation/sign_screen/sign_up_screen.dart'
@@ -59,6 +62,16 @@ class AppRouter extends _i1.RootStackRouter {
         routeData: routeData,
         builder: (_) {
           return const _i9.AdminDashboardScreen();
+        }),
+    DestinationRoute.name: (routeData) => _i1.MaterialPageX<void>(
+        routeData: routeData,
+        builder: (_) {
+          return const _i10.DestinationScreen();
+        }),
+    UserListRoute.name: (routeData) => _i1.MaterialPageX<void>(
+        routeData: routeData,
+        builder: (_) {
+          return const _i11.UserListScreen();
         })
   };
 
@@ -72,7 +85,9 @@ class AppRouter extends _i1.RootStackRouter {
         _i1.RouteConfig(SignupRoute.name, path: '/signup-screen'),
         _i1.RouteConfig(NotificationRoute.name, path: '/notification-screen'),
         _i1.RouteConfig(AdminDashboardRoute.name,
-            path: '/admin-dashboard-screen')
+            path: '/admin-dashboard-screen'),
+        _i1.RouteConfig(DestinationRoute.name, path: '/destination-screen'),
+        _i1.RouteConfig(UserListRoute.name, path: '/user-list-screen')
       ];
 }
 
@@ -117,4 +132,16 @@ class AdminDashboardRoute extends _i1.PageRouteInfo {
   const AdminDashboardRoute() : super(name, path: '/admin-dashboard-screen');
 
   static const String name = 'AdminDashboardRoute';
+}
+
+class DestinationRoute extends _i1.PageRouteInfo {
+  const DestinationRoute() : super(name, path: '/destination-screen');
+
+  static const String name = 'DestinationRoute';
+}
+
+class UserListRoute extends _i1.PageRouteInfo {
+  const UserListRoute() : super(name, path: '/user-list-screen');
+
+  static const String name = 'UserListRoute';
 }

@@ -2,7 +2,6 @@ import 'package:auto_route/src/router/auto_router_x.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import 'package:trek_high/admin/presentation/admin_dasbboard_screen.dart';
 import 'package:trek_high/app_setup/route/app_router.dart';
 import 'package:trek_high/features/auth/infrastructure/entities/request/new_signup_request/new_signup_request.dart';
 

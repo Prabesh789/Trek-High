@@ -92,16 +92,12 @@ class AuthRepository implements IAuthRepository {
                     'aboutYou': newSignupRequest.aboutYou,
                   },
                 );
-                // if (user != null && !user.emailVerified) {
-                //   await user.sendEmailVerification();
-                // }
-                //after register it will directly login so we haveto signout
+
                 await _auth.signOut();
               },
             );
           },
         );
-        // }
       }
       return Left(
         SignupResponse(

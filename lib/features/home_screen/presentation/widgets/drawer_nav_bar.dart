@@ -6,9 +6,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:flutter_riverpod/src/provider.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:trek_high/app_setup/route/app_router.dart';
 import 'package:trek_high/core/theme/application/theme_controller.dart';
 import 'package:trek_high/core/widgets/custom_shimmer.dart';
-import 'package:trek_high/features/auth/presentation/login_screen/login_screen.dart';
 
 class DrawerNavBar extends StatefulHookWidget {
   const DrawerNavBar({
@@ -55,10 +55,16 @@ class _DrawerNavBarState extends State<DrawerNavBar> {
                   .snapshots(),
               builder: (context, snapshot) {
                 if (!snapshot.hasData) {
-                  return const CircleAvatar(
+                  return CircleAvatar(
                     radius: 45,
                     child: Center(
-                      child: CustomShimmer(),
+                      child: ClipRRect(
+                        borderRadius: BorderRadius.circular(50),
+                        child: const SizedBox(
+                          height: 100,
+                          child: CustomShimmer(),
+                        ),
+                      ),
                     ),
                   );
                 } else if (snapshot.data != null) {
@@ -171,11 +177,7 @@ class _DrawerNavBarState extends State<DrawerNavBar> {
                     ),
                     onTap: () async {
                       await FirebaseAuth.instance.signOut().then((value) {
-                        Navigator.of(context).pushReplacement(
-                          MaterialPageRoute(
-                            builder: (contect) => const LoginScreen(),
-                          ),
-                        );
+                        context.router.replace(const LoginRoute());
                       });
                     },
                     title: Text(
