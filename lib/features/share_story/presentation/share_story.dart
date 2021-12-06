@@ -1,5 +1,6 @@
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
+import 'package:trek_high/core/widgets/custom_notification.dart';
 import 'package:trek_high/features/home_screen/presentation/widgets/drawer_nav_bar.dart';
 
 class ShareStoryScreen extends StatelessWidget {
@@ -12,11 +13,15 @@ class ShareStoryScreen extends StatelessWidget {
         child: DrawerNavBar(),
       ),
       appBar: AppBar(
-        elevation: 0,
         centerTitle: true,
         title: Text(
           tr('stories'),
+          style: Theme.of(context)
+              .textTheme
+              .headline4
+              ?.copyWith(color: Colors.white),
         ),
+        actions: const [CustomNotification()],
       ),
     );
   }

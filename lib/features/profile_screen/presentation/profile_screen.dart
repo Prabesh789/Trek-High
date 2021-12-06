@@ -41,11 +41,13 @@ class _ProfileScreenState extends State<ProfileScreen> {
         child: DrawerNavBar(),
       ),
       appBar: AppBar(
-        elevation: 0,
         centerTitle: true,
         title: Text(
           tr('profile'),
-          style: Theme.of(context).textTheme.headline5,
+          style: Theme.of(context)
+              .textTheme
+              .headline4
+              ?.copyWith(color: Colors.white),
         ),
         actions: const [CustomNotification()],
       ),

@@ -6,6 +6,7 @@ import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
+import 'package:trek_high/core/widgets/custom_notification.dart';
 import 'package:trek_high/features/find_me_screen/infrastructure/current_location_provider.dart';
 import 'package:trek_high/features/home_screen/presentation/widgets/drawer_nav_bar.dart';
 
@@ -46,18 +47,15 @@ class _FindMeScreenState extends State<FindMeScreen> {
         child: DrawerNavBar(),
       ),
       appBar: AppBar(
-        elevation: 0,
         centerTitle: true,
         title: Text(
           tr('current_location'),
-          style: GoogleFonts.ptSerif(
-            textStyle: const TextStyle(
-              fontSize: 18,
-              fontWeight: FontWeight.bold,
-              overflow: TextOverflow.ellipsis,
-            ),
-          ),
+          style: Theme.of(context)
+              .textTheme
+              .headline4
+              ?.copyWith(color: Colors.white),
         ),
+        actions: const [CustomNotification()],
       ),
       body: HookBuilder(
         builder: (context) {
