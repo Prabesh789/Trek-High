@@ -1,11 +1,9 @@
-import 'package:auto_route/src/router/auto_router_x.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
-import 'package:trek_high/app_setup/route/app_router.dart';
 import 'package:trek_high/core/widgets/custom_notification.dart';
 import 'package:trek_high/core/widgets/custom_shimmer.dart';
 import 'package:trek_high/features/auth/application/auth_controller.dart';

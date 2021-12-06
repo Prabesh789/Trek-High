@@ -193,14 +193,15 @@ class _DestinationScreenState extends State<DestinationScreen> {
                       height: size.width / 2.4,
                       width: size.width / 1.4,
                       decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(12),
-                          color: Colors.blue[50],
-                          image: DecorationImage(
-                            image: FileImage(
-                              _imageFile,
-                            ),
-                            fit: BoxFit.cover,
-                          )),
+                        borderRadius: BorderRadius.circular(12),
+                        color: Colors.blue[50],
+                        image: DecorationImage(
+                          image: FileImage(
+                            _imageFile,
+                          ),
+                          fit: BoxFit.cover,
+                        ),
+                      ),
                       child: InkWell(
                         onTap: () {
                           showModalBottomSheet(
