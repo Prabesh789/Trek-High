@@ -30,7 +30,6 @@ class _UserListScreenState extends State<UserListScreen> {
         ),
       ),
       body: HookBuilder(builder: (context) {
-        // final userId = useProvider(userIdProvider);
         return StreamBuilder(
           stream: FirebaseFirestore.instance.collection('users').snapshots(),
           builder: (context, AsyncSnapshot<QuerySnapshot> snapshots) {

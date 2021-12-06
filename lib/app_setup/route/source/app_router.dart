@@ -44,6 +44,9 @@ import 'package:trek_high/features/splash_screen/splash_screen.dart';
     AutoRoute<void>(
       page: DestinationDetailScreen,
     ),
+    // AutoRoute<void>(
+    //   page: StoryDetailScreen,
+    // )
   ],
   preferRelativeImports: true,
   replaceInRouteName: 'Screen,Route',

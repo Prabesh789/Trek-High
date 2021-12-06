@@ -7,7 +7,7 @@ import 'package:trek_high/features/find_me_screen/presentation/find_me_screen.da
 import 'package:trek_high/features/home_screen/presentation/home_screen.dart';
 import 'package:trek_high/features/main_dashboard/presentation/widgets/index_notifier.dart';
 import 'package:trek_high/features/profile_screen/presentation/profile_screen.dart';
-import 'package:trek_high/features/share_story/presentation/share_story.dart';
+import 'package:trek_high/features/share_story/presentation/share_story_screen.dart';
 
 class BottomNavigationScreen extends StatefulHookWidget {
   const BottomNavigationScreen({Key? key}) : super(key: key);
