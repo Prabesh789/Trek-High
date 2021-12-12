@@ -15,6 +15,8 @@ import '../../../features/auth/presentation/login_screen/login_screen.dart'
     as _i6;
 import '../../../features/auth/presentation/sign_screen/sign_up_screen.dart'
     as _i7;
+import '../../../features/find_friends/presentation/widgets/post_travel_screen.dart'
+    as _i13;
 import '../../../features/home_screen/presentation/destination_details/destinations_detail_screen.dart'
     as _i12;
 import '../../../features/landing_screen/landing_screen.dart' as _i4;
@@ -91,6 +93,11 @@ class AppRouter extends _i1.RootStackRouter {
               startedLatLng: args.startedLatLng,
               endingLatLng: args.endingLatLng,
               backPacking: args.backPacking);
+        }),
+    PostTravelRoute.name: (routeData) => _i1.MaterialPageX<void>(
+        routeData: routeData,
+        builder: (_) {
+          return const _i13.PostTravelScreen();
         })
   };
 
@@ -108,7 +115,8 @@ class AppRouter extends _i1.RootStackRouter {
         _i1.RouteConfig(DestinationRoute.name, path: '/destination-screen'),
         _i1.RouteConfig(UserListRoute.name, path: '/user-list-screen'),
         _i1.RouteConfig(DestinationDetailRoute.name,
-            path: '/destination-detail-screen')
+            path: '/destination-detail-screen'),
+        _i1.RouteConfig(PostTravelRoute.name, path: '/post-travel-screen')
       ];
 }
 
@@ -234,4 +242,10 @@ class DestinationDetailRouteArgs {
   final String endingLatLng;
 
   final String backPacking;
+}
+
+class PostTravelRoute extends _i1.PageRouteInfo {
+  const PostTravelRoute() : super(name, path: '/post-travel-screen');
+
+  static const String name = 'PostTravelRoute';
 }

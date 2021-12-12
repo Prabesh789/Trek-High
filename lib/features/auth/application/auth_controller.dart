@@ -22,6 +22,18 @@ final userIdProvider = StateProvider<String>(
   },
 );
 
+final userEmailProvider = StateProvider<String>(
+  (ref) {
+    return '';
+  },
+);
+
+final userContactProvider = StateProvider<String>(
+  (ref) {
+    return '';
+  },
+);
+
 class AuthController<T> extends StateNotifier<BaseState> {
   AuthController(
     this._read,
@@ -80,6 +92,8 @@ class AuthController<T> extends StateNotifier<BaseState> {
     state = response.fold(
       (success) {
         _read(userIdProvider).state = success.userId;
+        _read(userEmailProvider).state = success.email;
+        _read(userContactProvider).state = success.contact;
         return BaseState<UserResponse>.success(data: success);
       },
       (error) => BaseState<Failure>.error(error),

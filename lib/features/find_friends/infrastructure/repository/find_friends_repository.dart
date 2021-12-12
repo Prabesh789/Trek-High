@@ -5,6 +5,8 @@ import 'package:firebase_storage/firebase_storage.dart' as firebase_storage;
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:path/path.dart' as path;
 import 'package:trek_high/app/entities/failure.dart';
+import 'package:trek_high/features/find_friends/infrastructure/entities/post_travel_request/post_travel_request.dart';
+import 'package:trek_high/features/find_friends/infrastructure/entities/post_travel_response/post_travel_model.dart';
 import 'package:trek_high/features/share_story/infrastructure/entities/post_stories_request.dart';
 import 'package:trek_high/features/share_story/infrastructure/entities/post_stories_response.dart';
 
@@ -12,8 +14,8 @@ final postTravelRepository =
     Provider<IPostTravelRepository>((ref) => PostTravelRepository(ref.read));
 
 abstract class IPostTravelRepository {
-  Future<Either<PostStoryResponse, Failure>> postTravelling({
-    required PostStoryRequest postStoryRequest,
+  Future<Either<PostTravelResponse, Failure>> postTrek({
+    required PostTravelRequest postTravelRequest,
   });
 }
 
@@ -22,38 +24,21 @@ class PostTravelRepository implements IPostTravelRepository {
 
   // ignore: unused_field
   final Reader _read;
+  final FirebaseFirestore _firestore = FirebaseFirestore.instance;
 
   @override
-  Future<Either<PostStoryResponse, Failure>> postTravelling(
-      {required PostStoryRequest postStoryRequest}) async {
+  Future<Either<PostTravelResponse, Failure>> postTrek(
+      {required PostTravelRequest postTravelRequest}) async {
     try {
-      final fileName = path.basename(postStoryRequest.image.path);
-      final reference = firebase_storage.FirebaseStorage.instance
-          .ref()
-          .child('travelers_stories_images')
-          .child(fileName);
-      final uploadImage = reference.putFile(postStoryRequest.image);
-      firebase_storage.TaskSnapshot storageTaskSnapshot;
-      await uploadImage.then(
-        (value) {
-          storageTaskSnapshot = value;
-          storageTaskSnapshot.ref.getDownloadURL().then(
-            (downloadUrl) async {
-              await FirebaseFirestore.instance
-                  .collection('travelers_stories')
-                  .doc()
-                  .set(
-                {
-                  'title': postStoryRequest.title,
-                  'image': downloadUrl,
-                },
-              );
-            },
-          );
-        },
-      );
+      await _firestore.collection('travellers').doc().set({
+        'trek': postTravelRequest.trek,
+        'date': postTravelRequest.date,
+        'isEmail': postTravelRequest.myEmail,
+        'isContact': postTravelRequest.myContact,
+        'userId': postTravelRequest.userId,
+      });
       return Left(
-        PostStoryResponse(
+        PostTravelResponse(
           code: 200,
           message: 'Success',
         ),
