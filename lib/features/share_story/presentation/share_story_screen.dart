@@ -38,130 +38,366 @@ class _ShareStoryScreenState extends State<ShareStoryScreen> {
       ),
       body: Padding(
         padding: const EdgeInsets.symmetric(horizontal: 20),
-        child: Column(
-          children: [
-            const SizedBox(height: 20),
-            Container(
-              height: size.height / 8,
-              width: size.width,
-              decoration: BoxDecoration(
-                color: Theme.of(context).inputDecorationTheme.fillColor,
-                borderRadius: BorderRadius.circular(12),
-                boxShadow: [
-                  BoxShadow(
-                    offset: const Offset(0, 10),
-                    blurRadius: 50,
-                    color: Colors.black.withOpacity(0.1),
-                  ),
-                ],
-              ),
-              child: HookBuilder(builder: (context) {
-                final userId = useProvider(userIdProvider);
-                return StreamBuilder<Object>(
-                  stream: FirebaseFirestore.instance
-                      .collection('users')
-                      .doc(userId.state)
-                      .snapshots(),
-                  builder: (context, snapshot) {
-                    if (!snapshot.hasData) {
-                      return const CircleAvatar(
-                        radius: 65,
-                        child: Center(
-                          child: CustomShimmer(),
-                        ),
-                      );
-                    } else if (snapshot.data != null) {
-                      final userData = snapshot.data! as DocumentSnapshot;
-                      return Padding(
-                        padding: const EdgeInsets.symmetric(horizontal: 20),
-                        child: Column(
-                          children: [
-                            const SizedBox(height: 20),
-                            Row(
+        child: SingleChildScrollView(
+          child: Column(
+            children: [
+              const SizedBox(height: 20),
+              Container(
+                height: size.height / 8,
+                width: size.width,
+                decoration: BoxDecoration(
+                  color: Theme.of(context).inputDecorationTheme.fillColor,
+                  borderRadius: BorderRadius.circular(12),
+                  boxShadow: [
+                    BoxShadow(
+                      offset: const Offset(0, 10),
+                      blurRadius: 50,
+                      color: Colors.black.withOpacity(0.1),
+                    ),
+                  ],
+                ),
+                child: HookBuilder(
+                  builder: (context) {
+                    final userId = useProvider(userIdProvider);
+                    return StreamBuilder<Object>(
+                      stream: FirebaseFirestore.instance
+                          .collection('users')
+                          .doc(userId.state)
+                          .snapshots(),
+                      builder: (context, snapshot) {
+                        if (!snapshot.hasData) {
+                          return const CircleAvatar(
+                            radius: 65,
+                            child: Center(
+                              child: CustomShimmer(),
+                            ),
+                          );
+                        } else if (snapshot.data != null) {
+                          final userData = snapshot.data! as DocumentSnapshot;
+                          return Padding(
+                            padding: const EdgeInsets.symmetric(horizontal: 20),
+                            child: Column(
                               children: [
-                                Column(
+                                const SizedBox(height: 20),
+                                Row(
                                   children: [
-                                    CircleAvatar(
-                                      radius: 20,
-                                      child: CachedNetworkImage(
-                                        imageUrl: '${userData['image']}',
-                                        imageBuilder: (context, imageProvider) {
-                                          return Container(
-                                            decoration: BoxDecoration(
-                                              shape: BoxShape.circle,
-                                              image: DecorationImage(
-                                                fit: BoxFit.cover,
-                                                colorFilter: ColorFilter.mode(
-                                                  Colors.black.withOpacity(.1),
-                                                  BlendMode.darken,
+                                    Column(
+                                      children: [
+                                        CircleAvatar(
+                                          radius: 20,
+                                          child: CachedNetworkImage(
+                                            imageUrl: '${userData['image']}',
+                                            imageBuilder:
+                                                (context, imageProvider) {
+                                              return Container(
+                                                decoration: BoxDecoration(
+                                                  shape: BoxShape.circle,
+                                                  image: DecorationImage(
+                                                    fit: BoxFit.cover,
+                                                    colorFilter:
+                                                        ColorFilter.mode(
+                                                      Colors.black
+                                                          .withOpacity(.1),
+                                                      BlendMode.darken,
+                                                    ),
+                                                    image: imageProvider,
+                                                  ),
                                                 ),
-                                                image: imageProvider,
-                                              ),
-                                            ),
-                                          );
-                                        },
-                                        errorWidget: (context, error, url) {
-                                          return const SizedBox();
-                                        },
-                                      ),
+                                              );
+                                            },
+                                            errorWidget: (context, error, url) {
+                                              return const SizedBox();
+                                            },
+                                          ),
+                                        ),
+                                        const SizedBox(height: 5),
+                                        Text(
+                                          '${userData['fullName']}',
+                                        ),
+                                      ],
                                     ),
-                                    const SizedBox(height: 5),
-                                    Text(
-                                      '${userData['fullName']}',
+                                    const SizedBox(width: 30),
+                                    InkWell(
+                                      onTap: () {
+                                        StoryDetailBottomSheet
+                                            .showStoryDetailBottomSheet(
+                                                context: context);
+                                      },
+                                      child: Column(
+                                        crossAxisAlignment:
+                                            CrossAxisAlignment.start,
+                                        children: [
+                                          Row(
+                                            children: [
+                                              const SizedBox(width: 40),
+                                              Text(
+                                                'Share your Stories...',
+                                                style: Theme.of(context)
+                                                    .textTheme
+                                                    .subtitle1
+                                                    ?.copyWith(
+                                                      color: Colors.grey,
+                                                      fontWeight:
+                                                          FontWeight.w600,
+                                                    ),
+                                              ),
+                                            ],
+                                          ),
+                                          const SizedBox(height: 5),
+                                          Row(
+                                            children: const [
+                                              SizedBox(width: 40),
+                                              Icon(Icons.image_outlined),
+                                              SizedBox(width: 40),
+                                              Icon(Icons.text_fields),
+                                            ],
+                                          )
+                                        ],
+                                      ),
                                     )
                                   ],
                                 ),
-                                const SizedBox(width: 30),
-                                InkWell(
-                                  onTap: () {
-                                    StoryDetailBottomSheet
-                                        .showStoryDetailBottomSheet(
-                                            context: context);
-                                  },
-                                  child: Column(
-                                    crossAxisAlignment:
-                                        CrossAxisAlignment.start,
-                                    children: [
-                                      Row(
-                                        children: [
-                                          const SizedBox(width: 40),
-                                          Text(
-                                            'Share your Stories...',
-                                            style: Theme.of(context)
-                                                .textTheme
-                                                .subtitle1
-                                                ?.copyWith(
-                                                  color: Colors.grey,
-                                                  fontWeight: FontWeight.w600,
-                                                ),
-                                          ),
-                                        ],
-                                      ),
-                                      const SizedBox(height: 5),
-                                      Row(
-                                        children: const [
-                                          SizedBox(width: 40),
-                                          Icon(Icons.image_outlined),
-                                          SizedBox(width: 40),
-                                          Icon(Icons.text_fields),
-                                        ],
-                                      )
-                                    ],
-                                  ),
-                                )
                               ],
                             ),
-                          ],
-                        ),
+                          );
+                        } else {
+                          return const SizedBox();
+                        }
+                      },
+                    );
+                  },
+                ),
+              ),
+              const SizedBox(height: 25),
+              SizedBox(
+                child: StreamBuilder<Object>(
+                  stream: FirebaseFirestore.instance
+                      .collection('travelers_stories')
+                      .snapshots(),
+                  builder: (context, AsyncSnapshot<Object> snapshot) {
+                    if (!snapshot.hasData) {
+                      return const SizedBox();
+                    } else if (snapshot.data != null) {
+                      final storiesData = snapshot.data! as QuerySnapshot;
+                      return ListView.builder(
+                        shrinkWrap: true,
+                        physics: const NeverScrollableScrollPhysics(),
+                        itemCount: storiesData.docs.length,
+                        itemBuilder: (context, index) {
+                          return Padding(
+                            padding: const EdgeInsets.symmetric(
+                                horizontal: 10, vertical: 10),
+                            child: Container(
+                              width: size.width,
+                              decoration: BoxDecoration(
+                                color: Theme.of(context)
+                                    .inputDecorationTheme
+                                    .fillColor,
+                                borderRadius: BorderRadius.circular(25),
+                                boxShadow: [
+                                  BoxShadow(
+                                    offset: const Offset(0, 10),
+                                    blurRadius: 50,
+                                    color: Colors.black.withOpacity(0.1),
+                                  ),
+                                ],
+                              ),
+                              child: Padding(
+                                padding: const EdgeInsets.all(15),
+                                child: Column(
+                                  crossAxisAlignment: CrossAxisAlignment.start,
+                                  children: [
+                                    StreamBuilder(
+                                        stream: FirebaseFirestore.instance
+                                            .collection('users')
+                                            .doc(
+                                              '${storiesData.docs[index]['userId']}',
+                                            )
+                                            .snapshots(),
+                                        builder: (context, snapshot) {
+                                          if (!snapshot.hasData) {
+                                            return const SizedBox();
+                                            // ignore: unnecessary_null_comparison
+                                          } else if (snapshot.hasData != null) {
+                                            final individualUserData = snapshot
+                                                .data! as DocumentSnapshot;
+                                            final user = individualUserData
+                                                .data()! as Map;
+                                            return Column(
+                                              children: [
+                                                CircleAvatar(
+                                                  radius: 20,
+                                                  child: CachedNetworkImage(
+                                                    imageUrl:
+                                                        '${user['image']}',
+                                                    imageBuilder: (context,
+                                                        imageProvider) {
+                                                      return Container(
+                                                        decoration:
+                                                            BoxDecoration(
+                                                          shape:
+                                                              BoxShape.circle,
+                                                          image:
+                                                              DecorationImage(
+                                                            fit: BoxFit.cover,
+                                                            colorFilter:
+                                                                ColorFilter
+                                                                    .mode(
+                                                              Colors.black
+                                                                  .withOpacity(
+                                                                      .1),
+                                                              BlendMode.darken,
+                                                            ),
+                                                            image:
+                                                                imageProvider,
+                                                          ),
+                                                        ),
+                                                      );
+                                                    },
+                                                    errorWidget:
+                                                        (context, error, url) {
+                                                      return const SizedBox();
+                                                    },
+                                                  ),
+                                                ),
+                                                Text(
+                                                  user['fullName'].toString(),
+                                                  style: Theme.of(context)
+                                                      .textTheme
+                                                      .subtitle1
+                                                      ?.copyWith(
+                                                        fontSize: 14,
+                                                        fontWeight:
+                                                            FontWeight.w600,
+                                                      ),
+                                                  maxLines: 20,
+                                                  textAlign: TextAlign.justify,
+                                                ),
+                                                const Divider(),
+                                              ],
+                                            );
+                                          } else {
+                                            return const SizedBox();
+                                          }
+                                        }),
+                                    Text(
+                                      '${storiesData.docs[index]['title']}',
+                                      style: Theme.of(context)
+                                          .textTheme
+                                          .subtitle1
+                                          ?.copyWith(
+                                            fontSize: 14,
+                                            fontWeight: FontWeight.w600,
+                                          ),
+                                      maxLines: 20,
+                                      textAlign: TextAlign.justify,
+                                    ),
+                                    const SizedBox(height: 10),
+                                    SizedBox(
+                                      height: size.height / 5,
+                                      child: ClipRRect(
+                                        borderRadius: BorderRadius.circular(18),
+                                        child: CachedNetworkImage(
+                                          imageUrl:
+                                              '${storiesData.docs[index]['image']}',
+                                          fit: BoxFit.cover,
+                                          placeholder: (contexr, url) {
+                                            return CustomShimmer(
+                                              radius: 0,
+                                              height: size.height / 4,
+                                              width: size.width,
+                                            );
+                                          },
+                                          errorWidget: (context, error, url) {
+                                            return CustomShimmer(
+                                              radius: 0,
+                                              height: size.height / 4,
+                                              width: size.width,
+                                            );
+                                          },
+                                          imageBuilder:
+                                              (context, imageProvider) {
+                                            return Container(
+                                              decoration: BoxDecoration(
+                                                image: DecorationImage(
+                                                  fit: BoxFit.cover,
+                                                  colorFilter: ColorFilter.mode(
+                                                    Colors.black
+                                                        .withOpacity(.4),
+                                                    BlendMode.darken,
+                                                  ),
+                                                  image: imageProvider,
+                                                ),
+                                              ),
+                                            );
+                                          },
+                                        ),
+                                      ),
+                                    ),
+                                    const SizedBox(height: 10),
+                                    Row(
+                                      children: [
+                                        if (storiesData.docs[index]
+                                                ['isFavorite'] ==
+                                            false) ...[
+                                          InkWell(
+                                            onTap: () async {
+                                              await FirebaseFirestore.instance
+                                                  .collection(
+                                                      'travelers_stories')
+                                                  .doc(storiesData
+                                                      .docs[index].id)
+                                                  .update(
+                                                {'isFavorite': true},
+                                              );
+                                            },
+                                            child: Icon(
+                                              Icons.favorite_outline,
+                                              size: 45,
+                                              color: Theme.of(context)
+                                                  .appBarTheme
+                                                  .backgroundColor,
+                                            ),
+                                          ),
+                                        ] else ...[
+                                          InkWell(
+                                            onDoubleTap: () async {
+                                              await FirebaseFirestore.instance
+                                                  .collection(
+                                                      'travelers_stories')
+                                                  .doc(storiesData
+                                                      .docs[index].id)
+                                                  .update(
+                                                {'isFavorite': false},
+                                              );
+                                            },
+                                            child: Icon(
+                                              Icons.favorite,
+                                              size: 45,
+                                              color: Theme.of(context)
+                                                  .appBarTheme
+                                                  .backgroundColor,
+                                            ),
+                                          ),
+                                        ],
+                                      ],
+                                    )
+                                  ],
+                                ),
+                              ),
+                            ),
+                          );
+                        },
                       );
                     } else {
                       return const SizedBox();
                     }
                   },
-                );
-              }),
-            )
-          ],
+                ),
+              ),
+              const SizedBox(height: 25),
+            ],
+          ),
         ),
       ),
     );

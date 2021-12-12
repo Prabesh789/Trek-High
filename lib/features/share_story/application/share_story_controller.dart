@@ -26,12 +26,16 @@ class ShareStoryController<T> extends StateNotifier<BaseState> {
   Future<void> shareStory({
     required String title,
     required File image,
+    required String userId,
+    required bool isFavorite,
   }) async {
     state = const BaseState<void>.loading();
 
     final shareStory = PostStoryRequest(
       title: title,
       image: image,
+      userId: userId,
+      isFavorite: isFavorite,
     );
     final response = await _repo.shareStory(postStoryRequest: shareStory);
 

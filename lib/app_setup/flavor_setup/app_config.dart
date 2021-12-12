@@ -37,5 +37,7 @@ class _Config {
     WHERE_AM_I: 'stage',
   };
 
-  static Map<String, dynamic> prodConstants = {WHERE_AM_I: 'production'};
+  static Map<String, dynamic> prodConstants = {
+    WHERE_AM_I: 'production',
+  };
 }

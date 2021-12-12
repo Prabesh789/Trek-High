@@ -12,6 +12,7 @@ import 'package:trek_high/app_setup/route/app_router.dart';
 import 'package:trek_high/core/entities/base_state.dart';
 import 'package:trek_high/core/widgets/custom_button.dart';
 import 'package:trek_high/core/widgets/custom_textfield.dart';
+import 'package:trek_high/features/auth/application/auth_controller.dart';
 import 'package:trek_high/features/share_story/application/share_story_controller.dart';
 
 final sharemyStoryController =
@@ -46,6 +47,7 @@ class _StoryDetailsState extends State<StoryDetails> {
   late int hasImage = 1;
   late File _imageFile = File('');
   final ImagePicker _picker = ImagePicker();
+
   @override
   Widget build(BuildContext context) {
     final size = MediaQuery.of(context).size;
@@ -53,6 +55,7 @@ class _StoryDetailsState extends State<StoryDetails> {
     final _storyTextfocusNode = useFocusNode();
 
     return HookBuilder(builder: (context) {
+      final userId = useProvider(userIdProvider);
       final state = useProvider(sharemyStoryController);
       return Padding(
         padding: const EdgeInsets.symmetric(horizontal: 20),
@@ -95,6 +98,8 @@ class _StoryDetailsState extends State<StoryDetails> {
                               .shareStory(
                                 title: _storyTextController.text.trim(),
                                 image: _imageFile,
+                                userId: userId.state,
+                                isFavorite: false,
                               );
                         },
                         buttonText: 'Post',

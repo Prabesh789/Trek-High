@@ -4,6 +4,8 @@ import 'package:easy_localization/easy_localization.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
+import 'package:trek_high/core/widgets/custom_body_widget.dart';
+import 'package:trek_high/core/widgets/custom_button.dart';
 import 'package:trek_high/core/widgets/custom_notification.dart';
 import 'package:trek_high/core/widgets/custom_shimmer.dart';
 import 'package:trek_high/features/home_screen/presentation/widgets/drawer_nav_bar.dart';
@@ -18,6 +20,8 @@ class ProfileScreen extends StatefulHookWidget {
 class _ProfileScreenState extends State<ProfileScreen> {
   final FirebaseAuth auth = FirebaseAuth.instance;
   late String userId = auth.currentUser!.uid;
+  late bool isUpdate = false;
+  late bool isEnabled = false;
 
   @override
   void initState() {
@@ -31,6 +35,44 @@ class _ProfileScreenState extends State<ProfileScreen> {
       },
     );
     super.initState();
+  }
+
+  final _fullNamecontroller = TextEditingController();
+  final _emailController = TextEditingController();
+  final _countryController = TextEditingController();
+  final _contactController = TextEditingController();
+  final _aboutMeController = TextEditingController();
+
+  //Method to Update email in database
+  void updateEmail() async {
+    await FirebaseFirestore.instance
+        .collection('user')
+        .doc(userId)
+        .update({'email': _emailController.text.trim()});
+  }
+
+  //Method to Update country in database
+  void updateCountry() async {
+    await FirebaseFirestore.instance
+        .collection('user')
+        .doc(userId)
+        .update({'country': _countryController.text.trim()});
+  }
+
+  //Method to Update contact number in database
+  void updateContactNumber() async {
+    await FirebaseFirestore.instance
+        .collection('user')
+        .doc(userId)
+        .update({'contact': _contactController.text.trim()});
+  }
+
+  //Method to Update about me in database
+  void updateAboutMe() async {
+    await FirebaseFirestore.instance
+        .collection('user')
+        .doc(userId)
+        .update({'aboutYou': _aboutMeController.text.trim()});
   }
 
   @override
@@ -52,119 +94,166 @@ class _ProfileScreenState extends State<ProfileScreen> {
         ),
         actions: const [CustomNotification()],
       ),
-      body: Padding(
-        padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 30),
-        child: Align(
-          alignment: Alignment.topCenter,
-          child: Container(
-            height: size.height / 1.4,
-            width: size.width / 1.3,
-            decoration: BoxDecoration(
-              color: Theme.of(context).inputDecorationTheme.fillColor,
-              borderRadius: BorderRadius.circular(12),
-              boxShadow: [
-                BoxShadow(
-                  offset: const Offset(0, 10),
-                  blurRadius: 50,
-                  color: Colors.black.withOpacity(0.08),
+      body: SingleChildScrollView(
+        child: CustomBodyWidget(
+          child: Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 30),
+            child: Align(
+              alignment: Alignment.topCenter,
+              child: Container(
+                width: size.width / 1.3,
+                decoration: BoxDecoration(
+                  color: Theme.of(context).inputDecorationTheme.fillColor,
+                  borderRadius: BorderRadius.circular(12),
+                  boxShadow: [
+                    BoxShadow(
+                      offset: const Offset(0, 10),
+                      blurRadius: 50,
+                      color: Colors.black.withOpacity(0.08),
+                    ),
+                  ],
                 ),
-              ],
-            ),
-            child: Column(
-              children: [
-                const SizedBox(height: 25),
-                StreamBuilder<Object>(
-                  stream: FirebaseFirestore.instance
-                      .collection('users')
-                      .doc(userId)
-                      .snapshots(),
-                  builder: (context, snapshot) {
-                    if (!snapshot.hasData) {
-                      return const CircleAvatar(
-                        radius: 65,
-                        child: Center(
-                          child: CustomShimmer(),
-                        ),
-                      );
-                    } else if (snapshot.data != null) {
-                      final userData = snapshot.data! as DocumentSnapshot;
-                      return Padding(
-                        padding: const EdgeInsets.symmetric(horizontal: 20),
-                        child: Column(
-                          children: [
-                            CircleAvatar(
-                              radius: 65,
-                              child: CachedNetworkImage(
-                                imageUrl: '${userData['image']}',
-                                imageBuilder: (context, imageProvider) {
-                                  return Container(
-                                    decoration: BoxDecoration(
-                                      shape: BoxShape.circle,
-                                      image: DecorationImage(
-                                        fit: BoxFit.cover,
-                                        colorFilter: ColorFilter.mode(
-                                          Colors.black.withOpacity(.1),
-                                          BlendMode.darken,
+                child: Column(
+                  children: [
+                    const SizedBox(height: 25),
+                    StreamBuilder<Object>(
+                      stream: FirebaseFirestore.instance
+                          .collection('users')
+                          .doc(userId)
+                          .snapshots(),
+                      builder: (context, snapshot) {
+                        if (!snapshot.hasData) {
+                          return const CircleAvatar(
+                            radius: 65,
+                            child: Center(
+                              child: CustomShimmer(),
+                            ),
+                          );
+                        } else if (snapshot.data != null) {
+                          final userData = snapshot.data! as DocumentSnapshot;
+                          _fullNamecontroller.text = '${userData['fullName']}';
+                          _emailController.text = '${userData['email']}';
+                          _countryController.text = '${userData['address']}';
+                          _contactController.text = '${userData['contact']}';
+                          _aboutMeController.text = '${userData['aboutYou']}';
+                          return Padding(
+                            padding: const EdgeInsets.symmetric(horizontal: 20),
+                            child: Column(
+                              children: [
+                                CircleAvatar(
+                                  radius: 65,
+                                  child: CachedNetworkImage(
+                                    imageUrl: '${userData['image']}',
+                                    imageBuilder: (context, imageProvider) {
+                                      return Container(
+                                        decoration: BoxDecoration(
+                                          shape: BoxShape.circle,
+                                          image: DecorationImage(
+                                            fit: BoxFit.cover,
+                                            colorFilter: ColorFilter.mode(
+                                              Colors.black.withOpacity(.1),
+                                              BlendMode.darken,
+                                            ),
+                                            image: imageProvider,
+                                          ),
                                         ),
-                                        image: imageProvider,
+                                      );
+                                    },
+                                    errorWidget: (context, error, url) {
+                                      return const SizedBox();
+                                    },
+                                  ),
+                                ),
+                                Row(
+                                  children: [
+                                    const Spacer(),
+                                    InkWell(
+                                      onTap: () {
+                                        setState(() {
+                                          isEnabled = true;
+                                        });
+                                      },
+                                      child: Text(
+                                        'Update',
+                                        style: Theme.of(context)
+                                            .textTheme
+                                            .bodyText1
+                                            ?.copyWith(
+                                              fontSize: 10,
+                                            ),
                                       ),
                                     ),
-                                  );
-                                },
-                                errorWidget: (context, error, url) {
-                                  return const SizedBox();
-                                },
-                              ),
+                                  ],
+                                ),
+                                const Divider(
+                                  height: 40,
+                                ),
+                                profileDetails(
+                                  context: context,
+                                  title: 'Full Name: ',
+                                  textEditingController: _fullNamecontroller,
+                                ),
+                                profileDetails(
+                                  context: context,
+                                  title: 'Email: ',
+                                  textEditingController: _emailController,
+                                ),
+                                profileDetails(
+                                  context: context,
+                                  title: 'Country: ',
+                                  textEditingController: _contactController,
+                                ),
+                                profileDetails(
+                                  context: context,
+                                  title: 'Contact: +977 ',
+                                  textEditingController: _contactController,
+                                ),
+                                Column(
+                                  crossAxisAlignment: CrossAxisAlignment.start,
+                                  children: [
+                                    const Text('About me: '),
+                                    profileDetails(
+                                      context: context,
+                                      title: '',
+                                      textEditingController: _aboutMeController,
+                                      maxLines: 10,
+                                      border: InputBorder.none,
+                                    ),
+                                  ],
+                                ),
+                                if (isEnabled == true) ...[
+                                  CustomButton(
+                                    buttonText: 'Profile update',
+                                    onPressed: () async {
+                                      await FirebaseFirestore.instance
+                                          .collection('user')
+                                          .doc(userData.id)
+                                          .update(
+                                        {'email': 'email@gmail.com'},
+                                      );
+                                      setState(() {
+                                        isUpdate = false;
+                                      });
+                                      // updateFullname();
+                                      // updateEmail();
+                                      // updateCountry();
+                                      // updateContactNumber();
+                                      // updateAboutMe();
+                                    },
+                                  )
+                                ] else
+                                  ...[]
+                              ],
                             ),
-                            const Divider(
-                              height: 40,
-                            ),
-                            profileDetails(
-                              context: context,
-                              title: 'Full Name: ',
-                              detail: '${userData['fullName']}',
-                            ),
-                            const Divider(),
-                            profileDetails(
-                              context: context,
-                              title: 'Email: ',
-                              detail: '${userData['email']}',
-                            ),
-                            const Divider(),
-                            profileDetails(
-                              context: context,
-                              title: 'Country: ',
-                              detail: '${userData['address']}',
-                            ),
-                            const Divider(),
-                            profileDetails(
-                              context: context,
-                              title: 'Contact: +977 ',
-                              detail: '${userData['contact']}',
-                            ),
-                            const Divider(),
-                            profileDetails(
-                              context: context,
-                              title: 'About me: ',
-                              detail: '',
-                            ),
-                            SizedBox(
-                              child: Text(
-                                '       ${userData['aboutYou']}',
-                                style: Theme.of(context).textTheme.bodyText2,
-                                maxLines: 10,
-                                textAlign: TextAlign.justify,
-                              ),
-                            )
-                          ],
-                        ),
-                      );
-                    } else {
-                      return const SizedBox();
-                    }
-                  },
+                          );
+                        } else {
+                          return const SizedBox();
+                        }
+                      },
+                    ),
+                  ],
                 ),
-              ],
+              ),
             ),
           ),
         ),
@@ -172,29 +261,34 @@ class _ProfileScreenState extends State<ProfileScreen> {
     );
   }
 
-  Row profileDetails({
+  TextField profileDetails({
     required BuildContext context,
     // required DocumentSnapshot<Object?> userData,
-    required String title,
-    required String detail,
+    String? title,
+    int? maxLines,
+    InputBorder? border,
+    TextEditingController? textEditingController,
   }) {
-    return Row(
-      children: [
-        Padding(
-          padding: const EdgeInsets.symmetric(vertical: 4),
-          child: Text(
-            title,
-            style: Theme.of(context).textTheme.bodyText2,
-          ),
-        ),
-        Text(
-          detail,
-          style: Theme.of(context).textTheme.bodyText2,
-          maxLines: 5,
-          overflow: TextOverflow.ellipsis,
-          textAlign: TextAlign.justify,
-        ),
-      ],
+    return TextField(
+      enabled: isEnabled,
+      maxLines: maxLines,
+      style: Theme.of(context).textTheme.bodyText2,
+      controller: textEditingController,
+      decoration: InputDecoration(
+        prefix: Text(title!),
+        prefixStyle: Theme.of(context).textTheme.bodyText2,
+        border: border,
+        focusColor: Colors.transparent,
+      ),
+      onSubmitted: (value) {},
     );
+  }
+
+  //Method to Update full name in database
+  void updateFullname() async {
+    await FirebaseFirestore.instance
+        .collection('user')
+        .doc(userId)
+        .update({'fullName': _fullNamecontroller.text.trim()});
   }
 }
