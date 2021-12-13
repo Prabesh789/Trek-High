@@ -116,30 +116,40 @@ class _FindFriendsState extends State<FindFriends> {
                                       individualUserData.data()! as Map;
                                   return Column(
                                     children: [
-                                      CircleAvatar(
-                                        radius: 20,
-                                        child: CachedNetworkImage(
-                                          imageUrl: '${user['image']}',
-                                          imageBuilder:
-                                              (context, imageProvider) {
-                                            return Container(
-                                              decoration: BoxDecoration(
-                                                shape: BoxShape.circle,
-                                                image: DecorationImage(
-                                                  fit: BoxFit.cover,
-                                                  colorFilter: ColorFilter.mode(
-                                                    Colors.black
-                                                        .withOpacity(.1),
-                                                    BlendMode.darken,
+                                      InkWell(
+                                        onTap: () {
+                                          aboutTraveller(
+                                            name: '${user['fullName']}',
+                                            about: '${user['aboutYou']}',
+                                            context: context,
+                                          );
+                                        },
+                                        child: CircleAvatar(
+                                          radius: 20,
+                                          child: CachedNetworkImage(
+                                            imageUrl: '${user['image']}',
+                                            imageBuilder:
+                                                (context, imageProvider) {
+                                              return Container(
+                                                decoration: BoxDecoration(
+                                                  shape: BoxShape.circle,
+                                                  image: DecorationImage(
+                                                    fit: BoxFit.cover,
+                                                    colorFilter:
+                                                        ColorFilter.mode(
+                                                      Colors.black
+                                                          .withOpacity(.1),
+                                                      BlendMode.darken,
+                                                    ),
+                                                    image: imageProvider,
                                                   ),
-                                                  image: imageProvider,
                                                 ),
-                                              ),
-                                            );
-                                          },
-                                          errorWidget: (context, error, url) {
-                                            return const SizedBox();
-                                          },
+                                              );
+                                            },
+                                            errorWidget: (context, error, url) {
+                                              return const SizedBox();
+                                            },
+                                          ),
                                         ),
                                       ),
                                       Text(
@@ -290,6 +300,56 @@ class _FindFriendsState extends State<FindFriends> {
           ),
         ],
       ),
+    );
+  }
+
+  void aboutTraveller(
+      {required BuildContext context,
+      required String name,
+      required String about}) {
+    final Widget yesButton = TextButton(
+      child: Text(
+        'Close',
+        style: Theme.of(context).textTheme.subtitle1?.copyWith(
+              fontWeight: FontWeight.bold,
+              color: Colors.red,
+            ),
+      ),
+      onPressed: () {
+        Navigator.of(context).pop();
+      },
+    );
+    showDialog(
+      context: context,
+      barrierDismissible: true,
+      builder: (BuildContext context) {
+        return Container(
+          decoration: BoxDecoration(
+            borderRadius: BorderRadius.circular(14),
+          ),
+          child: AlertDialog(
+            backgroundColor: Theme.of(context).backgroundColor,
+            shape: const RoundedRectangleBorder(
+              borderRadius: BorderRadius.all(
+                Radius.circular(10),
+              ),
+            ),
+            title: Text(
+              'About $name',
+              style: Theme.of(context).textTheme.subtitle1?.copyWith(
+                    fontWeight: FontWeight.bold,
+                  ),
+            ),
+            content: Text(
+              about,
+              style: const TextStyle(fontSize: 16),
+            ),
+            actions: [
+              yesButton,
+            ],
+          ),
+        );
+      },
     );
   }
 }

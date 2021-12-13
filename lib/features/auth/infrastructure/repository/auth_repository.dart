@@ -1,13 +1,17 @@
+import 'dart:convert';
+
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:dartz/dartz.dart';
 import 'package:dio/dio.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_storage/firebase_storage.dart' as firebase_storage;
 import 'package:hooks_riverpod/hooks_riverpod.dart';
+import 'package:http/http.dart' as http;
 import 'package:path/path.dart' as path;
 import 'package:trek_high/app/entities/failure.dart';
 import 'package:trek_high/features/auth/infrastructure/entities/request/login_request/login_request.dart';
 import 'package:trek_high/features/auth/infrastructure/entities/request/new_signup_request/new_signup_request.dart';
+import 'package:trek_high/features/auth/infrastructure/entities/response/country_list_response/country_list_response.dart';
 import 'package:trek_high/features/auth/infrastructure/entities/response/new_signup_response/new_signup_response.dart';
 import 'package:trek_high/features/auth/infrastructure/entities/response/user_response/user_response.dart';
 
@@ -29,6 +33,8 @@ abstract class IAuthRepository {
   Future<Either<UserResponse, Failure>> loginUser({
     required LoginRequest loginRequest,
   });
+  /* country list */
+  Future<Either<CountryListResponse, Failure>> countryNameList();
 }
 
 class AuthRepository implements IAuthRepository {
@@ -148,6 +154,37 @@ class AuthRepository implements IAuthRepository {
         Failure(
           errorMessage:
               e.message ?? 'Something went wrong, try in few moments !',
+        ),
+      );
+    } catch (e) {
+      return Right(
+        Failure(
+          errorMessage: e.toString(),
+        ),
+      );
+    }
+  }
+
+  //-------  to get country list------------------
+  @override
+  Future<Either<CountryListResponse, Failure>> countryNameList() async {
+    try {
+      final url = Uri.parse(
+        //api endpoinds for country list
+        'https://countriesnow.space/api/v0.1/countries/flag/unicode',
+      );
+
+      final response = await http.get(
+        url,
+      );
+      final parsed = json.decode(response.body);
+      final result =
+          CountryListResponse.fromJson(parsed as Map<String, dynamic>);
+      return Left(result);
+    } on DioError catch (e) {
+      return Right(
+        Failure(
+          errorMessage: e.toString(),
         ),
       );
     } catch (e) {

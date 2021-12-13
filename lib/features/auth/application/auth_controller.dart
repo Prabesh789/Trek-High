@@ -5,6 +5,7 @@ import 'package:trek_high/app/entities/failure.dart';
 import 'package:trek_high/core/entities/base_state.dart';
 import 'package:trek_high/features/auth/infrastructure/entities/request/login_request/login_request.dart';
 import 'package:trek_high/features/auth/infrastructure/entities/request/new_signup_request/new_signup_request.dart';
+import 'package:trek_high/features/auth/infrastructure/entities/response/country_list_response/country_list_response.dart';
 import 'package:trek_high/features/auth/infrastructure/entities/response/new_signup_response/new_signup_response.dart';
 import 'package:trek_high/features/auth/infrastructure/entities/response/user_response/user_response.dart';
 import 'package:trek_high/features/auth/infrastructure/repository/auth_repository.dart';
@@ -97,6 +98,18 @@ class AuthController<T> extends StateNotifier<BaseState> {
         return BaseState<UserResponse>.success(data: success);
       },
       (error) => BaseState<Failure>.error(error),
+    );
+  }
+
+  Future<void> getCountryNameList() async {
+    state = const BaseState.loading();
+
+    final response = await _repo.countryNameList();
+    state = response.fold(
+      (data) => BaseState<CountryListResponse>.success(data: data),
+      (error) => BaseState.error(
+        error,
+      ),
     );
   }
 }

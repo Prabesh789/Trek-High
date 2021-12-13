@@ -1,4 +1,5 @@
 import 'dart:io';
+import 'dart:ui';
 
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
@@ -16,12 +17,16 @@ import 'package:trek_high/core/widgets/custom_body_widget.dart';
 import 'package:trek_high/core/widgets/custom_button.dart';
 import 'package:trek_high/core/widgets/custom_textfield.dart';
 import 'package:trek_high/features/auth/application/auth_controller.dart';
+import 'package:trek_high/features/auth/infrastructure/entities/response/country_list_response/country_list_response.dart';
 import 'package:trek_high/features/auth/infrastructure/entities/response/new_signup_response/new_signup_response.dart';
 import 'package:trek_high/features/auth/presentation/sign_screen/widgets/picture_selection_bottom_sheet.dart';
 
 final signupController =
     StateNotifierProvider.autoDispose<AuthController, BaseState>(
         authController);
+
+final countryListController =
+    StateNotifierProvider<AuthController, BaseState>(authController);
 
 class SignupScreen extends StatefulHookWidget {
   const SignupScreen({Key? key}) : super(key: key);
@@ -31,6 +36,8 @@ class SignupScreen extends StatefulHookWidget {
 }
 
 class _SignupScreenState extends State<SignupScreen> {
+  final _addressController = TextEditingController();
+  final _addressFocusNode = FocusNode();
   bool aboutYouself = false;
   late File? _imageFile = File('');
   final ImagePicker _picker = ImagePicker();
@@ -50,18 +57,22 @@ class _SignupScreenState extends State<SignupScreen> {
   }
 
   @override
+  void initState() {
+    context.read(countryListController.notifier).getCountryNameList();
+    super.initState();
+  }
+
+  @override
   Widget build(BuildContext context) {
     final _fullNameController = useTextEditingController();
     final _emailController = useTextEditingController();
     final _phoneNumberController = useTextEditingController();
-    final _addressController = useTextEditingController();
     final _passwordController = useTextEditingController();
     final _confirmPasswordController = useTextEditingController();
     final _aboutYourSelfController = useTextEditingController();
     final _fullNameFocusNode = useFocusNode();
     final _emailFocusNode = useFocusNode();
     final _phoneNumberFocusNode = useFocusNode();
-    final _addressFocusNode = useFocusNode();
     final _passwordFocusNode = useFocusNode();
     final _confirmPasswordFocusNode = useFocusNode();
     final size = MediaQuery.of(context).size;
@@ -221,24 +232,34 @@ class _SignupScreenState extends State<SignupScreen> {
                       },
                     ),
                     const SizedBox(height: 15),
-                    CustomTextfield(
-                      textEditingController: _addressController,
-                      focusNode: _addressFocusNode,
-                      labelText: tr('address'),
-                      prefixIcon: Icon(
-                        Icons.place,
-                        color: Theme.of(context).iconTheme.color,
+                    Padding(
+                      padding: const EdgeInsets.symmetric(horizontal: 2),
+                      child: InkWell(
+                        onTap: () {
+                          countryBottomSheet(context: context);
+                        },
+                        child: CustomTextfield(
+                          enabled: false,
+                          textEditingController: _addressController,
+                          focusNode: _addressFocusNode,
+                          labelText: tr('address'),
+                          prefixIcon: Icon(
+                            Icons.place,
+                            color: Theme.of(context).iconTheme.color,
+                          ),
+                          onEditingComplete: () {
+                            FocusScope.of(context)
+                                .requestFocus(_passwordFocusNode);
+                          },
+                          validator: (value) {
+                            if (value!.isEmpty) {
+                              return tr('required');
+                            } else {
+                              return null;
+                            }
+                          },
+                        ),
                       ),
-                      onEditingComplete: () {
-                        FocusScope.of(context).requestFocus(_passwordFocusNode);
-                      },
-                      validator: (value) {
-                        if (value!.isEmpty) {
-                          return tr('required');
-                        } else {
-                          return null;
-                        }
-                      },
                     ),
                     const SizedBox(height: 15),
                     CustomTextfield(
@@ -438,5 +459,177 @@ class _SignupScreenState extends State<SignupScreen> {
     });
     // ignore: use_build_context_synchronously
     await context.popRoute();
+  }
+
+  void countryBottomSheet({
+    required BuildContext context,
+  }) {
+    showModalBottomSheet(
+      context: context,
+      shape: const RoundedRectangleBorder(
+        borderRadius: BorderRadius.only(
+          topLeft: Radius.circular(20),
+          topRight: Radius.circular(20),
+        ),
+      ),
+      builder: (BuildContext context) {
+        final size = MediaQuery.of(context).size;
+        return HookBuilder(
+          builder: (context) {
+            final countryListState = useProvider(countryListController);
+            return BackdropFilter(
+              filter: ImageFilter.blur(sigmaX: 1, sigmaY: 1),
+              child: Container(
+                height: size.height,
+                decoration: const BoxDecoration(
+                  borderRadius: BorderRadius.only(
+                    topLeft: Radius.circular(20),
+                    topRight: Radius.circular(20),
+                  ),
+                  color: Colors.white,
+                ),
+                child: Column(
+                  children: [
+                    const SizedBox(height: 25),
+                    Text(
+                      'Country List',
+                      style: GoogleFonts.ptSerif(
+                        textStyle: const TextStyle(
+                          fontSize: 20,
+                          fontWeight: FontWeight.bold,
+                          overflow: TextOverflow.ellipsis,
+                          color: Colors.black,
+                        ),
+                      ),
+                    ),
+                    const SizedBox(height: 20),
+                    SingleChildScrollView(
+                      child: Column(
+                        children: [
+                          if (countryListState is BaseLoading) ...[
+                            Column(
+                              children: [
+                                SizedBox(
+                                  height: size.width / 2.5,
+                                ),
+                                Text(
+                                  'Loading...',
+                                  style: GoogleFonts.ptSerif(
+                                    textStyle: const TextStyle(
+                                      fontSize: 18,
+                                      fontWeight: FontWeight.w500,
+                                      overflow: TextOverflow.ellipsis,
+                                      color: Colors.grey,
+                                    ),
+                                  ),
+                                ),
+                              ],
+                            )
+                          ] else if (countryListState is BaseSuccess) ...[
+                            SizedBox(
+                              height: size.height / 2.1,
+                              child: ListView.separated(
+                                itemCount: (countryListState.data
+                                        as CountryListResponse)
+                                    .data
+                                    .length,
+                                itemBuilder: (context, item) {
+                                  final countryStateData = (countryListState
+                                          .data as CountryListResponse)
+                                      .data[item];
+
+                                  return InkWell(
+                                    onTap: () async {
+                                      setState(() {
+                                        _addressController.text =
+                                            countryStateData.name;
+                                      });
+                                      Navigator.of(context).pop();
+                                    },
+                                    child: Padding(
+                                      padding: const EdgeInsets.symmetric(
+                                        horizontal: 40,
+                                        vertical: 10,
+                                      ),
+                                      child: Row(
+                                        children: [
+                                          Text(
+                                            countryStateData.unicodeFlag
+                                                .toString(),
+                                            style: GoogleFonts.ptSerif(
+                                              textStyle: const TextStyle(
+                                                fontSize: 17,
+                                                fontWeight: FontWeight.bold,
+                                                overflow: TextOverflow.ellipsis,
+                                                color: Colors.grey,
+                                              ),
+                                            ),
+                                          ),
+                                          const SizedBox(width: 20),
+                                          SizedBox(
+                                            width: size.width / 1.5,
+                                            child: Text(
+                                              countryStateData.name.toString(),
+                                              style: GoogleFonts.ptSerif(
+                                                textStyle: const TextStyle(
+                                                  fontSize: 17,
+                                                  fontWeight: FontWeight.bold,
+                                                  overflow:
+                                                      TextOverflow.ellipsis,
+                                                  color: Colors.grey,
+                                                ),
+                                              ),
+                                              overflow: TextOverflow.ellipsis,
+                                            ),
+                                          ),
+                                        ],
+                                      ),
+                                    ),
+                                  );
+                                },
+                                separatorBuilder: (context, item) {
+                                  return Padding(
+                                    padding: const EdgeInsets.symmetric(
+                                        horizontal: 40, vertical: 10),
+                                    child: Container(
+                                      height: 1,
+                                      color: Colors.grey,
+                                    ),
+                                  );
+                                },
+                              ),
+                            )
+                          ] else if (countryListState is BaseError) ...[
+                            Column(
+                              children: [
+                                SizedBox(
+                                  height: size.width / 2.5,
+                                ),
+                                Text(
+                                  'Something went wrong !!!',
+                                  style: GoogleFonts.ptSerif(
+                                    textStyle: const TextStyle(
+                                      fontSize: 18,
+                                      fontWeight: FontWeight.w500,
+                                      overflow: TextOverflow.ellipsis,
+                                      color: Colors.grey,
+                                    ),
+                                  ),
+                                ),
+                              ],
+                            )
+                          ] else
+                            ...[],
+                        ],
+                      ),
+                    ),
+                  ],
+                ),
+              ),
+            );
+          },
+        );
+      },
+    );
   }
 }

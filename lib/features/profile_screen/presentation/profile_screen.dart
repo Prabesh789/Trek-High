@@ -164,27 +164,28 @@ class _ProfileScreenState extends State<ProfileScreen> {
                                     },
                                   ),
                                 ),
-                                Row(
-                                  children: [
-                                    const Spacer(),
-                                    InkWell(
-                                      onTap: () {
-                                        setState(() {
-                                          isEnabled = true;
-                                        });
-                                      },
-                                      child: Text(
-                                        'Update',
-                                        style: Theme.of(context)
-                                            .textTheme
-                                            .bodyText1
-                                            ?.copyWith(
-                                              fontSize: 10,
-                                            ),
-                                      ),
-                                    ),
-                                  ],
-                                ),
+                                //Todo update part of profile
+                                // Row(
+                                //   children: [
+                                //     const Spacer(),
+                                //     InkWell(
+                                //       onTap: () {
+                                //         setState(() {
+                                //           isEnabled = true;
+                                //         });
+                                //       },
+                                //       child: Text(
+                                //         'Update',
+                                //         style: Theme.of(context)
+                                //             .textTheme
+                                //             .bodyText1
+                                //             ?.copyWith(
+                                //               fontSize: 10,
+                                //             ),
+                                //       ),
+                                //     ),
+                                //   ],
+                                // ),
                                 const Divider(
                                   height: 40,
                                 ),
@@ -201,7 +202,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                                 profileDetails(
                                   context: context,
                                   title: 'Country: ',
-                                  textEditingController: _contactController,
+                                  textEditingController: _countryController,
                                 ),
                                 profileDetails(
                                   context: context,
@@ -225,15 +226,6 @@ class _ProfileScreenState extends State<ProfileScreen> {
                                   CustomButton(
                                     buttonText: 'Profile update',
                                     onPressed: () async {
-                                      await FirebaseFirestore.instance
-                                          .collection('user')
-                                          .doc(userData.id)
-                                          .update(
-                                        {'email': 'email@gmail.com'},
-                                      );
-                                      setState(() {
-                                        isUpdate = false;
-                                      });
                                       // updateFullname();
                                       // updateEmail();
                                       // updateCountry();

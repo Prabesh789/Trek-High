@@ -20,22 +20,11 @@ class _FindMeScreenState extends State<FindMeScreen> {
   late BitmapDescriptor myIcon = BitmapDescriptor.defaultMarker;
 
   late GoogleMapController googleMapController;
-  Set<Marker> allMarkers = {};
-  final List<Marker> markers = [];
 
-  void addMarker(LatLng cordinate) {
-    final id = Random().nextInt(100);
-    setState(() {
-      allMarkers.add(
-        Marker(
-          position: cordinate,
-          markerId: MarkerId(
-            id.toString(),
-          ),
-          icon: myIcon,
-        ),
-      );
-    });
+  @override
+  void initState() {
+    context.read(locationController.notifier).determinePosition(context);
+    super.initState();
   }
 
   @override
@@ -59,29 +48,33 @@ class _FindMeScreenState extends State<FindMeScreen> {
       body: HookBuilder(
         builder: (context) {
           final currentLocation = useProvider(currentLocationProvider);
-          final currentLocationData = currentLocation.currentLocationData;
+          Set<Marker> _marker() {
+            return <Marker>{
+              Marker(
+                markerId: const MarkerId('Current Location'),
+                position: LatLng(
+                  currentLocation.currentLocationData?.latitude ?? 0,
+                  currentLocation.currentLocationData?.longitude ?? 0,
+                ),
+                infoWindow: const InfoWindow(title: 'My Current Location'),
+              )
+            };
+          }
+
           return SizedBox(
             height: size.height - 20,
             child: GoogleMap(
-              markers: allMarkers,
+              markers: _marker(),
               myLocationEnabled: true,
               initialCameraPosition: CameraPosition(
                 target: LatLng(
-                  currentLocationData?.latitude ?? 27.6588,
-                  currentLocationData?.longitude ?? 85.3247,
+                  currentLocation.currentLocationData?.latitude ?? 0,
+                  currentLocation.currentLocationData?.longitude ?? 0,
                 ),
                 zoom: 2,
               ),
               onMapCreated: (controller) {
-                setState(() {
-                  googleMapController = controller;
-                });
-              },
-              onTap: (cordinate) {
-                googleMapController.animateCamera(
-                  CameraUpdate.newLatLng(cordinate),
-                );
-                addMarker(cordinate);
+                googleMapController = controller;
               },
             ),
           );
