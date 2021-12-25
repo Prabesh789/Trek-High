@@ -282,6 +282,8 @@ class _ProfileScreenState extends State<ProfileScreen> {
                 ),
               ),
             ),
+            const Text('Your shared stories'),
+            const SizedBox(height: 10),
             HookBuilder(builder: (context) {
               final userId = useProvider(userIdProvider);
               return YourStoryWidget(

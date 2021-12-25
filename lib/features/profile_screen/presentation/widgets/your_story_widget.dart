@@ -32,7 +32,6 @@ class _YourStoryWidgetState extends State<YourStoryWidget> {
             );
           } else if (snapshot.data != null) {
             final storiesData = snapshot.data! as QuerySnapshot;
-
             return ListView.builder(
               shrinkWrap: true,
               physics: const BouncingScrollPhysics(),
@@ -149,7 +148,29 @@ class _YourStoryWidgetState extends State<YourStoryWidget> {
                     ),
                   );
                 } else {
-                  return const SizedBox();
+                  return Stack(
+                    alignment: Alignment.center,
+                    children: [
+                      CircleAvatar(
+                        radius: 70,
+                        child: Image.asset('assets/images/empty_box.jpg'),
+                      ),
+                      SizedBox(
+                        width: size.width,
+                        child: Center(
+                          child: Column(
+                            children: const [
+                              Spacer(),
+                              Text(
+                                'You do not have any stories',
+                              ),
+                              SizedBox(height: 20)
+                            ],
+                          ),
+                        ),
+                      ),
+                    ],
+                  );
                 }
               },
             );
