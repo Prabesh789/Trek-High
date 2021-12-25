@@ -1,11 +1,14 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:trek_high/admin/presentation/admin_dasbboard_screen.dart';
 import 'package:trek_high/admin/presentation/destinations/destinations_screen.dart';
+import 'package:trek_high/admin/presentation/uploaded_destination_list/uploaded_destination_list.dart';
 import 'package:trek_high/admin/presentation/user_list/user_list_screen.dart';
 import 'package:trek_high/features/auth/presentation/login_screen/login_screen.dart';
 import 'package:trek_high/features/auth/presentation/sign_screen/sign_up_screen.dart';
 import 'package:trek_high/features/find_friends/presentation/widgets/post_travel_screen.dart';
 import 'package:trek_high/features/home_screen/presentation/destination_details/destinations_detail_screen.dart';
+import 'package:trek_high/features/info_app/app_policy_screen.dart';
+import 'package:trek_high/features/info_app/data_policy_screen.dart';
 import 'package:trek_high/features/landing_screen/landing_screen.dart';
 import 'package:trek_high/features/main_dashboard/presentation/bottom_navigation.dart';
 import 'package:trek_high/features/notification/presentation/notification_screen.dart';
@@ -47,6 +50,15 @@ import 'package:trek_high/features/splash_screen/splash_screen.dart';
     ),
     AutoRoute<void>(
       page: PostTravelScreen,
+    ),
+    AutoRoute<void>(
+      page: UploadedDestinationListScreen,
+    ),
+    AutoRoute<void>(
+      page: AppPolicyScreen,
+    ),
+    AutoRoute<void>(
+      page: DataPolicyScreen,
     )
   ],
   preferRelativeImports: true,

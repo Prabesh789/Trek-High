@@ -3,6 +3,7 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:easy_localization/easy_localization.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:fluttertoast/fluttertoast.dart';
@@ -101,9 +102,10 @@ class _UserListScreenState extends State<UserListScreen> {
                                   IconButton(
                                     onPressed: () {
                                       deleteAlertDialog(
-                                          id: snapshots.data!.docs[index].id,
-                                          username:
-                                              '${userData[index]['fullName']}');
+                                        id: snapshots.data!.docs[index].id,
+                                        username:
+                                            '${userData[index]['fullName']}',
+                                      );
                                     },
                                     icon: const Icon(
                                       Icons.delete,
@@ -193,9 +195,9 @@ class _UserListScreenState extends State<UserListScreen> {
     );
   }
 
-  Future<void> deleteUser({required String id}) {
+  Future<void> deleteUser({required String id}) async {
     final users = FirebaseFirestore.instance.collection('users');
-    return users.doc(id).delete().then(
+    await users.doc(id).delete().then(
       (value) {
         return const Text('Oops sorry !');
       },
@@ -203,4 +205,20 @@ class _UserListScreenState extends State<UserListScreen> {
       return Text(error.toString());
     });
   }
+
+  // Future<void> deleteUserPosts({required String id}) async {
+  //   final users = FirebaseFirestore.instance.collection('travellers');
+  //   // await users.doc().collection(collectionPath)
+  // }
+
+  // Future<void> deleteUserStories({required String id}) async {
+  //   final users = FirebaseFirestore.instance.collection('travelers_stories');
+  //   await users.doc(id).delete().then(
+  //     (value) {
+  //       return const Text('Oops sorry !');
+  //     },
+  //   ).catchError((error) {
+  //     return Text(error.toString());
+  //   });
+  // }
 }

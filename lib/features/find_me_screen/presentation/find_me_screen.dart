@@ -1,5 +1,3 @@
-import 'dart:math';
-
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
@@ -23,6 +21,7 @@ class _FindMeScreenState extends State<FindMeScreen> {
 
   @override
   void initState() {
+    context.read(locationController.notifier).determinePosition(context);
     context.read(locationController.notifier).determinePosition(context);
     super.initState();
   }

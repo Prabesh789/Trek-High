@@ -200,14 +200,13 @@ class _SignupScreenState extends State<SignupScreen> {
                             .requestFocus(_phoneNumberFocusNode);
                       },
                       validator: (String? value) {
+                        /**regex for email validation */
                         final regex = RegExp(
                             r"^[a-zA-Z0-9.a-zA-Z0-9.!#$%&'*+-/=?^_`{|}~]+@[a-zA-Z0-9]+\.[a-zA-Z]+");
                         if (value!.isEmpty) {
                           return tr('email_validation');
                         } else if (!regex.hasMatch(value)) {
                           return tr('email_validation1');
-                        } else {
-                          return null;
                         }
                       },
                     ),
@@ -419,6 +418,7 @@ class _SignupScreenState extends State<SignupScreen> {
                         buttonText: tr('sign_up'),
                         onPressed: () {
                           if (_formKey.currentState!.validate()) {
+                            /**register request */
                             context.read(signupController.notifier).signupUser(
                                   fullName: _fullNameController.text.trim(),
                                   password: _passwordController.text.trim(),

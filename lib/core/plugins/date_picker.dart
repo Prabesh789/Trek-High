@@ -13,12 +13,12 @@ import 'package:trek_high/core/plugins/custom_date_picker.dart';
 
 // const Size _calendarPortraitDialogSize = Size(330.0, 518.0);
 // const Size _calendarLandscapeDialogSize = Size(496.0, 346.0);
-const Size _inputPortraitDialogSize = Size(330.0, 270.0);
+const Size _inputPortraitDialogSize = Size(330, 270);
 // const Size _inputLandscapeDialogSize = Size(496, 160.0);
-const Size _inputRangeLandscapeDialogSize = Size(496, 164.0);
+const Size _inputRangeLandscapeDialogSize = Size(496, 164);
 const Duration _dialogSizeAnimationDuration = Duration(milliseconds: 200);
-const double _inputFormPortraitHeight = 98.0;
-const double _inputFormLandscapeHeight = 108.0;
+const double _inputFormPortraitHeight = 98;
+const double _inputFormLandscapeHeight = 108;
 
 Future<DateTime?> showDatePicker({
   required BuildContext context,
@@ -318,9 +318,7 @@ class _DatePickerDialogState extends State<CustomDatePickerDialog>
               : _inputFormLandscapeHeight,
           child: Shortcuts(
             shortcuts: _formShortcutMap,
-            child: Column(
-              children: const <Widget>[],
-            ),
+            child: Column(),
           ),
         ),
       );
@@ -457,9 +455,9 @@ class _DatePickerHeader extends StatelessWidget {
     this.entryModeButton,
   }) : super(key: key);
 
-  static const double _datePickerHeaderLandscapeWidth = 152.0;
-  static const double _datePickerHeaderPortraitHeight = 120.0;
-  static const double _headerPaddingLandscape = 16.0;
+  static const double _datePickerHeaderLandscapeWidth = 152;
+  static const double _datePickerHeaderPortraitHeight = 120;
+  static const double _headerPaddingLandscape = 16;
 
   /// The text that is displayed at the top of the header.
   ///
@@ -1187,7 +1185,7 @@ class _DateRangePickerDialogState extends State<DateRangePickerDialog>
         );
         size = mediaQuery.size;
         insetPadding = EdgeInsets.zero;
-        shape = const RoundedRectangleBorder(borderRadius: BorderRadius.zero);
+        shape = const RoundedRectangleBorder();
         elevation = 0;
         break;
 
@@ -1247,8 +1245,7 @@ class _DateRangePickerDialogState extends State<DateRangePickerDialog>
         size = orientation == Orientation.portrait
             ? _inputPortraitDialogSize
             : _inputRangeLandscapeDialogSize;
-        insetPadding =
-            const EdgeInsets.symmetric(horizontal: 16.0, vertical: 24.0);
+        insetPadding = const EdgeInsets.symmetric(horizontal: 16, vertical: 24);
         shape = dialogTheme.shape;
         elevation = dialogTheme.elevation ?? 24;
         break;
@@ -1403,7 +1400,8 @@ class _CalendarRangePickerDialog extends StatelessWidget {
               if (orientation == Orientation.portrait &&
                   entryModeButton != null)
                 Padding(
-                  padding: const EdgeInsets.symmetric(horizontal: 8.0),
+                  padding: const EdgeInsets.symmetric(horizontal: 8),
+                  // ignore: unnecessary_null_checks
                   child: entryModeButton!,
                 ),
             ]),
@@ -1425,13 +1423,13 @@ class _CalendarRangePickerDialog extends StatelessWidget {
 
 const Duration _monthScrollDuration = Duration(milliseconds: 200);
 
-const double _monthItemHeaderHeight = 58.0;
-const double _monthItemFooterHeight = 12.0;
-const double _monthItemRowHeight = 42.0;
-const double _monthItemSpaceBetweenRows = 8.0;
-const double _horizontalPadding = 8.0;
-const double _maxCalendarWidthLandscape = 384.0;
-const double _maxCalendarWidthPortrait = 480.0;
+const double _monthItemHeaderHeight = 58;
+const double _monthItemFooterHeight = 12;
+const double _monthItemRowHeight = 42;
+const double _monthItemSpaceBetweenRows = 8;
+const double _horizontalPadding = 8;
+const double _maxCalendarWidthLandscape = 384;
+const double _maxCalendarWidthPortrait = 480;
 
 /// Displays a scrollable calendar grid that allows a user to select a range
 /// of dates.
@@ -1828,6 +1826,7 @@ class _DayHeaders extends StatelessWidget {
   List<Widget> _getDayHeaders(
       TextStyle headerStyle, MaterialLocalizations localizations) {
     final result = <Widget>[];
+    // ignore: literal_only_boolean_expressions
     for (var i = localizations.firstDayOfWeekIndex; true; i = (i + 1) % 7) {
       final weekday = localizations.narrowWeekdays[i];
       result.add(ExcludeSemantics(
@@ -2183,7 +2182,7 @@ class _MonthItemState extends State<_MonthItem> {
       // border.
       itemStyle = textTheme.bodyText2?.apply(color: colorScheme.primary);
       decoration = BoxDecoration(
-        border: Border.all(color: colorScheme.primary, width: 1),
+        border: Border.all(color: colorScheme.primary),
         shape: BoxShape.circle,
       );
     }
@@ -2256,6 +2255,7 @@ class _MonthItemState extends State<_MonthItem> {
         weeks * _monthItemRowHeight + (weeks - 1) * _monthItemSpaceBetweenRows;
     final dayItems = <Widget>[];
 
+    // ignore: literal_only_boolean_expressions
     for (var i = 0; true; i += 1) {
       // 1-based day of month, e.g. 1-31 for January, and 1-29 for February on
       // a leap year.
@@ -2502,7 +2502,7 @@ class _InputDateRangePickerDialog extends StatelessWidget {
 
     final Widget actions = Container(
       alignment: AlignmentDirectional.centerEnd,
-      constraints: const BoxConstraints(minHeight: 52.0),
+      constraints: const BoxConstraints(minHeight: 52),
       padding: const EdgeInsets.symmetric(horizontal: 8),
       child: OverflowBar(
         spacing: 8,

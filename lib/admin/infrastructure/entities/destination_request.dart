@@ -18,6 +18,7 @@ class DestinationRequest {
   final String rules;
   final String bagPacking;
   final String helpingLines;
+  // final List<File> image;
   final File image;
   final String startedPoints;
   final String endingPoints;

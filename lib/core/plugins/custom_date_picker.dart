@@ -719,7 +719,6 @@ class _MonthPickerState extends State<_MonthPicker> {
                   itemCount:
                       DateUtils.monthDelta(widget.firstDate, widget.lastDate) +
                           1,
-                  scrollDirection: Axis.horizontal,
                   onPageChanged: _handleMonthPageChanged,
                 ),
               ),
@@ -1095,16 +1094,13 @@ class _YearPickerState extends State<YearPicker> {
       decoration = BoxDecoration(
         color: colorScheme.primary,
         borderRadius: BorderRadius.circular(decorationHeight / 2),
-        shape: BoxShape.rectangle,
       );
     } else if (isCurrentYear && !isDisabled) {
       decoration = BoxDecoration(
         border: Border.all(
           color: colorScheme.primary,
-          width: 1,
         ),
         borderRadius: BorderRadius.circular(decorationHeight / 2),
-        shape: BoxShape.rectangle,
       );
     }
 
@@ -1129,8 +1125,7 @@ class _YearPickerState extends State<YearPicker> {
     } else {
       yearItem = InkWell(
         key: ValueKey<int>(year),
-        onTap: () =>
-            widget.onChanged(DateTime(year, widget.initialDate.month, 1)),
+        onTap: () => widget.onChanged(DateTime(year, widget.initialDate.month)),
         child: yearItem,
       );
     }

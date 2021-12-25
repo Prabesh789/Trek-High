@@ -6,6 +6,7 @@ import 'package:trek_high/app_setup/app_init/app_init.dart';
 
 Future initializeApp() async {
   await AppInit.initialize();
+
   runApp(
     EasyLocalization(
       path: 'assets/translation',

@@ -98,7 +98,6 @@ class AuthRepository implements IAuthRepository {
                     'aboutYou': newSignupRequest.aboutYou,
                   },
                 );
-
                 await _auth.signOut();
               },
             );

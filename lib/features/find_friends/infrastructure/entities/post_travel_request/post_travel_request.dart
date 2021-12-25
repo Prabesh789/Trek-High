@@ -1,5 +1,3 @@
-import 'dart:io';
-
 class PostTravelRequest {
   PostTravelRequest({
     required this.trek,

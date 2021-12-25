@@ -173,6 +173,55 @@ class _DrawerNavBarState extends State<DrawerNavBar> {
                   child: ListTile(
                     trailing: const Padding(
                       padding: EdgeInsets.only(right: 15),
+                      child: Icon(Icons.policy),
+                    ),
+                    onTap: () async {
+                      await context.router.push(const DataPolicyRoute());
+                    },
+                    title: Text(
+                      'Data privacy',
+                      style: Theme.of(context).textTheme.subtitle1?.copyWith(
+                            fontWeight: FontWeight.bold,
+                          ),
+                    ),
+                  ),
+                ),
+                Card(
+                  elevation: 0,
+                  color: Theme.of(context).cardColor,
+                  shape: const RoundedRectangleBorder(
+                    borderRadius: BorderRadius.all(
+                      Radius.circular(8),
+                    ),
+                  ),
+                  child: ListTile(
+                    trailing: const Padding(
+                      padding: EdgeInsets.only(right: 15),
+                      child: Icon(Icons.rule),
+                    ),
+                    onTap: () async {
+                      await context.router.push(const AppPolicyRoute());
+                    },
+                    title: Text(
+                      'About App',
+                      style: Theme.of(context).textTheme.subtitle1?.copyWith(
+                            fontWeight: FontWeight.bold,
+                          ),
+                    ),
+                  ),
+                ),
+                const SizedBox(height: 25),
+                Card(
+                  elevation: 0,
+                  color: Theme.of(context).cardColor,
+                  shape: const RoundedRectangleBorder(
+                    borderRadius: BorderRadius.all(
+                      Radius.circular(8),
+                    ),
+                  ),
+                  child: ListTile(
+                    trailing: const Padding(
+                      padding: EdgeInsets.only(right: 15),
                       child: Icon(Icons.logout),
                     ),
                     onTap: () async {
@@ -187,7 +236,7 @@ class _DrawerNavBarState extends State<DrawerNavBar> {
                           ),
                     ),
                   ),
-                )
+                ),
               ],
             ),
           ),

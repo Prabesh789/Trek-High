@@ -27,6 +27,8 @@ class AdminRepository implements IAdminRepository {
   Future<Either<DestinationResponse, Failure>> uploadDestination(
       {required DestinationRequest destinationRequest}) async {
     try {
+      // final fileName =
+      //     path.basename(destinationRequest.image.map((e) => e.path).toString());
       final fileName = path.basename(destinationRequest.image.path);
       final reference = firebase_storage.FirebaseStorage.instance
           .ref()

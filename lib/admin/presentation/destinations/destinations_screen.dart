@@ -7,6 +7,7 @@ import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:image_picker/image_picker.dart';
+import 'package:multi_image_picker2/multi_image_picker2.dart';
 import 'package:trek_high/admin/application/admin_controller.dart';
 import 'package:trek_high/core/entities/base_state.dart';
 import 'package:trek_high/core/widgets/custom_back_button.dart';
@@ -29,6 +30,47 @@ class _DestinationScreenState extends State<DestinationScreen> {
   late File _imageFile = File('');
   final ImagePicker _picker = ImagePicker();
   final _formKey = GlobalKey<FormState>();
+  List<Asset> images = <Asset>[];
+  // ignore: unused_field
+  late String _error = 'No Error Detected';
+
+  Future<void> loadAssets() async {
+    var resultList = <Asset>[];
+    // ignore: omit_local_variable_types
+    String error = 'No Error Dectected';
+
+    try {
+      resultList = await MultiImagePicker.pickImages(
+        maxImages: 300,
+        enableCamera: true,
+        selectedAssets: images,
+        cupertinoOptions: const CupertinoOptions(
+          takePhotoIcon: 'chat',
+          doneButtonTitle: 'Fatto',
+        ),
+        materialOptions: const MaterialOptions(
+          actionBarColor: '',
+          actionBarTitle: 'Trek High',
+          allViewTitle: 'All Photos',
+          useDetailsView: false,
+          selectCircleStrokeColor: '#000000',
+        ),
+      );
+    } on Exception catch (e) {
+      error = e.toString();
+    }
+
+    // If the widget was removed from the tree while the asynchronous platform
+    // message was in flight, we want to discard the reply rather than calling
+    // setState to update our non-existent appearance.
+    if (!mounted) return;
+
+    setState(() {
+      images = resultList;
+      _error = error;
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     final _titileController = useTextEditingController();

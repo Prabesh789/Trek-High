@@ -10,6 +10,8 @@ import 'package:flutter/material.dart' as _i2;
 import '../../../admin/presentation/admin_dasbboard_screen.dart' as _i9;
 import '../../../admin/presentation/destinations/destinations_screen.dart'
     as _i10;
+import '../../../admin/presentation/uploaded_destination_list/uploaded_destination_list.dart'
+    as _i14;
 import '../../../admin/presentation/user_list/user_list_screen.dart' as _i11;
 import '../../../features/auth/presentation/login_screen/login_screen.dart'
     as _i6;
@@ -19,6 +21,8 @@ import '../../../features/find_friends/presentation/widgets/post_travel_screen.d
     as _i13;
 import '../../../features/home_screen/presentation/destination_details/destinations_detail_screen.dart'
     as _i12;
+import '../../../features/info_app/app_policy_screen.dart' as _i15;
+import '../../../features/info_app/data_policy_screen.dart' as _i16;
 import '../../../features/landing_screen/landing_screen.dart' as _i4;
 import '../../../features/main_dashboard/presentation/bottom_navigation.dart'
     as _i5;
@@ -98,6 +102,21 @@ class AppRouter extends _i1.RootStackRouter {
         routeData: routeData,
         builder: (_) {
           return const _i13.PostTravelScreen();
+        }),
+    UploadedDestinationListRoute.name: (routeData) => _i1.MaterialPageX<void>(
+        routeData: routeData,
+        builder: (_) {
+          return const _i14.UploadedDestinationListScreen();
+        }),
+    AppPolicyRoute.name: (routeData) => _i1.MaterialPageX<void>(
+        routeData: routeData,
+        builder: (_) {
+          return const _i15.AppPolicyScreen();
+        }),
+    DataPolicyRoute.name: (routeData) => _i1.MaterialPageX<void>(
+        routeData: routeData,
+        builder: (_) {
+          return const _i16.DataPolicyScreen();
         })
   };
 
@@ -116,7 +135,11 @@ class AppRouter extends _i1.RootStackRouter {
         _i1.RouteConfig(UserListRoute.name, path: '/user-list-screen'),
         _i1.RouteConfig(DestinationDetailRoute.name,
             path: '/destination-detail-screen'),
-        _i1.RouteConfig(PostTravelRoute.name, path: '/post-travel-screen')
+        _i1.RouteConfig(PostTravelRoute.name, path: '/post-travel-screen'),
+        _i1.RouteConfig(UploadedDestinationListRoute.name,
+            path: '/uploaded-destination-list-screen'),
+        _i1.RouteConfig(AppPolicyRoute.name, path: '/app-policy-screen'),
+        _i1.RouteConfig(DataPolicyRoute.name, path: '/data-policy-screen')
       ];
 }
 
@@ -248,4 +271,23 @@ class PostTravelRoute extends _i1.PageRouteInfo {
   const PostTravelRoute() : super(name, path: '/post-travel-screen');
 
   static const String name = 'PostTravelRoute';
+}
+
+class UploadedDestinationListRoute extends _i1.PageRouteInfo {
+  const UploadedDestinationListRoute()
+      : super(name, path: '/uploaded-destination-list-screen');
+
+  static const String name = 'UploadedDestinationListRoute';
+}
+
+class AppPolicyRoute extends _i1.PageRouteInfo {
+  const AppPolicyRoute() : super(name, path: '/app-policy-screen');
+
+  static const String name = 'AppPolicyRoute';
+}
+
+class DataPolicyRoute extends _i1.PageRouteInfo {
+  const DataPolicyRoute() : super(name, path: '/data-policy-screen');
+
+  static const String name = 'DataPolicyRoute';
 }

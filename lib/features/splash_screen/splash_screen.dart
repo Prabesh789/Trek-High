@@ -19,6 +19,7 @@ class _SplashScreenState extends State<SplashScreen> {
     FirebaseAuth.instance.authStateChanges().listen(
       (User? user) async {
         if (user == null) {
+          /**user is not login in*/
           await context.router.replace(const LandingRoute());
         } else {
           await FirebaseFirestore.instance
@@ -27,23 +28,13 @@ class _SplashScreenState extends State<SplashScreen> {
               .get()
               .then((ds) {
             if (mounted) {
-              setState(() {
-                newSignupRequest = NewSignupRequest(
-                  fullName: ds['fullName'].toString(),
-                  address: ds['address'].toString(),
-                  admin: ds['admin'] as bool,
-                  contact: ds['contact'].toString(),
-                  email: ds['email'].toString(),
-                  password: ds['password'].toString(),
-                  platform: ds['platform'] as int,
-                  deviceId: ds['platform'].toString(),
-                );
-              });
+              ds['admin'] as bool == true
+                  /**user is logeed in as admin*/
+                  ? context.router.replace(const AdminDashboardRoute())
+                  /**user is logeed in as user*/
+                  : context.router.replace(const BottomNavigationRoute());
             }
           });
-          newSignupRequest.admin == true
-              ? await context.router.replace(const AdminDashboardRoute())
-              : await context.router.replace(const BottomNavigationRoute());
         }
       },
     );

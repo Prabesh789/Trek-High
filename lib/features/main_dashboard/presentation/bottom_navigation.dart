@@ -1,7 +1,11 @@
+import 'package:auto_route/src/router/auto_router_x.dart';
 import 'package:easy_localization/easy_localization.dart';
+import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
+import 'package:trek_high/app_setup/firebae_notification_service/firebase_notification_service.dart';
+import 'package:trek_high/app_setup/route/app_router.dart';
 import 'package:trek_high/features/find_friends/presentation/find_friends.dart';
 import 'package:trek_high/features/find_me_screen/presentation/find_me_screen.dart';
 import 'package:trek_high/features/home_screen/presentation/home_screen.dart';
@@ -26,6 +30,33 @@ class _BottomNavigationScreenState extends State<BottomNavigationScreen> {
   ];
   void _onItemTapped(int index) {
     context.read(indexNotifierProvider.notifier).changeIndex(index);
+  }
+
+  @override
+  void initState() {
+    //This stream works when the app is terminated
+    FirebaseMessaging.instance.getInitialMessage().then((message) {
+      if (message != null) {}
+    });
+    //This stream for foreground
+    FirebaseMessaging.onMessage.listen((message) {
+      if (message.notification != null) {
+        // print(message.notification!.title);
+        // print(message.notification!.body);
+      }
+      FirebaseNotificationService.display(message);
+    });
+
+    //when the app is the background but opened and user taps on the notification
+    FirebaseMessaging.onMessageOpenedApp.listen((message) {
+      final routeFromMessage = message.data['route'];
+      // print(routeFromMessage);
+      if (routeFromMessage == 'notification_screen') {
+        context.router.push(const NotificationRoute());
+      }
+    });
+
+    super.initState();
   }
 
   @override

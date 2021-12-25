@@ -53,7 +53,10 @@ mixin _$UserResponse {
   String get fullName => throw _privateConstructorUsedError;
   String get contact => throw _privateConstructorUsedError;
   String get address => throw _privateConstructorUsedError;
-  String get email => throw _privateConstructorUsedError;
+  String get email =>
+      throw _privateConstructorUsedError; // required String password,
+// required String image,
+// String? aboutYou,
   int? get platform => throw _privateConstructorUsedError;
   String? get deviceId => throw _privateConstructorUsedError;
 
@@ -224,7 +227,9 @@ class _$_UserResponse implements _UserResponse {
   final String address;
   @override
   final String email;
-  @override
+  @override // required String password,
+// required String image,
+// String? aboutYou,
   final int? platform;
   @override
   final String? deviceId;
@@ -304,7 +309,9 @@ abstract class _UserResponse implements UserResponse {
   String get address => throw _privateConstructorUsedError;
   @override
   String get email => throw _privateConstructorUsedError;
-  @override
+  @override // required String password,
+// required String image,
+// String? aboutYou,
   int? get platform => throw _privateConstructorUsedError;
   @override
   String? get deviceId => throw _privateConstructorUsedError;

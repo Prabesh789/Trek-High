@@ -3,6 +3,5 @@ import 'package:trek_high/main.dart';
 
 void main() async {
   Constants.setEnvironment(Environment.PROD);
-
   await initializeApp();
 }

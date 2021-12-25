@@ -10,6 +10,9 @@ class UserResponse with _$UserResponse {
     required String contact,
     required String address,
     required String email,
+    // required String password,
+    // required String image,
+    // String? aboutYou,
     int? platform,
     String? deviceId,
   }) = _UserResponse;

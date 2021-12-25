@@ -1,14 +1,10 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:dartz/dartz.dart';
 import 'package:firebase_auth/firebase_auth.dart';
-import 'package:firebase_storage/firebase_storage.dart' as firebase_storage;
 import 'package:hooks_riverpod/hooks_riverpod.dart';
-import 'package:path/path.dart' as path;
 import 'package:trek_high/app/entities/failure.dart';
 import 'package:trek_high/features/find_friends/infrastructure/entities/post_travel_request/post_travel_request.dart';
 import 'package:trek_high/features/find_friends/infrastructure/entities/post_travel_response/post_travel_model.dart';
-import 'package:trek_high/features/share_story/infrastructure/entities/post_stories_request.dart';
-import 'package:trek_high/features/share_story/infrastructure/entities/post_stories_response.dart';
 
 final postTravelRepository =
     Provider<IPostTravelRepository>((ref) => PostTravelRepository(ref.read));

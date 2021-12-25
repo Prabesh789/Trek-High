@@ -38,6 +38,7 @@ android {
         applicationId "com.trek_high.trek_high"
         minSdkVersion 22
         targetSdkVersion 30
+        multiDexEnabled true
         versionCode flutterVersionCode.toInteger()
         versionName flutterVersionName
     }

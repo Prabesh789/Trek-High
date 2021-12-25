@@ -2,6 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/painting.dart';
 import 'package:flutter/rendering.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 class AppThemes {
   /*Getter to get Palatte for light theme*/
@@ -19,7 +20,7 @@ class AppThemes {
       color: Colors.black.withOpacity(0.8),
     ),
     dialogTheme: const DialogTheme(backgroundColor: Colors.red),
-    fontFamily: 'PT Serif',
+    // fontFamily: 'PT Serif',
     brightness: Brightness.light,
     focusColor: Colors.black.withOpacity(0.3),
     canvasColor: Colors.grey,
@@ -29,59 +30,55 @@ class AppThemes {
     bottomAppBarColor: Colors.white,
     dividerColor: const Color(0x1C000000),
     textTheme: TextTheme(
-      headline1: const TextStyle(
+      headline1: GoogleFonts.firaSans(
         fontWeight: FontWeight.w300,
         fontSize: 35,
       ),
-      headline2: const TextStyle(
+      headline2: GoogleFonts.firaSans(
         fontSize: 30,
       ),
-      headline3: const TextStyle(
+      headline3: GoogleFonts.firaSans(
         fontSize: 25,
       ),
-      headline4: const TextStyle(
+      headline4: GoogleFonts.firaSans(
         fontWeight: FontWeight.w600,
         fontSize: 20,
         color: Colors.black,
       ),
-      headline5: const TextStyle(
+      headline5: GoogleFonts.firaSans(
         fontSize: 18,
         fontWeight: FontWeight.bold,
-        overflow: TextOverflow.ellipsis,
       ),
-      headline6: const TextStyle(
+      headline6: GoogleFonts.firaSans(
         fontSize: 16,
         fontWeight: FontWeight.bold,
-        overflow: TextOverflow.ellipsis,
         color: Colors.black,
       ),
-      subtitle1: const TextStyle(
+      subtitle1: GoogleFonts.firaSans(
         fontSize: 15,
         color: Colors.black,
       ),
-      subtitle2: const TextStyle(
+      subtitle2: GoogleFonts.firaSans(
         fontSize: 10,
       ),
-      bodyText1: TextStyle(
+      bodyText1: GoogleFonts.firaSans(
         fontSize: 16,
         fontWeight: FontWeight.bold,
-        overflow: TextOverflow.ellipsis,
         color: Colors.grey.shade800,
       ),
-      bodyText2: TextStyle(
+      bodyText2: GoogleFonts.firaSans(
         fontSize: 16,
         fontWeight: FontWeight.bold,
-        overflow: TextOverflow.ellipsis,
         color: Colors.grey.shade700,
       ),
-      button: const TextStyle(
+      button: GoogleFonts.firaSans(
         fontSize: 16,
         fontWeight: FontWeight.w600,
       ),
-      caption: const TextStyle(
+      caption: GoogleFonts.firaSans(
         fontSize: 13,
       ),
-      overline: const TextStyle(
+      overline: GoogleFonts.firaSans(
         fontSize: 8,
       ),
     ),
@@ -109,59 +106,55 @@ class AppThemes {
     bottomAppBarColor: Colors.green,
     dividerColor: const Color(0x1CFFFFFF),
     textTheme: TextTheme(
-      headline1: const TextStyle(
+      headline1: GoogleFonts.firaSans(
         fontWeight: FontWeight.w300,
         fontSize: 35,
       ),
-      headline2: const TextStyle(
+      headline2: GoogleFonts.firaSans(
         fontSize: 30,
         fontWeight: FontWeight.bold,
       ),
-      headline3: const TextStyle(
+      headline3: GoogleFonts.firaSans(
         fontSize: 25,
       ),
-      headline4: const TextStyle(
+      headline4: GoogleFonts.firaSans(
         fontWeight: FontWeight.w600,
         fontSize: 20,
         color: Colors.white,
       ),
-      headline5: const TextStyle(
+      headline5: GoogleFonts.firaSans(
         fontSize: 18,
         fontWeight: FontWeight.bold,
-        overflow: TextOverflow.ellipsis,
       ),
-      headline6: const TextStyle(
+      headline6: GoogleFonts.firaSans(
         fontSize: 16,
         fontWeight: FontWeight.bold,
-        overflow: TextOverflow.ellipsis,
         color: Colors.white,
       ),
-      subtitle1: const TextStyle(
+      subtitle1: GoogleFonts.firaSans(
         fontSize: 15,
         color: Colors.white,
       ),
-      subtitle2: const TextStyle(
+      subtitle2: GoogleFonts.firaSans(
         fontSize: 10,
       ),
-      bodyText1: TextStyle(
+      bodyText1: GoogleFonts.firaSans(
         fontSize: 16,
         fontWeight: FontWeight.bold,
-        overflow: TextOverflow.ellipsis,
         color: Colors.grey.shade100,
       ),
-      bodyText2: TextStyle(
+      bodyText2: GoogleFonts.firaSans(
         fontSize: 16,
         fontWeight: FontWeight.bold,
-        overflow: TextOverflow.ellipsis,
         color: Colors.grey.shade200,
       ),
-      button: const TextStyle(
+      button: GoogleFonts.firaSans(
         fontSize: 16,
       ),
-      caption: const TextStyle(
+      caption: GoogleFonts.firaSans(
         fontSize: 13,
       ),
-      overline: const TextStyle(
+      overline: GoogleFonts.firaSans(
         fontSize: 8,
       ),
     ),

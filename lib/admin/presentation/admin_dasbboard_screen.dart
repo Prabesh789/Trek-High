@@ -99,6 +99,27 @@ class _AdminDashboardScreenState extends State<AdminDashboardScreen> {
                       ),
                     ),
                   ),
+                  InkWell(
+                    onTap: () {
+                      context.router.push(const UploadedDestinationListRoute());
+                    },
+                    child: Container(
+                      padding: const EdgeInsets.all(4),
+                      decoration: BoxDecoration(
+                        color: Colors.blueAccent[100],
+                        borderRadius: BorderRadius.circular(12),
+                      ),
+                      child: Column(
+                        children: [
+                          const Text('Uploaded destination'),
+                          SvgPicture.asset(
+                            'assets/images/upload_destination.svg',
+                            height: 140,
+                          )
+                        ],
+                      ),
+                    ),
+                  ),
                 ],
               ),
             ),
