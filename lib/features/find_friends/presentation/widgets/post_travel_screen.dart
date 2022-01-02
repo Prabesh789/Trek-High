@@ -41,10 +41,26 @@ class _PostTravelScreenState extends State<PostTravelScreen> {
     final size = MediaQuery.of(context).size;
     return Scaffold(
       appBar: AppBar(
+        centerTitle: true,
+        backgroundColor: Colors.transparent,
+        elevation: 0,
+        toolbarHeight: 70,
+        flexibleSpace: Container(
+          decoration: const BoxDecoration(
+            borderRadius: BorderRadius.only(
+              bottomLeft: Radius.circular(20),
+              bottomRight: Radius.circular(20),
+            ),
+            gradient: LinearGradient(
+              colors: [Colors.indigoAccent, Colors.indigoAccent],
+              begin: Alignment.bottomCenter,
+              end: Alignment.topCenter,
+            ),
+          ),
+        ),
         leading: CustomBackButton(onTap: () {
           Navigator.of(context).pop();
         }),
-        centerTitle: true,
         title: Text(
           tr('Let\'s Meet Up'),
           style: Theme.of(context)

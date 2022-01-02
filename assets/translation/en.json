@@ -13,6 +13,7 @@
     "email": "Email",
     "phone_number": "Phone number",
     "address": "Address",
+    "country": "Country",
     "confirm_password": "Confirm Password",
     "sign_up": "Sign up",
     "email_validation": "Email pattern doesn't match !",

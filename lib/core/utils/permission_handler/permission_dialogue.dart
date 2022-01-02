@@ -29,7 +29,7 @@ class PermissionDialog extends StatelessWidget {
     final message = permissionFor == 'storage'
         ? 'Trek-High App needs permission to access your device storage. Please go to Settings > Privacy > Storage, and enable.'
         : permissionFor == 'location'
-            ? 'Your location is currently disabled, To find the nearest offers and businesses around you, we need your current location. Set it from here or provide location service from setting.'
+            ? 'Your location is currently disabled'
             : permissionFor == 'Camera'
                 ? 'Trek-High App needs permission to access your camera to click a photo. Please go to Settings > Privacy > Camera, and enable.'
                 : 'Trek-High App needs permission to access your photo library to select a photo. Please go to Settings > Privacy > Photos, and enable.';

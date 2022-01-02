@@ -47,6 +47,7 @@ class _StoryDetailsState extends State<StoryDetails> {
   late int hasImage = 1;
   late File _imageFile = File('');
   final ImagePicker _picker = ImagePicker();
+  final _formKey = GlobalKey<FormState>();
 
   @override
   Widget build(BuildContext context) {
@@ -57,96 +58,91 @@ class _StoryDetailsState extends State<StoryDetails> {
     return HookBuilder(builder: (context) {
       final userId = useProvider(userIdProvider);
       final state = useProvider(sharemyStoryController);
-      return Padding(
-        padding: const EdgeInsets.symmetric(horizontal: 20),
-        child: SingleChildScrollView(
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              const SizedBox(height: 25),
-              Row(
-                children: [
-                  SizedBox(width: size.width / 4),
-                  const Spacer(),
-                  const Text('Your Story'),
-                  const Spacer(),
-                  SizedBox(
-                    width: size.width / 4,
-                    child: ProviderListener(
-                      provider: sharemyStoryController,
-                      onChange: (context, state) async {
-                        if (state is BaseError) {
-                          await Fluttertoast.showToast(
-                            msg: state.failure.errorMessage,
-                            backgroundColor: Colors.white,
-                            textColor:
-                                Theme.of(context).dialogTheme.backgroundColor,
-                          );
-                        }
-                        if (state is BaseLoading) {}
-                        if (state is BaseSuccess) {
-                          _storyTextController.clear();
-                          await context.router.pop();
-                        }
-                      },
-                      child: CustomButton(
-                        isLoading: state is BaseLoading,
-                        buttonHeigh: 40,
-                        onPressed: () {
-                          context
-                              .read(sharemyStoryController.notifier)
-                              .shareStory(
-                                title: _storyTextController.text.trim(),
-                                image: _imageFile,
-                                userId: userId.state,
-                                isFavorite: false,
-                              );
+      return Form(
+        key: _formKey,
+        child: Padding(
+          padding: const EdgeInsets.symmetric(horizontal: 20),
+          child: SingleChildScrollView(
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                const SizedBox(height: 25),
+                Row(
+                  children: [
+                    SizedBox(width: size.width / 4),
+                    const Spacer(),
+                    const Text('Your Story'),
+                    const Spacer(),
+                    SizedBox(
+                      width: size.width / 4,
+                      child: ProviderListener(
+                        provider: sharemyStoryController,
+                        onChange: (context, state) async {
+                          if (state is BaseError) {
+                            await Fluttertoast.showToast(
+                              msg: state.failure.errorMessage,
+                              backgroundColor: Colors.white,
+                              textColor:
+                                  Theme.of(context).dialogTheme.backgroundColor,
+                            );
+                          }
+                          if (state is BaseLoading) {}
+                          if (state is BaseSuccess) {
+                            _storyTextController.clear();
+                            await context.router.pop();
+                          }
                         },
-                        buttonText: 'Post',
+                        child: CustomButton(
+                          isLoading: state is BaseLoading,
+                          buttonHeigh: 40,
+                          onPressed: () {
+                            if (hasImage != 1) {
+                              if (_formKey.currentState!.validate()) {
+                                context
+                                    .read(sharemyStoryController.notifier)
+                                    .shareStory(
+                                      title: _storyTextController.text.trim(),
+                                      image: _imageFile,
+                                      userId: userId.state,
+                                      isFavorite: false,
+                                    );
+                              }
+                            } else {
+                              Fluttertoast.showToast(
+                                gravity: ToastGravity.CENTER,
+                                msg: 'Please choose image for stories',
+                              );
+                            }
+                          },
+                          buttonText: 'Post',
+                        ),
                       ),
-                    ),
-                  )
-                ],
-              ),
-              const SizedBox(height: 25),
-              const Text('Title'),
-              const SizedBox(height: 15),
-              CustomTextfield(
-                maxLine: 3,
-                textEditingController: _storyTextController,
-                focusNode: _storyTextfocusNode,
-                hintText: tr('Text...'),
-                onEditingComplete: () {
-                  FocusScope.of(context).requestFocus(FocusNode());
-                },
-              ),
-              const SizedBox(height: 20),
-              const Text('Image'),
-              const SizedBox(height: 10),
-              if (hasImage != 1) ...[
-                Container(
-                  height: size.height / 4,
-                  decoration: BoxDecoration(
-                    color: Theme.of(context).inputDecorationTheme.fillColor,
-                    borderRadius: BorderRadius.circular(12),
-                    boxShadow: [
-                      BoxShadow(
-                        offset: const Offset(0, 10),
-                        blurRadius: 50,
-                        color: Colors.black.withOpacity(0.2),
-                      ),
-                    ],
-                    image: DecorationImage(
-                      image: FileImage(
-                        _imageFile,
-                      ),
-                      fit: BoxFit.cover,
-                    ),
-                  ),
+                    )
+                  ],
                 ),
-              ] else ...[
-                Center(
-                  child: Container(
+                const SizedBox(height: 25),
+                const Text('Title'),
+                const SizedBox(height: 15),
+                CustomTextfield(
+                  maxLine: 3,
+                  textEditingController: _storyTextController,
+                  focusNode: _storyTextfocusNode,
+                  hintText: tr('Text...'),
+                  onEditingComplete: () {
+                    FocusScope.of(context).requestFocus(FocusNode());
+                  },
+                  validator: (value) {
+                    if (value!.isEmpty) {
+                      return 'Title is required !';
+                    }
+                  },
+                ),
+                const SizedBox(height: 20),
+                const Text('Image'),
+                const SizedBox(height: 10),
+                if (hasImage != 1) ...[
+                  Container(
+                    height: size.height / 4,
                     decoration: BoxDecoration(
                       color: Theme.of(context).inputDecorationTheme.fillColor,
                       borderRadius: BorderRadius.circular(12),
@@ -154,24 +150,46 @@ class _StoryDetailsState extends State<StoryDetails> {
                         BoxShadow(
                           offset: const Offset(0, 10),
                           blurRadius: 50,
-                          color: Colors.black.withOpacity(0.3),
+                          color: Colors.black.withOpacity(0.2),
                         ),
                       ],
-                    ),
-                    child: InkWell(
-                      onTap: () {
-                        takePhoto(ImageSource.gallery);
-                      },
-                      child: SvgPicture.asset(
-                        'assets/images/img_folder.svg',
-                        height: size.height / 4,
+                      image: DecorationImage(
+                        image: FileImage(
+                          _imageFile,
+                        ),
+                        fit: BoxFit.cover,
                       ),
                     ),
                   ),
-                ),
+                ] else ...[
+                  Center(
+                    child: Container(
+                      decoration: BoxDecoration(
+                        color: Theme.of(context).inputDecorationTheme.fillColor,
+                        borderRadius: BorderRadius.circular(12),
+                        boxShadow: [
+                          BoxShadow(
+                            offset: const Offset(0, 10),
+                            blurRadius: 50,
+                            color: Colors.black.withOpacity(0.3),
+                          ),
+                        ],
+                      ),
+                      child: InkWell(
+                        onTap: () {
+                          takePhoto(ImageSource.gallery);
+                        },
+                        child: SvgPicture.asset(
+                          'assets/images/img_folder.svg',
+                          height: size.height / 4,
+                        ),
+                      ),
+                    ),
+                  ),
+                ],
+                SizedBox(height: size.width),
               ],
-              SizedBox(height: size.width),
-            ],
+            ),
           ),
         ),
       );

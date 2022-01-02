@@ -80,13 +80,27 @@ class _SignupScreenState extends State<SignupScreen> {
     return Scaffold(
       backgroundColor: Theme.of(context).scaffoldBackgroundColor,
       appBar: AppBar(
+        centerTitle: true,
+        backgroundColor: Colors.transparent,
+        elevation: 0,
+        toolbarHeight: 70,
+        flexibleSpace: Container(
+          decoration: const BoxDecoration(
+            borderRadius: BorderRadius.only(
+              bottomLeft: Radius.circular(20),
+              bottomRight: Radius.circular(20),
+            ),
+            gradient: LinearGradient(
+              colors: [Colors.indigoAccent, Colors.indigoAccent],
+              begin: Alignment.bottomCenter,
+              end: Alignment.topCenter,
+            ),
+          ),
+        ),
         leading: CustomBackButton(onTap: () {
           Navigator.of(context).pop();
         }),
         leadingWidth: 80,
-        elevation: 0,
-        centerTitle: true,
-        backgroundColor: Theme.of(context).backgroundColor,
         title: Text(
           tr('register'),
           style: Theme.of(context).textTheme.headline4,
@@ -241,7 +255,7 @@ class _SignupScreenState extends State<SignupScreen> {
                           enabled: false,
                           textEditingController: _addressController,
                           focusNode: _addressFocusNode,
-                          labelText: tr('address'),
+                          labelText: tr('country'),
                           prefixIcon: Icon(
                             Icons.place,
                             color: Theme.of(context).iconTheme.color,
@@ -275,8 +289,8 @@ class _SignupScreenState extends State<SignupScreen> {
                             .requestFocus(_confirmPasswordFocusNode);
                       },
                       validator: (value) {
-                        if (value!.isEmpty) {
-                          return tr('required');
+                        if (value!.isEmpty && value.length < 8) {
+                          return tr('Password must have 8 character.');
                         } else {
                           return null;
                         }

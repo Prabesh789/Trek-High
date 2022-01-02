@@ -21,10 +21,26 @@ class _UserListScreenState extends State<UserListScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        centerTitle: true,
+        backgroundColor: Colors.transparent,
+        elevation: 0,
+        toolbarHeight: 70,
+        flexibleSpace: Container(
+          decoration: const BoxDecoration(
+            borderRadius: BorderRadius.only(
+              bottomLeft: Radius.circular(20),
+              bottomRight: Radius.circular(20),
+            ),
+            gradient: LinearGradient(
+              colors: [Colors.indigoAccent, Colors.indigoAccent],
+              begin: Alignment.bottomCenter,
+              end: Alignment.topCenter,
+            ),
+          ),
+        ),
         leading: CustomBackButton(onTap: () {
           Navigator.of(context).pop();
         }),
-        centerTitle: true,
         title: Text(
           tr('User List'),
           style: Theme.of(context).textTheme.headline5,
@@ -205,20 +221,4 @@ class _UserListScreenState extends State<UserListScreen> {
       return Text(error.toString());
     });
   }
-
-  // Future<void> deleteUserPosts({required String id}) async {
-  //   final users = FirebaseFirestore.instance.collection('travellers');
-  //   // await users.doc().collection(collectionPath)
-  // }
-
-  // Future<void> deleteUserStories({required String id}) async {
-  //   final users = FirebaseFirestore.instance.collection('travelers_stories');
-  //   await users.doc(id).delete().then(
-  //     (value) {
-  //       return const Text('Oops sorry !');
-  //     },
-  //   ).catchError((error) {
-  //     return Text(error.toString());
-  //   });
-  // }
 }

@@ -148,29 +148,30 @@ class _YourStoryWidgetState extends State<YourStoryWidget> {
                     ),
                   );
                 } else {
-                  return Stack(
-                    alignment: Alignment.center,
-                    children: [
-                      CircleAvatar(
-                        radius: 70,
-                        child: Image.asset('assets/images/empty_box.jpg'),
-                      ),
-                      SizedBox(
-                        width: size.width,
-                        child: Center(
-                          child: Column(
-                            children: const [
-                              Spacer(),
-                              Text(
-                                'You do not have any stories',
-                              ),
-                              SizedBox(height: 20)
-                            ],
-                          ),
-                        ),
-                      ),
-                    ],
-                  );
+                  return const SizedBox();
+                  // return Stack(
+                  //   alignment: Alignment.center,
+                  //   children: [
+                  //     CircleAvatar(
+                  //       radius: 70,
+                  //       child: Image.asset('assets/images/empty_box.jpg'),
+                  //     ),
+                  //     SizedBox(
+                  //       width: size.width,
+                  //       child: Center(
+                  //         child: Column(
+                  //           children: const [
+                  //             Spacer(),
+                  //             Text(
+                  //               'You do not have any stories',
+                  //             ),
+                  //             SizedBox(height: 20)
+                  //           ],
+                  //         ),
+                  //       ),
+                  //     ),
+                  //   ],
+                  // );
                 }
               },
             );

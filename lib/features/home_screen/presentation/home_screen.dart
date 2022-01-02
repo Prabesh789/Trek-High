@@ -5,7 +5,6 @@ import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:trek_high/app_setup/route/app_router.dart';
-import 'package:trek_high/core/widgets/custom_notification.dart';
 import 'package:trek_high/core/widgets/custom_shimmer.dart';
 import 'package:trek_high/features/home_screen/presentation/widgets/drawer_nav_bar.dart';
 
@@ -27,6 +26,22 @@ class _HomeScreenState extends State<HomeScreen> {
       ),
       appBar: AppBar(
         centerTitle: true,
+        backgroundColor: Colors.transparent,
+        elevation: 0,
+        toolbarHeight: 70,
+        flexibleSpace: Container(
+          decoration: const BoxDecoration(
+            borderRadius: BorderRadius.only(
+              bottomLeft: Radius.circular(20),
+              bottomRight: Radius.circular(20),
+            ),
+            gradient: LinearGradient(
+              colors: [Colors.indigoAccent, Colors.indigoAccent],
+              begin: Alignment.bottomCenter,
+              end: Alignment.topCenter,
+            ),
+          ),
+        ),
         title: Text(
           tr('popular_treks'),
           style: Theme.of(context)
@@ -34,7 +49,7 @@ class _HomeScreenState extends State<HomeScreen> {
               .headline4
               ?.copyWith(color: Colors.white),
         ),
-        actions: const [CustomNotification()],
+        // actions: const [CustomNotification()],
       ),
       body: SingleChildScrollView(
         child: Column(

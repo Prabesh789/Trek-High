@@ -16,6 +16,7 @@
     "email": "इमेल",
     "phone_number": "फोन नम्बर",
     "address": "ठेगाना",
+    "country": "देश ",
     "confirm_password": "पस्स्वोर्ड पुष्टि गर्नुहोस्",
     "sign_up": "साइन अप",
     "email_validation": "इमेलको ढाँचा मीलेन !",
