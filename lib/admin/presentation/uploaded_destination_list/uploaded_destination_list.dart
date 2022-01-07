@@ -25,7 +25,6 @@ class _UploadedDestinationListScreenState
         centerTitle: true,
         backgroundColor: Colors.transparent,
         elevation: 0,
-        toolbarHeight: 70,
         flexibleSpace: Container(
           decoration: const BoxDecoration(
             borderRadius: BorderRadius.only(
@@ -261,7 +260,7 @@ class _UploadedDestinationListScreenState
             ),
       ),
       onPressed: () {
-        deleteUser(id: id);
+        deleteDestination(id: id);
         Fluttertoast.showToast(
           gravity: ToastGravity.CENTER,
           msg: 'The destination has been deleted.',
@@ -304,7 +303,7 @@ class _UploadedDestinationListScreenState
     );
   }
 
-  Future<void> deleteUser({required String id}) async {
+  Future<void> deleteDestination({required String id}) async {
     final users = FirebaseFirestore.instance.collection('trek_destination');
     await users.doc(id).delete().then(
       (value) {

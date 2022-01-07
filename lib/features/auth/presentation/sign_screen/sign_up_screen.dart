@@ -83,7 +83,6 @@ class _SignupScreenState extends State<SignupScreen> {
         centerTitle: true,
         backgroundColor: Colors.transparent,
         elevation: 0,
-        toolbarHeight: 70,
         flexibleSpace: Container(
           decoration: const BoxDecoration(
             borderRadius: BorderRadius.only(
@@ -116,6 +115,7 @@ class _SignupScreenState extends State<SignupScreen> {
                 key: _formKey,
                 child: Column(
                   children: [
+                    const SizedBox(height: 10),
                     Stack(
                       children: [
                         Container(

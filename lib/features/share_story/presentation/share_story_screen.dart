@@ -29,7 +29,7 @@ class _ShareStoryScreenState extends State<ShareStoryScreen> {
         centerTitle: true,
         backgroundColor: Colors.transparent,
         elevation: 0,
-        toolbarHeight: 70,
+        // toolbarHeight: 70,
         flexibleSpace: Container(
           decoration: const BoxDecoration(
             borderRadius: BorderRadius.only(
@@ -50,7 +50,7 @@ class _ShareStoryScreenState extends State<ShareStoryScreen> {
               .headline4
               ?.copyWith(color: Colors.white),
         ),
-        actions: const [CustomNotification()],
+        // actions: const [CustomNotification()],
       ),
       body: Padding(
         padding: const EdgeInsets.symmetric(horizontal: 20),

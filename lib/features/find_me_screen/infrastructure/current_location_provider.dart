@@ -46,12 +46,6 @@ class LocationController extends StateNotifier<CurrentLocationData> {
               longitude: response.longitude,
             );
             _currentLocationProvider.updateValue(currentLocation);
-            // await _reader(postUserLastActiveController.notifier).postLastActive(
-            //   userLogActiveRequest: UserLogActiveRequest(
-            //     latitude: response.latitude,
-            //     longitude: response.longitude,
-            //   ),
-            // );
             return currentLocation;
           } else {
             serviceEnabledResult = await location.requestService();
