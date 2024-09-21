@@ -1,16 +1,29 @@
-# trek_high
+# Trek-High Mobile Application
 
-A new Flutter project.
+## Overview
+**Trek-High** is a cross-platform mobile application designed for trekkers and hikers, focusing on trails in Nepal. The app provides users with essential trekking information, safety measures, and the ability to connect with fellow travelers. It also offers offline access to trail maps and emergency alerts, making it ideal for remote areas with limited connectivity.
 
-## Getting Started
+## Features
+- **Trek Information**: Access detailed information on hiking trails across Nepal.
+- **Offline Support**: Save trail maps and key information for offline use.
+- **Connect with Travelers**: Find and connect with other trekkers or hikers based on interests and destinations.
+- **Story Sharing**: Share your travel experiences with the Trek-High community.
+- **Emergency Alerts**: Receive real-time notifications about potential risks on your current route.
+- **Location Tracking**: Track your current location using GPS.
 
-This project is a starting point for a Flutter application.
+## Tech Stack
+- **Flutter**: Cross-platform framework for Android & iOS.
+- **Dart**: Programming language.
+- **Firebase**: For backend services like user authentication and data storage.
+- **Google Maps API**: For GPS tracking and map functionality.
 
-A few resources to get you started if this is your first Flutter project:
+## Installation
 
-- [Lab: Write your first Flutter app](https://flutter.dev/docs/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://flutter.dev/docs/cookbook)
+To get a local copy up and running, follow these steps:
 
-For help getting started with Flutter, view our
-[online documentation](https://flutter.dev/docs), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+### Prerequisites
+- [Flutter](https://flutter.dev/docs/get-started/install) installed on your system.
+- [Firebase](https://firebase.google.com/) account set up with a project.
+
+### Steps
+
