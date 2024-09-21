@@ -3,6 +3,9 @@
 ## Overview
 **Trek-High** is a cross-platform mobile application designed for trekkers and hikers, focusing on trails in Nepal. The app provides users with essential trekking information, safety measures, and the ability to connect with fellow travelers. It also offers offline access to trail maps and emergency alerts, making it ideal for remote areas with limited connectivity.
 
+## Project Poster
+![Trek-High Project Poster](assets/1822755_UG_project_poster.png)
+
 ## Features
 - **Trek Information**: Access detailed information on hiking trails across Nepal.
 - **Offline Support**: Save trail maps and key information for offline use.
@@ -15,7 +18,7 @@
 - **Flutter**: Cross-platform framework for Android & iOS.
 - **Dart**: Programming language.
 - **Firebase**: For backend services like user authentication and data storage.
-- **Google Maps API**: For GPS tracking and map functionality.
+- **Google Maps API**: This is for GPS tracking and map functionality.
 
 ## Installation
 
