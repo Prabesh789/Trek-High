@@ -25,5 +25,4 @@ To get a local copy up and running, follow these steps:
 - [Flutter](https://flutter.dev/docs/get-started/install) installed on your system.
 - [Firebase](https://firebase.google.com/) account set up with a project.
 
-### Steps
 
